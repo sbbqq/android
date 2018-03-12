@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
+
     tools:context="com.example.moduleview.MainActivity">
 
     <com.example.moduleview.developerandroid.CustomView.HelloCustomView
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="200dp"
         app:text="hello,wqq"
-        app:textcolor="#FFF000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:textcolor="#FFF000"/>
 
-</android.support.constraint.ConstraintLayout>
+    <com.example.moduleview.developerandroid.CustomView.VoiceView
+        android:layout_width="match_parent"
+        app:width_angle="15"
+        app:count="11"
+        app:cicle_width="50"
+        app:progress="60"
+
+        android:layout_height="200dp"
+        />
+
+</LinearLayout>

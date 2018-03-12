@@ -30,10 +30,23 @@ public class HelloCustomView extends View {
 
     public HelloCustomView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        paint=new Paint();
+        paint = new Paint();
         paint.setColor(Color.RED);
-        paint2=new Paint();
+        paint2 = new Paint();
         paint2.setColor(Color.BLACK);
+        TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.HelloCustomView, 0, 0);
+        for (int i = 0; i < typedArray.length(); i++) {
+            int indexvalue = typedArray.getIndex(i);
+            switch (indexvalue) {
+                case R.styleable.HelloCustomView_text:
+                    text = typedArray.getString(indexvalue);
+                    break;
+                case R.styleable.HelloCustomView_textcolor:
+                    color = typedArray.getColor(indexvalue, Color.BLACK);
+                    paint2.setColor(color);
+                    break;
+            }
+        }
     }
 
     public HelloCustomView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
