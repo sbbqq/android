@@ -48,7 +48,7 @@ public class VoiceView  extends View {
         paintshow.setStrokeWidth(paintWidth);
         rectF=new RectF();
         paintpro=new Paint();
-        paintpro.setTextSize(14);
+        paintpro.setTextSize(20);
         paintpro.setStrokeCap(Paint.Cap.ROUND);
         paintpro.setStyle(Paint.Style.FILL);
         paintpro.setColor(Color.YELLOW);
@@ -104,7 +104,7 @@ public class VoiceView  extends View {
         paintpro.setStrokeCap(Paint.Cap.ROUND);
 
         paintpro.setStyle(Paint.Style.FILL_AND_STROKE);
-        paintpro.setTextSize(14);
+        paintpro.setTextSize(20);
         paintpro.setColor(Color.YELLOW);
         TypedArray typedArray=context.getTheme().obtainStyledAttributes(attrs, R.styleable.VoiceView,defStyleAttr,0);
         int attrindex;
@@ -168,9 +168,11 @@ public class VoiceView  extends View {
         for(int i=0;i<showcount;i++){
             canvas.drawArc(rectF,i*(360/(float)countdop),swipe_unit,false,paintshow);
         }
-        paintpro.setTextSize(50);
+        paintpro.setTextSize(rectF.width()/(new Float(progress).toString().length()));
+        Log.e("size","size:"+rectF.width()/(2*new Float(progress).toString().length()));
         paintpro.setTextAlign(Paint.Align.CENTER);
-        canvas.drawText(""+progress,rectF.centerX(),rectF.centerY(),paintpro);
+        Paint.FontMetrics fontMetrics=paintpro.getFontMetrics();
+        canvas.drawText(""+progress,rectF.centerX(),rectF.centerY()-(fontMetrics.ascent-fontMetrics.descent)/2,paintpro);
     }
 
     @Override

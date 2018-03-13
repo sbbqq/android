@@ -23,5 +23,46 @@
 
         android:layout_height="200dp"
         />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content"
+            >
+            <com.example.moduleview.developerandroid.CustomView.HelloCustomViewGroup
+                android:layout_width="match_parent"
+                android:background="#3FF2F0"
+                android:layout_height="200dp"
+                >
+                <TextView
+                    android:text="0"
+                    android:layout_width="50dp"
+                    android:background="#00f005"
+                    android:layout_height="50dp"
+                    />
+                <TextView
+                    android:text="1"
+                    android:layout_width="50dp"
+                    android:background="#3F92F0"
+                    android:layout_height="50dp"
+                    />
+                <TextView
+                    android:text="2"
+                    android:layout_width="50dp"
+                    android:background="#fF32F0"
+                    android:layout_height="50dp"
+                    />
+                <TextView
+                    android:text="3"
+                    android:layout_width="50dp"
+                    android:background="#3FF2F0"
+                    android:layout_height="50dp"
+                    />
+            </com.example.moduleview.developerandroid.CustomView.HelloCustomViewGroup>
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>
