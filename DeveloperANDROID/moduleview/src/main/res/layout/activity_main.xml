@@ -17,7 +17,7 @@
     <com.example.moduleview.developerandroid.CustomView.VoiceView
         android:layout_width="match_parent"
         app:width_angle="15"
-        app:count="11"
+        app:count="12"
         app:cicle_width="50"
         app:progress="60"
 
