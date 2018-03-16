@@ -3,5 +3,31 @@
     android:layout_width="match_parent"
 
     android:layout_height="match_parent">
+ <com.example.moduleview.developerandroid.CustomView.ViewDragHelperLearn
+     android:layout_width="match_parent"
 
+     android:layout_height="match_parent">
+     >
+     <TextView
+         android:text="hellodfgfdgf，啊啊哈---normal"
+         android:background="@drawable/shapeoftt"
+         android:gravity="center"
+         android:layout_width="wrap_content"
+         android:layout_height="50dp"
+         />
+     <TextView
+         android:text="wqq---back"
+         android:background="@drawable/shapeoftt"
+         android:gravity="center"
+         android:layout_width="wrap_content"
+         android:layout_height="50dp"
+         />
+     <TextView
+         android:text="wqq--edge"
+         android:background="@drawable/shapeoftt"
+         android:gravity="center"
+         android:layout_width="wrap_content"
+         android:layout_height="50dp"
+         />
+ </com.example.moduleview.developerandroid.CustomView.ViewDragHelperLearn>
 </LinearLayout>
