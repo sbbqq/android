@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-
+        android:orientation="vertical"
     android:layout_height="match_parent">
     <com.example.moduleview.developerandroid.CustomView.ViewDragHelperLearn
         android:layout_width="match_parent"
 
-        android:layout_height="match_parent">
+        android:layout_height="250dp">
         >
         <TextView
             android:text="hellodfgfdgf，啊啊哈---normal"
@@ -30,4 +30,7 @@
             android:layout_height="250dp"
             />
     </com.example.moduleview.developerandroid.CustomView.ViewDragHelperLearn>
+    <com.example.moduleview.developerandroid.CustomView.CustomHuixing
+        android:layout_width="match_parent"
+        android:layout_height="300dp" />
 </LinearLayout>
