@@ -169,25 +169,26 @@ public class CustomHuixing extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         //canvas.drawCircle(getMeasuredWidth()/2,getMeasuredHeight()/2,Bigradus,paintLast);
-       // canvas.drawArc(rectF,nowangle,20,false,paintLast);
-        //canvas.drawArc(rectFsmall,nowangle,20,false,paintSmall);
+       // canvas.drawArc(rectF,nowangle,20,true,paintLast);
+       // canvas.drawArc(rectFsmall,nowangle,20,true,paintSmall);
        // canvas.drawLine(pointfirstSmall.x,pointfirstSmall.y,pointfirstBig.x,pointfirstBig.y,paintLast);
        // canvas.drawLine(pointsecondSmall.x,pointsecondSmall.y,pointsecondBig.x,pointsecondBig.y,paintLast);
         pathall=new Path();
 
-//        pathall.moveTo(pointfirstSmall.x,pointfirstSmall.y);
-//         pathall.lineTo(pointfirstBig.x,pointfirstBig.y);
-//         pathall.addArc(rectF,nowangle,20);
-//         pathall.addArc(rectFsmall,nowangle,20);
-//        pathall.moveTo(pointsecondSmall.x,pointsecondSmall.y);
-//        pathall.lineTo(pointsecondBig.x,pointsecondBig.y);
-//        pathall.close();
-        paintSmall.setStyle(Paint.Style.FILL_AND_STROKE);
-        Paint painttemp=new Paint();
-        pathall.addArc(rectF,nowangle,20);
-       pathall.addArc(rectFsmall,nowangle,20);
-        pathall.setFillType(Path.FillType.EVEN_ODD);
-        canvas.drawPath(pathall,painttemp);
+        pathall.moveTo(pointfirstSmall.x,pointfirstSmall.y);
+         pathall.lineTo(pointfirstBig.x,pointfirstBig.y);
+         pathall.addArc(rectF,nowangle,20);
+         pathall.addArc(rectFsmall,nowangle,20);
+        pathall.moveTo(pointsecondSmall.x,pointsecondSmall.y);
+        pathall.lineTo(pointsecondBig.x,pointsecondBig.y);
+        pathall.close();
+        //paintSmall.setStyle(Paint.Style.FILL);
+      Paint painttemp=new Paint();
+//        pathall.addArc(rectF,nowangle,20);
+//       pathall.addArc(rectFsmall,nowangle,20);
+     pathall.setFillType(Path.FillType.WINDING);
+     paintSmall.setStyle(Paint.Style.STROKE);
+        canvas.drawPath(pathall,paintSmall );
 
 
     }

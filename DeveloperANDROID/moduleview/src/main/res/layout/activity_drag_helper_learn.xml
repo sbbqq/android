@@ -30,7 +30,5 @@
             android:layout_height="250dp"
             />
     </com.example.moduleview.developerandroid.CustomView.ViewDragHelperLearn>
-    <com.example.moduleview.developerandroid.CustomView.CustomHuixing
-        android:layout_width="match_parent"
-        android:layout_height="300dp" />
+
 </LinearLayout>
