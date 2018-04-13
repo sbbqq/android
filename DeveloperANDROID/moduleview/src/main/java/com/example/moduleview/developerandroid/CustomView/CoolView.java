@@ -203,7 +203,7 @@ public class CoolView extends ViewGroup {
         translateAnimation.setFillAfter(true);
         translateAnimation.setDuration(Durationg);
 
-        animset.addAnimation(rotateAnimation);
+        //animset.addAnimation(rotateAnimation);
         animset.addAnimation(translateAnimation);
         v.startAnimation(animset);
         v.setOnClickListener(new OnClickListener() {

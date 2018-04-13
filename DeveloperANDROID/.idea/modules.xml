@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/DeveloperANDROID.iml" filepath="$PROJECT_DIR$/DeveloperANDROID.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/canveselement/canveselement.iml" filepath="$PROJECT_DIR$/canveselement/canveselement.iml" />
       <module fileurl="file://$PROJECT_DIR$/moduleview/moduleview.iml" filepath="$PROJECT_DIR$/moduleview/moduleview.iml" />
     </modules>
   </component>
