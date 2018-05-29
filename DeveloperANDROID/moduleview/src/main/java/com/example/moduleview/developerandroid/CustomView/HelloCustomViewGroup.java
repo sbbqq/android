@@ -4,6 +4,7 @@ import android.content.Context;
 import android.icu.util.Measure;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.View;
 import android.view.ViewGroup;
 
 /**
@@ -31,9 +32,11 @@ public class HelloCustomViewGroup extends ViewGroup {
         //layoutParams=(MarginLayoutParams)getLayoutParams();
                for(int i=0;i<count;i++){
                    int cl=0,ct=0,cr,cb;
+                   View Childview=getChildAt(i);
+                   layoutParams=(MarginLayoutParams)Childview.getLayoutParams();
                    switch (i){
                        case 0:
-                          cl=0;
+                          cl=0+layoutParams.leftMargin;
                           ct=0;
                            break;
                        case 1:
@@ -57,15 +60,7 @@ public class HelloCustomViewGroup extends ViewGroup {
                }
     }
 
-    @Override
-    protected LayoutParams generateLayoutParams(LayoutParams p) {
-        return new LayoutParamss(p);
-    }
 
-    @Override
-    protected LayoutParams generateDefaultLayoutParams() {
-        return new LayoutParamss(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
-    }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
@@ -79,13 +74,14 @@ public class HelloCustomViewGroup extends ViewGroup {
         int  lheight=0,rheight=0;
         MarginLayoutParams layoutParams;
         for(int i=0;i<count;i++){
+            View childview=getChildAt(i);
             if(i==0||i==1){
-               // layoutParams=(MarginLayoutParams)getLayoutParams();
-                topwidth=topwidth+getChildAt(i).getMeasuredWidth()+0+0;
+               layoutParams=(MarginLayoutParams)childview.getLayoutParams();
+                topwidth=topwidth+getChildAt(i).getMeasuredWidth()+layoutParams.leftMargin+layoutParams.rightMargin;
             }
 
             if(i==2||i==3){
-                //layoutParams=(MarginLayoutParams)getLayoutParams();
+               layoutParams=(MarginLayoutParams)getLayoutParams();
                 botwidth=botwidth+getChildAt(i).getMeasuredWidth()+0+0;
             }
 
@@ -108,26 +104,32 @@ public class HelloCustomViewGroup extends ViewGroup {
     }
 
     // 继承自margin，支持子视图android:layout_margin属性
-    public static class LayoutParamss extends MarginLayoutParams {
+//    public static class LayoutParamss extends MarginLayoutParams {
+//
+//
+//        public LayoutParamss(Context c, AttributeSet attrs) {
+//            super(c, attrs);
+//        }
+//
+//
+//        public LayoutParamss(int width, int height) {
+//            super(width, height);
+//        }
+//
+//
+//        public LayoutParamss(ViewGroup.LayoutParams source) {
+//            super(source);
+//        }
+//
+//
+//        public LayoutParamss(ViewGroup.MarginLayoutParams source) {
+//            super(source);
+//        }
+//    }
 
 
-        public LayoutParamss(Context c, AttributeSet attrs) {
-            super(c, attrs);
-        }
-
-
-        public LayoutParamss(int width, int height) {
-            super(width, height);
-        }
-
-
-        public LayoutParamss(ViewGroup.LayoutParams source) {
-            super(source);
-        }
-
-
-        public LayoutParamss(ViewGroup.MarginLayoutParams source) {
-            super(source);
-        }
+    @Override
+    public LayoutParams generateLayoutParams(AttributeSet attrs) {
+        return new MarginLayoutParams(getContext(),attrs);
     }
 }

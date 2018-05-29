@@ -10,6 +10,7 @@ import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 
 /**
@@ -204,5 +205,15 @@ public class CustomHuixing extends View {
         pointfirstSmall.set((int)(getMeasuredWidth()/2+SmallRadus*Math.cos((nowangle+20)*Math.PI / 180)) ,(int)(getMeasuredHeight()/2 + Math.sin((nowangle+20)*Math.PI / 180) * SmallRadus ));
 
 
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        return super.onTouchEvent(event);
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event) {
+        return super.dispatchTouchEvent(event);
     }
 }

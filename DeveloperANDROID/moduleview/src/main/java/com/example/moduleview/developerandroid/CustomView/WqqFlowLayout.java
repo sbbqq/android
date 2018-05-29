@@ -10,7 +10,8 @@ import android.view.ViewGroup;
  */
 
 public class WqqFlowLayout extends ViewGroup {
-    private int margin=20;
+    private int margin=25;
+    private int linemargine=20;
     public WqqFlowLayout(Context context) {
         super(context);
     }
@@ -39,7 +40,7 @@ public class WqqFlowLayout extends ViewGroup {
             }
             else{
 
-                CurrentT=CurrentT+maxHeight;
+                CurrentT=CurrentT+maxHeight+linemargine;
                 maxHeight=Child.getMeasuredHeight();
                 cl=CurrentL=0;
                 ct=CurrentT;
@@ -68,7 +69,7 @@ public class WqqFlowLayout extends ViewGroup {
                   contentwidth=contentwidth+child.getMeasuredWidth()+margin;
             }
             else{
-                contentheight=contentheight+maxHeight;
+                contentheight=contentheight+maxHeight+linemargine;
                 maxHeight=child.getMeasuredHeight();
 
             }

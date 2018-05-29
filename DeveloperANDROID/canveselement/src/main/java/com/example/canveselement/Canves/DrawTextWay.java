@@ -6,6 +6,7 @@ import android.graphics.Paint;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.ViewGroup;
 
 /**
  * Created by alone-nine-sword on 18-4-13.
@@ -37,5 +38,10 @@ public class DrawTextWay extends View {
         canvas.drawLine(0,0,0,getMeasuredHeight()-200,paint);
         canvas.drawText("hello,Text",0,0,paint);
         canvas.drawPosText("wqq",new float[]{10f,10f,30f,30f,50f,50f},paint);
+    }
+
+    @Override
+    public ViewGroup.LayoutParams getLayoutParams() {
+        return super.getLayoutParams();
     }
 }

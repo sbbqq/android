@@ -42,7 +42,9 @@
                     android:text="0"
                     android:gravity="center"
                     android:layout_width="50dp"
-
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="#3F92F0"
                     android:layout_height="50dp"
                     />
 
