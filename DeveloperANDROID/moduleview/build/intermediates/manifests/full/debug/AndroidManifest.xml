@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="15"
+        android:minSdkVersion="16"
         android:targetSdkVersion="26" />
 
     <application
@@ -25,6 +25,14 @@
             </intent-filter>
         </activity>
         <activity android:name="com.example.moduleview.DragHelperLearnActivity" />
+        <activity android:name="com.example.moduleview.Main2Activity" />
+        <activity android:name="com.example.moduleview.developerandroid.CustomView.Main2Activity" />
+        <activity android:name="com.example.moduleview.PathMeasureActivity" />
+        <activity android:name="com.example.moduleview.BserActivity" />
+        <activity android:name="com.example.moduleview.BloodActivity" />
+        <activity android:name="com.example.moduleview.TvControlerActivity" />
+        <activity android:name="com.example.moduleview.RiliActivity" />
+        <activity android:name="com.example.moduleview.DatestyleshowActivity" />
 
         <meta-data
             android:name="android.support.VERSION"

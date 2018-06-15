@@ -7,11 +7,15 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
 import android.graphics.RectF;
+import android.graphics.SweepGradient;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.RotateAnimation;
 
 /**
  * Created by alone-nine-sword on 18-3-19.
@@ -26,7 +30,7 @@ public class CustomHuixing extends View {
     Point pointfirstBig,pointfirstSmall;
     Point pointsecondBig,pointsecondSmall;
     Path pathall;
-
+    private SweepGradient mSweepGradient = null;
 
     public CustomHuixing(Context context) {
         super(context);
@@ -44,34 +48,34 @@ public class CustomHuixing extends View {
         pointsecondSmall=new Point();
         pointsecondBig=new Point();
         // 绘图线程
-        new Thread()
-        {
-            public void run()
-            {
-                while (true)
-                {
-
-                    if(nowangle<90){
-                        nowangle++;
-                        pointfirstBig.set((int)(getMeasuredWidth()/2+Bigradus*Math.cos((nowangle+20)*Math.PI / 180)) ,(int)(getMeasuredHeight()/2 + Math.sin((nowangle+20)*Math.PI / 180) * Bigradus ));
-                        pointfirstSmall.set((int)(getMeasuredWidth()/2+SmallRadus*Math.cos((nowangle+20)*Math.PI / 180)) ,(int)(getMeasuredHeight()/2 + Math.sin((nowangle+20)*Math.PI / 180) * SmallRadus ));
-                        pointsecondBig.set((int)(getMeasuredWidth()/2+Bigradus*Math.cos((nowangle)*Math.PI / 180)) ,(int)(getMeasuredHeight()/2 + Math.sin((nowangle)*Math.PI / 180) * Bigradus ));
-                        pointsecondSmall.set((int)(getMeasuredWidth()/2+SmallRadus*Math.cos((nowangle)*Math.PI / 180)) ,(int)(getMeasuredHeight()/2 + Math.sin((nowangle)*Math.PI / 180) * SmallRadus ));
-                        postInvalidate();
-                        Log.e("周而复始","*******************"+nowangle);
-                    }
-
-                    //postInvalidate();
-                    try
-                    {
-                        Thread.sleep(100);
-                    } catch (InterruptedException e)
-                    {
-                        e.printStackTrace();
-                    }
-                }
-            };
-        }.start();
+    //    new Thread()
+     //   {
+   //         public void run()
+   //         {
+//                while (true)
+//                {
+//
+//                    if(nowangle<90){
+//                        nowangle++;
+//                        pointfirstBig.set((int)(getMeasuredWidth()/2+Bigradus*Math.cos((nowangle+20)*Math.PI / 180)) ,(int)(getMeasuredHeight()/2 + Math.sin((nowangle+20)*Math.PI / 180) * Bigradus ));
+//                        pointfirstSmall.set((int)(getMeasuredWidth()/2+SmallRadus*Math.cos((nowangle+20)*Math.PI / 180)) ,(int)(getMeasuredHeight()/2 + Math.sin((nowangle+20)*Math.PI / 180) * SmallRadus ));
+//                        pointsecondBig.set((int)(getMeasuredWidth()/2+Bigradus*Math.cos((nowangle)*Math.PI / 180)) ,(int)(getMeasuredHeight()/2 + Math.sin((nowangle)*Math.PI / 180) * Bigradus ));
+//                        pointsecondSmall.set((int)(getMeasuredWidth()/2+SmallRadus*Math.cos((nowangle)*Math.PI / 180)) ,(int)(getMeasuredHeight()/2 + Math.sin((nowangle)*Math.PI / 180) * SmallRadus ));
+//                        postInvalidate();
+//                        Log.e("周而复始","*******************"+nowangle);
+//                    }
+//
+//                    //postInvalidate();
+//                    try
+//                    {
+//                        Thread.sleep(100);
+//                    } catch (InterruptedException e)
+//                    {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            };
+//        }.start();
     }
 
     public CustomHuixing(Context context, @Nullable AttributeSet attrs) {
@@ -91,33 +95,33 @@ public class CustomHuixing extends View {
         pointsecondSmall=new Point();
         pointsecondBig=new Point();
         // 绘图线程
-        new Thread()
-        {
-            public void run()
-            {
-                while (true)
-                {
-
-                    if(nowangle<90){
-                        nowangle++;
-                        pointsecondBig.set((int)(getMeasuredWidth()/2+Bigradus*Math.cos((nowangle)*Math.PI / 180)) ,(int)(getMeasuredHeight()/2 + Math.sin((nowangle)*Math.PI / 180) * Bigradus ));
-                        pointsecondSmall.set((int)(getMeasuredWidth()/2+SmallRadus*Math.cos((nowangle)*Math.PI / 180)) ,(int)(getMeasuredHeight()/2 + Math.sin((nowangle)*Math.PI / 180) * SmallRadus ));
-                        pointfirstBig.set((int)(getMeasuredWidth()/2+Bigradus*Math.cos((nowangle+20)*Math.PI / 180)) ,(int)(getMeasuredHeight()/2 + Math.sin((nowangle+20)*Math.PI / 180) * Bigradus ));
-                        pointfirstSmall.set((int)(getMeasuredWidth()/2+SmallRadus*Math.cos((nowangle+20)*Math.PI / 180)) ,(int)(getMeasuredHeight()/2 + Math.sin((nowangle+20)*Math.PI / 180) * SmallRadus ));
-                        postInvalidate();
-                        Log.e("周而复始","*******************"+nowangle);
-                    }
-
-                    try
-                    {
-                        Thread.sleep(100);
-                    } catch (InterruptedException e)
-                    {
-                        e.printStackTrace();
-                    }
-                }
-            };
-        }.start();
+//        new Thread()
+//        {
+//            public void run()
+//            {
+//                while (true)
+//                {
+//
+//                    if(nowangle<90){
+//                        nowangle++;
+//                        pointsecondBig.set((int)(getMeasuredWidth()/2+Bigradus*Math.cos((nowangle)*Math.PI / 180)) ,(int)(getMeasuredHeight()/2 + Math.sin((nowangle)*Math.PI / 180) * Bigradus ));
+//                        pointsecondSmall.set((int)(getMeasuredWidth()/2+SmallRadus*Math.cos((nowangle)*Math.PI / 180)) ,(int)(getMeasuredHeight()/2 + Math.sin((nowangle)*Math.PI / 180) * SmallRadus ));
+//                        pointfirstBig.set((int)(getMeasuredWidth()/2+Bigradus*Math.cos((nowangle+20)*Math.PI / 180)) ,(int)(getMeasuredHeight()/2 + Math.sin((nowangle+20)*Math.PI / 180) * Bigradus ));
+//                        pointfirstSmall.set((int)(getMeasuredWidth()/2+SmallRadus*Math.cos((nowangle+20)*Math.PI / 180)) ,(int)(getMeasuredHeight()/2 + Math.sin((nowangle+20)*Math.PI / 180) * SmallRadus ));
+//                        postInvalidate();
+//                        Log.e("周而复始","*******************"+nowangle);
+//                    }
+//
+//                    try
+//                    {
+//                        Thread.sleep(100);
+//                    } catch (InterruptedException e)
+//                    {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            };
+//        }.start();
     }
 
     public CustomHuixing(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
@@ -136,62 +140,67 @@ public class CustomHuixing extends View {
         pointsecondSmall=new Point();
         pointsecondBig=new Point();
         // 绘图线程
-        new Thread()
-        {
-            public void run()
-            {
-                while (true)
-                {
-
-                    if(nowangle<90){
-                        nowangle++;
-                        pointsecondBig.set((int)(getMeasuredWidth()/2+Bigradus*Math.cos((nowangle)*Math.PI / 180)) ,(int)(getMeasuredHeight()/2 + Math.sin((nowangle)*Math.PI / 180) * Bigradus ));
-                        pointsecondSmall.set((int)(getMeasuredWidth()/2+SmallRadus*Math.cos((nowangle)*Math.PI / 180)) ,(int)(getMeasuredHeight()/2 + Math.sin((nowangle)*Math.PI / 180) * SmallRadus ));
-                        pointfirstBig.set((int)(getMeasuredWidth()/2+Bigradus*Math.cos((nowangle+20)*Math.PI / 180)) ,(int)(getMeasuredHeight()/2 + Math.sin((nowangle+20)*Math.PI / 180) * Bigradus ));
-                        pointfirstSmall.set((int)(getMeasuredWidth()/2+SmallRadus*Math.cos((nowangle+20)*Math.PI / 180)) ,(int)(getMeasuredHeight()/2 + Math.sin((nowangle+20)*Math.PI / 180) * SmallRadus ));
-                        postInvalidate();
-                        Log.e("周而复始","*******************"+nowangle);
-                    }
-
-
-                    try
-                    {
-                        Thread.sleep(100);
-                    } catch (InterruptedException e)
-                    {
-                        e.printStackTrace();
-                    }
-                }
-            };
-        }.start();
+//        new Thread()
+//        {
+//            public void run()
+//            {
+//                while (true)
+//                {
+//
+//                    if(nowangle<90){
+//                        nowangle++;
+//                        pointsecondBig.set((int)(getMeasuredWidth()/2+Bigradus*Math.cos((0)*Math.PI / 180)) ,(int)(getMeasuredHeight()/2 + Math.sin((0)*Math.PI / 180) * Bigradus ));
+//                        pointsecondSmall.set((int)(getMeasuredWidth()/2+SmallRadus*Math.cos((0)*Math.PI / 180)) ,(int)(getMeasuredHeight()/2 + Math.sin((0)*Math.PI / 180) * SmallRadus ));
+//                        pointfirstBig.set((int)(getMeasuredWidth()/2+Bigradus*Math.cos((0+20)*Math.PI / 180)) ,(int)(getMeasuredHeight()/2 + Math.sin((0+20)*Math.PI / 180) * Bigradus ));
+//                        pointfirstSmall.set((int)(getMeasuredWidth()/2+SmallRadus*Math.cos((0+20)*Math.PI / 180)) ,(int)(getMeasuredHeight()/2 + Math.sin((0+20)*Math.PI / 180) * SmallRadus ));
+//                        postInvalidate();
+//                        Log.e("周而复始","*******************"+nowangle);
+//                    }
+//
+//
+//                    try
+//                    {
+//                        Thread.sleep(100);
+//                    } catch (InterruptedException e)
+//                    {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            };
+//        }.start();
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        //canvas.drawCircle(getMeasuredWidth()/2,getMeasuredHeight()/2,Bigradus,paintLast);
-       // canvas.drawArc(rectF,nowangle,20,true,paintLast);
-       // canvas.drawArc(rectFsmall,nowangle,20,true,paintSmall);
-       // canvas.drawLine(pointfirstSmall.x,pointfirstSmall.y,pointfirstBig.x,pointfirstBig.y,paintLast);
-       // canvas.drawLine(pointsecondSmall.x,pointsecondSmall.y,pointsecondBig.x,pointsecondBig.y,paintLast);
-        pathall=new Path();
 
-        pathall.moveTo(pointfirstSmall.x,pointfirstSmall.y);
-         pathall.lineTo(pointfirstBig.x,pointfirstBig.y);
-         pathall.addArc(rectF,nowangle,20);
-         pathall.addArc(rectFsmall,nowangle,20);
-        pathall.moveTo(pointsecondSmall.x,pointsecondSmall.y);
-        pathall.lineTo(pointsecondBig.x,pointsecondBig.y);
-        pathall.close();
-        //paintSmall.setStyle(Paint.Style.FILL);
-      Paint painttemp=new Paint();
-//        pathall.addArc(rectF,nowangle,20);
-//       pathall.addArc(rectFsmall,nowangle,20);
-     pathall.setFillType(Path.FillType.WINDING);
-     paintSmall.setStyle(Paint.Style.STROKE);
-        canvas.drawPath(pathall,paintSmall );
+        Path small,big;
+        small=new Path();
+        big=new Path();
+        canvas.drawLine(getMeasuredWidth()/2,getMeasuredHeight()/2,getMeasuredWidth(),getMeasuredHeight()/2,paintLast);
+
+        mSweepGradient = new SweepGradient(getMeasuredWidth()/2,getMeasuredHeight()/2,Color.BLUE,Color.RED );
+        paintSmall.setStyle(Paint.Style.STROKE);
+        paintSmall.setShader(mSweepGradient);
+        paintSmall.setStrokeWidth(70);
+
+       big.addArc(rectF,0,20);
+     small.addArc(rectFsmall,0,20);
+     //pathall.setFillType(Path.FillType.WINDING);
+   //  paintSmall.setStyle(Paint.Style.FILL_AND_STROKE);
+        canvas.drawPath(small,paintSmall);
+        RotateAnimation rotate  = new RotateAnimation(0f, 360f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+        LinearInterpolator lin = new LinearInterpolator();
+        rotate.setInterpolator(lin);
+        rotate.setDuration(2000);//设置动画持续周期
+        rotate.setRepeatCount(1);//设置重复次数
+        rotate.setFillAfter(true);//动画执行完后是否停留在执行完的状态
+        rotate.setStartOffset(10);//执行前的等待时间
 
 
+
+                this.setAnimation(rotate);
+                this.startAnimation(rotate);
     }
 
     @Override

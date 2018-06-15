@@ -37,7 +37,7 @@ public class DrawTextWay extends View {
         canvas.drawLine(0,0,getMeasuredWidth()-200,0,paint);
         canvas.drawLine(0,0,0,getMeasuredHeight()-200,paint);
         canvas.drawText("hello,Text",0,0,paint);
-        canvas.drawPosText("wqq",new float[]{10f,10f,30f,30f,50f,50f},paint);
+        canvas.drawPosText("wqqc",new float[]{10f,10f,30f,30f,50f,50f,80f,80f},paint);
     }
 
     @Override

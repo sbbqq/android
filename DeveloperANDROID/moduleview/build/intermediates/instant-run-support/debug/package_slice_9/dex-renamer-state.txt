@@ -1,4 +1,4 @@
-#Wed May 30 11:19:12 CST 2018
-base.0=/home/alone-nine-sword/newandroidwork/DeveloperANDROID/moduleview/build/intermediates/transforms/dexMerger/debug/9
+#Thu Jun 14 15:46:04 CST 2018
+base.0=/home/wqq/android-resposity/android-reposity/DeveloperANDROID/moduleview/build/intermediates/transforms/dexMerger/debug/10
 path.0=classes.dex
 renamed.0=classes.dex

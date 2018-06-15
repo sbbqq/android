@@ -12,17 +12,17 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         app:text="hello,wqq"
-        app:textcolor="#FFF000"/>
+        app:textcolor="#FFF000" />
 
     <com.example.moduleview.developerandroid.CustomView.VoiceView
         android:layout_width="match_parent"
-        app:width_angle="15"
-        app:count="12"
+        android:layout_height="200dp"
         app:cicle_width="50"
+        app:count="12"
         app:progress="60"
 
-        android:layout_height="200dp"
-        />
+        app:width_angle="15" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -32,44 +32,43 @@
             android:orientation="vertical"
             android:layout_height="wrap_content"
             >
+
             <com.example.moduleview.developerandroid.CustomView.HelloCustomViewGroup
                 android:layout_width="match_parent"
-                android:background="#3FF2F0"
-
                 android:layout_height="200dp"
-                >
+
+                android:background="#3FF2F0">
+
                 <TextView
-                    android:text="0"
-                    android:gravity="center"
                     android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:background="#3F92F0"
-                    android:layout_height="50dp"
-                    />
+                    android:gravity="center"
+                    android:text="0" />
 
                 <TextView
-                    android:text="1"
-                    android:gravity="center"
                     android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:background="#3F92F0"
-                    android:layout_height="50dp"
-                    />
-                <TextView
-                    android:text="2"
                     android:gravity="center"
+                    android:text="1" />
+
+                <TextView
                     android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:background="#fF32F0"
-                    android:layout_height="50dp"
-                    />
-                <TextView
-                    android:text="3"
                     android:gravity="center"
-                    android:textColor="#ffffff"
+                    android:text="2" />
+
+                <TextView
                     android:layout_width="50dp"
-                     android:background="@drawable/shapeoftt"
                     android:layout_height="50dp"
-                    />
+                    android:background="@drawable/shapeoftt"
+                    android:gravity="center"
+                    android:text="3"
+                    android:textColor="#ffffff" />
             </com.example.moduleview.developerandroid.CustomView.HelloCustomViewGroup>
 
             <com.example.moduleview.developerandroid.CustomView.WqqFlowLayout
@@ -186,62 +185,69 @@
                     android:layout_height="50dp"
                     />
                 <TextView
-                    android:text="day day up"
+                    android:text="This is date show"
                     android:gravity="center"
+                    android:id="@+id/txdate"
                     android:textColor="#ffffff"
                     android:layout_width="wrap_content"
                      android:background="@drawable/shapeoftt"
                     android:layout_height="50dp"
                     />
                 <TextView
-                    android:text="hello"
+                    android:text="this is rili test"
                     android:gravity="center"
+                    android:id="@+id/txrili"
                     android:layout_width="wrap_content"
                     android:background="#00f005"
                     android:layout_height="50dp"
                     />
                 <TextView
-                    android:text="wqq"
+                    android:text="this is Tv test"
                     android:gravity="center"
+                    android:id="@+id/txtvtest"
                     android:layout_width="wrap_content"
                     android:background="#3F92F0"
                     android:layout_height="50dp"
                     />
                 <TextView
-                    android:text="this is a long term"
+                    android:text="this is a blood show"
                     android:gravity="center"
+                    android:id="@+id/txblood"
                     android:layout_width="wrap_content"
                     android:background="#fF32F0"
                     android:layout_height="50dp"
                     />
                 <TextView
-                    android:text="day day up"
+                    android:text="basaierquxian"
                     android:gravity="center"
+                    android:id="@+id/beisaier"
                     android:textColor="#ffffff"
                     android:layout_width="wrap_content"
                      android:background="@drawable/shapeoftt"
                     android:layout_height="50dp"
                     />
                 <TextView
-                    android:text="hello"
+                    android:text="pathMeasure"
                     android:gravity="center"
+                    android:id="@+id/txpathmeasure"
                     android:layout_width="wrap_content"
                     android:background="#00f005"
                     android:layout_height="50dp"
                     />
                 <TextView
-                    android:text="wqq"
-                    android:gravity="center"
-                    android:layout_width="wrap_content"
-                    android:background="#3F92F0"
-                    android:layout_height="50dp"
-                    />
-                <TextView
-                    android:text="this is a long term"
-                    android:layout_width="wrap_content"
-                    android:background="#fF32F0"
+                    android:text="..."
                     android:gravity="center"
 
+                    android:layout_width="wrap_content"
+                    android:background="#3F92F0"
+                    android:layout_height="50dp"
+                    />
+                <TextView
+                    android:text="this is a long term"
+                    android:layout_width="wrap_content"
+                    android:background="#fF32F0"
+                    android:gravity="center"
+                    android:id="@+id/txnextHuixing"
                     android:layout_height="50dp"
                     />
                 <TextView
