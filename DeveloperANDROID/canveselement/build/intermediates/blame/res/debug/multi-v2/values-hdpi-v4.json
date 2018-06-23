@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/home/wqq/android-resposity/android-reposity/DeveloperANDROID/canveselement/build/intermediates/incremental/mergeDebugResources/merged.dir/values-hdpi-v4/values-hdpi-v4.xml",
+            "outputFile": "/home/alone-nine-sword/newandroidwork/DeveloperANDROID/canveselement/build/intermediates/incremental/mergeDebugResources/merged.dir/values-hdpi-v4/values-hdpi-v4.xml",
             "map": [
                 {
-                    "source": "/home/wqq/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/98959b2a4697054835af6db9324ed99b/res/values-hdpi-v4/values-hdpi-v4.xml",
+                    "source": "/home/alone-nine-sword/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/36c0279d27f48a6549c7832f99e6d55e/res/values-hdpi-v4/values-hdpi-v4.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

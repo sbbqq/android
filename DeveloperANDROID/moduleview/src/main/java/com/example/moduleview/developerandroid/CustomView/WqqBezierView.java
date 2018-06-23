@@ -10,9 +10,13 @@ import android.graphics.Path;
 import android.graphics.PathEffect;
 import android.graphics.PathMeasure;
 import android.graphics.Point;
+import android.graphics.Rect;
+import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
+
+import com.example.moduleview.R;
 
 import java.util.List;
 
@@ -41,9 +45,22 @@ public class WqqBezierView extends View {
     private int lengthFlag=20;
     Paint paintYaxis,paintXaxis;
     Path PathYaxis,PathXaxis;
-    private float Maxvalue=100;
+    private float Maxvalue=400;
     private float Minvalue=0;
     private boolean Zerostart=true;
+
+
+    Path pathTips;
+    Paint paintTips;
+    Paint paintTipValue;
+    private int paintTextSize=20;
+    private int tipwidth=100;
+    private int tipheight=50;
+    private int tanglebotmar=10;
+    private int tanglexmove=10;
+    private int tangleymove=15;
+    private int tangleruondxy=5;
+    private int Ymove=40;
 
 
     public WqqBezierView(Context context) {
@@ -58,7 +75,7 @@ public class WqqBezierView extends View {
 
     public void setPointList(List<Point> pointList) {
         mPointList = pointList;
-        getYmaxAndYminValue();
+       //getYmaxAndYminValue();
         measurePath();
 
     }
@@ -96,6 +113,24 @@ public class WqqBezierView extends View {
         paintYaxis.setStrokeCap(Paint.Cap.ROUND);
         paintYaxis.setAntiAlias(true);
 
+        //tips
+        pathTips=new Path();
+        paintTips=new Paint();
+        paintTips=new Paint();
+        paintTips.setStyle(Paint.Style.FILL);
+        paintTips.setColor(getResources().getColor(R.color.colorRedhalf));
+        paintTips.setStrokeCap(Paint.Cap.ROUND);
+        paintTips.setAntiAlias(true);
+
+        paintTipValue=new Paint();
+        paintTipValue.setTextAlign(Paint.Align.CENTER);
+        paintTipValue.setStyle(Paint.Style.FILL);
+//        paintTipValue.setStrokeWidth(strokewidth);
+        paintTipValue.setTextSize(paintTextSize);
+        paintTipValue.setColor(Color.WHITE);
+        paintTipValue.setStrokeCap(Paint.Cap.ROUND);
+        paintTipValue.setAntiAlias(true);
+
     }
 
 
@@ -110,14 +145,16 @@ public class WqqBezierView extends View {
         paint.setStrokeWidth(3);
         paint.setStyle(Paint.Style.STROKE);
         //绘制辅助线
-        canvas.drawPath(mAssistPath,paint);
+        //canvas.drawPath(mAssistPath,paint);
         drawAxis(canvas);
 
         paint.setColor(Color.GREEN);
         Path dst = new Path();
         dst.rLineTo(0, 0);
         float distance = mPathMeasure.getLength() * drawScale;
+
         if (mPathMeasure.getSegment(0, distance, dst, true)) {
+            Log.e("drawshadowandpoint","****************"+"drawScale:"+drawScale);
             //绘制线
             canvas.drawPath(dst, paint);
             float[] pos = new float[2];
@@ -125,8 +162,9 @@ public class WqqBezierView extends View {
             //绘制阴影
             drawShadowArea(canvas, dst, pos);
             //绘制点
-            drawPoint(canvas,pos);
+            //drawPoint(canvas,pos);
         }
+        drawPoint(canvas,new float[2] );
         /*greenPaint.setPathEffect(getPathEffect(mPathMeasure.getLength()));
         canvas.drawPath(mPath, greenPaint);*/
         //mPath.reset();adb shell screenrecord --bit-rate 2000000 /sdcard/test.mp4
@@ -159,9 +197,33 @@ public class WqqBezierView extends View {
         redPaint.setColor(Color.RED);
         redPaint.setStrokeWidth(3);
         redPaint.setStyle(Paint.Style.FILL);
+        pathTips.reset();
         for (int i=0;i<mPointList.size();i++) {
-
+            Log.e("drawtipsandpoint","i:"+i);
+            redPaint.setColor(Color.WHITE);
             canvas.drawCircle(getRealX(i), getRealY((float)(mPointList.get(i).y)), 20, redPaint);
+            redPaint.setColor(Color.BLUE);
+            canvas.drawCircle(getRealX(i), getRealY((float)(mPointList.get(i).y)), 10, redPaint);
+
+            //画ｔｉｐｓ
+            Point point = new Point();
+            point.set((int)getRealX(i), (int)getRealY((float)(mPointList.get(i).y))-Ymove);
+            RectF rectFtip = new RectF(point.x - tipwidth / 2, point.y - tipheight, point.x + tipwidth / 2, point.y);
+            pathTips.reset();
+            pathTips.addRoundRect(rectFtip, tangleruondxy, tangleruondxy, Path.Direction.CW);
+            Path tangle = new Path();
+            tangle.moveTo(point.x - tanglebotmar, point.y);
+            tangle.lineTo(point.x, point.y + tangleymove);
+            tangle.lineTo(point.x + tanglebotmar, point.y);
+            tangle.close();
+            pathTips.addPath(tangle);
+           // canvas.drawPath(pathAll, paintshadow);
+            canvas.drawPath(pathTips, paintTips);
+            Rect rectbound = new Rect();
+            String text = mPointList.get(i).y+"";
+            paintTipValue.getTextBounds(text, 0, text.length(), rectbound);
+
+            canvas.drawText(text, point.x, point.y - tipheight / 2 + rectbound.height() / 2, paintTipValue);
         }
     }
 

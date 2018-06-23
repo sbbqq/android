@@ -36,6 +36,6 @@ public class BloodActivity extends AppCompatActivity {
         }
         wqqBloodView.setBloodList(bloodList);
        wqqBloodView.setPointList(pointList);
-       // wqqBloodView.startAnimation(1000);
+       wqqBloodView.startAnimation(2000);
     }
 }

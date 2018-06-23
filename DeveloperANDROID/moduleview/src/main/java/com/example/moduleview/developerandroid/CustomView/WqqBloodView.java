@@ -68,12 +68,14 @@ public class WqqBloodView extends View {
     private int tanglexmove=10;
     private int tangleymove=15;
     private int tangleruondxy=5;
+    private int Ymove=40;
 
     //ｙ轴标尺数据,以及网格－－－横线
     Paint paintYvalue,paintYline;
     private int YvalueLeft=40;
 
     int controlN=0;
+    private int Number=6;
 
 
 
@@ -118,7 +120,7 @@ public class WqqBloodView extends View {
     }
 
     public void startAnimation(long duration) {
-        ObjectAnimator animator = ObjectAnimator.ofFloat(this, "drawScale", 0f, 1f);
+        ObjectAnimator animator = ObjectAnimator.ofInt(this, "Number", 0,6);
         animator.setDuration(duration);
         animator.start();
     }
@@ -196,22 +198,22 @@ public class WqqBloodView extends View {
 //        path.moveTo(50, 50);
 //        path.lineTo(50, 200);
 //        canvas.drawPath(path, paint);
-        controlN=0;
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (controlN<=7){
-                    postInvalidate();
-                    try{
-                        Thread.sleep(300);
-                        controlN++;
-                    }
-                    catch (Exception e){
-
-                    }
-                }
-            }
-        }).start();
+       // controlN=0;
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                while (controlN<=7){
+//                    postInvalidate();
+//                    try{
+//                        Thread.sleep(300);
+//                        controlN++;
+//                    }
+//                    catch (Exception e){
+//
+//                    }
+//                }
+//            }
+//        }).start();
 
     }
 
@@ -304,7 +306,7 @@ public class WqqBloodView extends View {
     public void drawBlood(Canvas canvas){
         Log.e("drawblood","***************88");
 
-        for(int i=0;i<controlN;i++) {
+        for(int i=0;i<=Number;i++) {
             if (bloodList.size() > i) {
                 pathAll.reset();
                 pathTips.reset();
@@ -388,14 +390,14 @@ public class WqqBloodView extends View {
     }
 
 
+    public int getNumber() {
+        return Number;
+    }
 
-
-
-
-
-
-
-
+    public void setNumber(int number) {
+        Number = number;
+        invalidate();
+    }
 
     private int moveX=20;
     private int moveY=25;

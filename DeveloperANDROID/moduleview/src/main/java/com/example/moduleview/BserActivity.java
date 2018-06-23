@@ -24,18 +24,18 @@ public class BserActivity extends AppCompatActivity {
         mBezierView = (WqqBezierView) findViewById(R.id.bezier);
         mEditText = (EditText) findViewById(R.id.editText);
         List<Point> pointList = new ArrayList<>();
-        pointList.add(new Point(10, 200));
-        pointList.add(new Point(110, 300));
-        pointList.add(new Point(210, 100));
-        pointList.add(new Point(310, 400));
-        pointList.add(new Point(410, 100));
-        pointList.add(new Point(510, 200));
-        pointList.add(new Point(610, 800));
-        pointList.add(new Point(710, 400));
-        pointList.add(new Point(810, 100));
+        pointList.add(new Point(10, 301));
+        pointList.add(new Point(110, 302));
+        pointList.add(new Point(210, 310));
+        pointList.add(new Point(310, 300));
+        pointList.add(new Point(410, 305));
+        pointList.add(new Point(510, 308));
+        pointList.add(new Point(610, 306));
+        pointList.add(new Point(710, 320));
+        pointList.add(new Point(810, 329));
 
         mBezierView.setPointList(pointList);
-        mBezierView.startAnimation(1000);
+        //mBezierView.startAnimation(1000);
     }
 
     public void onClick(View v) {

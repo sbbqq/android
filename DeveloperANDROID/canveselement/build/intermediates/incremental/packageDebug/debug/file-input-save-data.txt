@@ -1,7 +1,7 @@
 #Internal package file, do not edit.
-#Tue Jun 12 12:09:05 CST 2018
+#Sat Jun 23 15:16:44 CST 2018
 0.baseType=DIRECTORY
-0.base=/home/wqq/android-resposity/android-reposity/DeveloperANDROID/canveselement/build/intermediates/transforms/dexMerger/debug/0
+0.base=/home/alone-nine-sword/newandroidwork/DeveloperANDROID/canveselement/build/intermediates/transforms/dexMerger/debug/0
 0.path=classes.dex
 0.set=DEX
 count=1
