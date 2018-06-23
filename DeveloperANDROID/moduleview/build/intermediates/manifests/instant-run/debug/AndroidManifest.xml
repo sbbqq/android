@@ -5,8 +5,12 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="15"
+        android:minSdkVersion="16"
         android:targetSdkVersion="26" />
+
+    <meta-data
+        android:name="android.support.VERSION"
+        android:value="26.0.0-alpha1" />
 
     <application
         android:allowBackup="true"
@@ -20,12 +24,12 @@
         <activity android:name="com.example.moduleview.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
+　　　　
+                
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name="com.example.moduleview.DragHelperLearnActivity" />
-        <activity android:name="com.example.moduleview.Main2Activity" />
         <activity android:name="com.example.moduleview.developerandroid.CustomView.Main2Activity" />
         <activity android:name="com.example.moduleview.PathMeasureActivity" />
         <activity android:name="com.example.moduleview.BserActivity" />
@@ -33,6 +37,8 @@
         <activity android:name="com.example.moduleview.TvControlerActivity" />
         <activity android:name="com.example.moduleview.RiliActivity" />
         <activity android:name="com.example.moduleview.DatestyleshowActivity" />
+        <activity android:name="com.example.moduleview.PathopreateActivity" />
+        <activity android:name="com.example.moduleview.RecycleViewlearnActivity" />
 
         <meta-data
             android:name="android.support.VERSION"

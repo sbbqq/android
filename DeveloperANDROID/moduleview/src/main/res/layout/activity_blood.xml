@@ -8,5 +8,6 @@
 <com.example.moduleview.developerandroid.CustomView.WqqBloodView
     android:layout_width="match_parent"
     android:id="@+id/wqqblood"
+    android:layerType="software"
     android:layout_height="match_parent" />
 </android.support.constraint.ConstraintLayout>

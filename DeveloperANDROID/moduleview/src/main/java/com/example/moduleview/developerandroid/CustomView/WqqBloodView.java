@@ -10,11 +10,16 @@ import android.graphics.Path;
 import android.graphics.PathEffect;
 import android.graphics.PathMeasure;
 import android.graphics.Point;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 
 import com.example.moduleview.Modal.Blood;
+import com.example.moduleview.R;
 
 import java.util.List;
 
@@ -37,16 +42,41 @@ public class WqqBloodView extends View {
     private float yLeft=100;
     private float xbottom=100;
     private float yright=20;
-    private float xtop=20;
-    private int YaxisNumber=5;
+    private float xtop=50;
+    private int YaxisNumber=4;
     private int YaxisLengthMar=40;
     private int XaxisLengthMar=100;
     private int lengthFlag=20;
     Paint paintYaxis,paintXaxis;
     Path PathYaxis,PathXaxis;
-    private float Maxvalue=200;
+    private float Maxvalue=240;
     private float Minvalue=0;
     private boolean Zerostart=true;
+    private int strokewidth=10;
+
+    Path pathAll;//高压低压之间的阴影
+    Paint paintshadow;
+
+    //tips 属性
+    Path pathTips;
+    Paint paintTips;
+    Paint paintTipValue;
+    private int paintTextSize=20;
+    private int tipwidth=100;
+    private int tipheight=50;
+    private int tanglebotmar=10;
+    private int tanglexmove=10;
+    private int tangleymove=15;
+    private int tangleruondxy=5;
+
+    //ｙ轴标尺数据,以及网格－－－横线
+    Paint paintYvalue,paintYline;
+    private int YvalueLeft=40;
+
+    int controlN=0;
+
+
+
 
 
     public WqqBloodView(Context context) {
@@ -94,18 +124,94 @@ public class WqqBloodView extends View {
     }
 
     public void init(){
+        pathAll=new Path();
         PathXaxis=new Path();
         PathYaxis=new Path();
+
         paintXaxis=new Paint();
-        paintXaxis.setStyle(Paint.Style.FILL_AND_STROKE);
-        paintXaxis.setStrokeWidth(10);
+        paintXaxis.setStyle(Paint.Style.FILL);
+        paintXaxis.setStrokeWidth(strokewidth);
         paintXaxis.setStrokeCap(Paint.Cap.ROUND);
         paintXaxis.setAntiAlias(true);
+
+
+
         paintYaxis=new Paint();
-        paintYaxis.setStyle(Paint.Style.FILL_AND_STROKE);
-        paintYaxis.setStrokeWidth(10);
+        paintYaxis.setStyle(Paint.Style.FILL);
+        paintYaxis.setStrokeWidth(strokewidth);
         paintYaxis.setStrokeCap(Paint.Cap.ROUND);
         paintYaxis.setAntiAlias(true);
+       // paintYaxis.setTextSize(200);
+
+        paintshadow=new Paint();
+        paintshadow.setStyle(Paint.Style.FILL);
+        paintshadow.setColor(getResources().getColor(R.color.colorRedhalf));
+        paintshadow.setStrokeCap(Paint.Cap.ROUND);
+        paintshadow.setAntiAlias(true);
+       // paintshadow.setStrokeWidth(10);
+        Log.e("textsizs","paintshow:size:"+paintshadow.getTextSize()+"heeh");
+
+
+
+      //tips
+        pathTips=new Path();
+        paintTips=new Paint();
+        paintTips=new Paint();
+        paintTips.setStyle(Paint.Style.FILL);
+        paintTips.setColor(getResources().getColor(R.color.colorRedhalf));
+        paintTips.setStrokeCap(Paint.Cap.ROUND);
+        paintTips.setAntiAlias(true);
+
+        paintTipValue=new Paint();
+        paintTipValue.setTextAlign(Paint.Align.CENTER);
+        paintTipValue.setStyle(Paint.Style.FILL);
+//        paintTipValue.setStrokeWidth(strokewidth);
+        paintTipValue.setTextSize(paintTextSize);
+        paintTipValue.setColor(Color.WHITE);
+        paintTipValue.setStrokeCap(Paint.Cap.ROUND);
+        paintTipValue.setAntiAlias(true);
+
+
+
+        //ｙ轴标尺以及网格线－Ｙ线
+        paintYvalue=new Paint();
+        paintYvalue.setTextAlign(Paint.Align.CENTER);
+        paintYvalue.setStyle(Paint.Style.FILL);
+//        paintYvalue.setStrokeWidth(strokewidth);
+        paintYvalue.setTextSize(paintTextSize);
+        paintYvalue.setColor(Color.BLUE);
+
+        paintYvalue.setStrokeCap(Paint.Cap.ROUND);
+        paintYvalue.setAntiAlias(true);
+
+        paintYline=new Paint(Paint.ANTI_ALIAS_FLAG);
+        paintYline.setTextAlign(Paint.Align.CENTER);
+      paintYline.setStrokeWidth(2);
+        //paintYline.setTextSize(paintTextSize);
+        paintYline.setColor(Color.BLUE);
+        paintYline.setPathEffect(new DashPathEffect(new float[] {5, 5}, 0));
+        paintYline.setStrokeCap(Paint.Cap.ROUND);
+        paintYline.setAntiAlias(true);
+//        Path path = new Path();
+//        path.moveTo(50, 50);
+//        path.lineTo(50, 200);
+//        canvas.drawPath(path, paint);
+        controlN=0;
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (controlN<=7){
+                    postInvalidate();
+                    try{
+                        Thread.sleep(300);
+                        controlN++;
+                    }
+                    catch (Exception e){
+
+                    }
+                }
+            }
+        }).start();
 
     }
 
@@ -113,15 +219,15 @@ public class WqqBloodView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
+       // super.onDraw(canvas);
+        //setLayerType(LAYER_TYPE_SOFTWARE, null);//关闭硬件加速
+        Log.e("oandraw","ondraw");
         if (mPointList == null)
             return;
         //measurePath();
-        Paint paint = new Paint();
-        paint.setColor(Color.RED);
-        paint.setStrokeWidth(3);
-        paint.setStyle(Paint.Style.STROKE);
+
         //绘制辅助线
-       // canvas.drawPath(mAssistPath,paint);
+      // canvas.drawPath(mAssistPath,paint);
         drawAxis(canvas);
         drawBlood(canvas);
 
@@ -174,6 +280,14 @@ public class WqqBloodView extends View {
         canvas.drawLine(yLeft,height-xbottom,yLeft,xtop,paintYaxis);
         for(int i=0;i<YaxisNumber;i++){
           canvas.drawLine(yLeft,height-xbottom-(i+1)*((heightReal-YaxisLengthMar)/YaxisNumber),yLeft+lengthFlag,height-xbottom-(i+1)*((heightReal-YaxisLengthMar)/YaxisNumber),paintYaxis);
+          String text=(60*(i+1))+"";
+          Rect rectboud=new Rect();
+            paintYvalue.getTextBounds(text,0,text.length(),rectboud);
+          canvas.drawText(text,YvalueLeft,height-xbottom-(i+1)*((heightReal-YaxisLengthMar)/YaxisNumber)+rectboud.height()/2,paintYvalue);
+          //画横着的虚线
+
+            canvas.drawLine(yLeft,height-xbottom-(i+1)*((heightReal-YaxisLengthMar)/YaxisNumber),width-yright,height-xbottom-(i+1)*((heightReal-YaxisLengthMar)/YaxisNumber),paintYline);
+
         }
         canvas.drawLine(yLeft,height-xbottom,width-yright,height-xbottom,paintYaxis);
         for(int i=0;i<bloodList.size();i++){
@@ -188,42 +302,103 @@ public class WqqBloodView extends View {
      * @param canvas
      */
     public void drawBlood(Canvas canvas){
+        Log.e("drawblood","***************88");
 
-        for(int i=0;i<bloodList.size();i++){
-            int x=(int)(yLeft+(i+1)*((widthReal-XaxisLengthMar)/bloodList.size()));
-            Point pointhigh=new Point(x,0);
-            Point pointlow=new Point(x,0);
-            Blood blood=bloodList.get(i);
-            pointhigh.set(x,(int)getRealY((float)blood.getHighvalue()));
-            pointlow.set(x,(int)getRealY((float)blood.getLowvalue()));
-            canvas.drawLine(pointhigh.x,pointhigh.y,pointlow.x,pointlow.y,paintXaxis);
-            Point pointtemp=new Point();
-            pointtemp.x=pointhigh.x;
-            pointtemp.y=pointhigh.y;
-            Point phighleft=getSwordPos(true,true,pointtemp);
-            //Point phgihright=getSwordPos(false,true,pointtemp);
-            canvas.drawLine(pointhigh.x,pointhigh.y,phighleft.x,phighleft.y,paintYaxis);
-            pointtemp.x=pointhigh.x;
-            pointtemp.y=pointhigh.y;
-            Point phgihright=getSwordPos(false,true,pointtemp);
-            canvas.drawLine(pointhigh.x,pointhigh.y,phgihright.x,phgihright.y,paintYaxis);
+        for(int i=0;i<controlN;i++) {
+            if (bloodList.size() > i) {
+                pathAll.reset();
+                pathTips.reset();
+                Log.e("drawblood", i + "");
+                int x = (int) (yLeft + (i + 1) * ((widthReal - XaxisLengthMar) / bloodList.size()));
+                Point pointhigh = new Point(x, 0);
+                Point pointlow = new Point(x, 0);
+
+                Blood blood = bloodList.get(i);
+                pointhigh.set(x, (int) getRealY((float) blood.getHighvalue()));
+                pointlow.set(x, (int) getRealY((float) blood.getLowvalue()));
+                // canvas.drawLine(pointhigh.x,pointhigh.y,pointlow.x,pointlow.y,paintXaxis);
+                Point pointtemp = new Point();
+                Point pointtemp1 = new Point();
+                Point pointtemp2 = new Point();
+                Point pointtemp3 = new Point();
+                pointtemp.x = pointhigh.x;
+                pointtemp.y = pointhigh.y;
+                Point phighleft = getSwordPos(true, true, pointtemp);
+                //Point phgihright=getSwordPos(false,true,pointtemp);
+                canvas.drawLine(pointhigh.x, pointhigh.y, phighleft.x, phighleft.y, paintYaxis);
+                pointtemp1.x = pointhigh.x;
+                pointtemp1.y = pointhigh.y;
+                Point phgihright = getSwordPos(false, true, pointtemp1);
+                canvas.drawLine(pointhigh.x, pointhigh.y, phgihright.x, phgihright.y, paintYaxis);
 
 
-            //low
-            pointtemp.x=pointlow.x;
-            pointtemp.y=pointlow.y;
-            Point plowleft=getSwordPos(true,false,pointtemp);
-            //Point phgihright=getSwordPos(false,true,pointtemp);
-            canvas.drawLine(pointlow.x,pointlow.y,plowleft.x,plowleft.y,paintYaxis);
-            pointtemp.x=pointlow.x;
-            pointtemp.y=pointlow.y;
-            Point plowright=getSwordPos(false,false,pointtemp);
-            canvas.drawLine(pointlow.x,pointlow.y,plowright.x,plowright.y,paintYaxis);
+                //low
+                pointtemp2.x = pointlow.x;
+                pointtemp2.y = pointlow.y;
+                Point plowleft = getSwordPos(true, false, pointtemp2);
+                //Point phgihright=getSwordPos(false,true,pointtemp);
+                canvas.drawLine(pointlow.x, pointlow.y, plowleft.x, plowleft.y, paintYaxis);
+                pointtemp3.x = pointlow.x;
+                pointtemp3.y = pointlow.y;
+                Point plowright = getSwordPos(false, false, pointtemp3);
+                canvas.drawLine(pointlow.x, pointlow.y, plowright.x, plowright.y, paintYaxis);
 
+                Log.e("i:", "hx:" + phighleft.x + "hy:" + phighleft.y + "plowrx:" + plowright.x + "plowry:" + plowright.y);
+                pathAll.addRect(phighleft.x, phighleft.y, plowright.x, plowright.y, Path.Direction.CW);
+                Path low = new Path();
+                low.moveTo(pointlow.x, pointlow.y);
+                low.lineTo(plowleft.x, plowleft.y);
+                low.lineTo(plowright.x, plowright.y);
+                low.close();
+                pathAll.addPath(low);
+
+                Path hign = new Path();
+                hign.moveTo(pointhigh.x, pointhigh.y);
+                hign.lineTo(phighleft.x, phighleft.y);
+                hign.lineTo(phgihright.x, phgihright.y);
+                hign.close();
+                pathAll.addPath(hign);
+                pathAll.setFillType(Path.FillType.EVEN_ODD);
+                paintshadow.setColor(getResources().getColor(R.color.colorRedhalf));
+
+                //画ｔｉｐｓ
+                Point point = new Point();
+                point.set(pointhigh.x, pointhigh.y - moveY - tangleymove);
+                RectF rectFtip = new RectF(point.x - tipwidth / 2, point.y - tipheight, point.x + tipwidth / 2, point.y);
+
+                pathTips.addRoundRect(rectFtip, tangleruondxy, tangleruondxy, Path.Direction.CW);
+                Path tangle = new Path();
+                tangle.moveTo(point.x - tanglebotmar, point.y);
+                tangle.lineTo(point.x, point.y + tangleymove);
+                tangle.lineTo(point.x + tanglebotmar, point.y);
+                tangle.close();
+                pathTips.addPath(tangle);
+                canvas.drawPath(pathAll, paintshadow);
+                canvas.drawPath(pathTips, paintTips);
+                Rect rectbound = new Rect();
+                String text = bloodList.get(i).getLowvalue() + "/" + bloodList.get(i).getHighvalue();
+                paintTipValue.getTextBounds(text, 0, text.length(), rectbound);
+
+                canvas.drawText(text, point.x, point.y - tipheight / 2 + rectbound.height() / 2, paintTipValue);
+            }
+
+
+            canvas.drawText("Testdfsfsf", 200, 200, paintshadow);
         }
     }
+
+
+
+
+
+
+
+
+
+
+
     private int moveX=20;
-    private int moveY=30;
+    private int moveY=25;
     public Point getSwordPos(boolean isLeft,boolean isTop,Point point){
         if(isLeft){
             point.x=point.x-moveX;
@@ -278,7 +453,7 @@ public class WqqBloodView extends View {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        //super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         int heightmode=MeasureSpec.getMode(heightMeasureSpec);
         int heightsize=MeasureSpec.getSize(heightMeasureSpec);
         int widthmode=MeasureSpec.getMode(widthMeasureSpec);

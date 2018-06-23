@@ -10,6 +10,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //tartActivity(new Intent(MainActivity.this,TvControlerActivity.class));
+        Intent intent=new Intent("com.haier.main");
+        startActivity(intent);
     }
 }

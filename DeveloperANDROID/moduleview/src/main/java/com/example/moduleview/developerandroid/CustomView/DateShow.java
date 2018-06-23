@@ -147,6 +147,7 @@ public class DateShow extends View {
 
     public void setStateBig(int stateBig) {
         this.stateBig = stateBig;
+        this.invalidate();
     }
 
     public int getStateSmall() {

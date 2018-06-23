@@ -11,20 +11,20 @@
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
+                <action android:name="android.intent.action.MAIN" />　　　　
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".DragHelperLearnActivity" />
-        <activity android:name=".Main2Activity" />
         <activity android:name=".developerandroid.CustomView.Main2Activity" />
         <activity android:name=".PathMeasureActivity" />
         <activity android:name=".BserActivity" />
         <activity android:name=".BloodActivity" />
         <activity android:name=".TvControlerActivity" />
         <activity android:name=".RiliActivity" />
-        <activity android:name=".DatestyleshowActivity"></activity>
+        <activity android:name=".DatestyleshowActivity" />
+        <activity android:name=".PathopreateActivity" />
+        <activity android:name=".RecycleViewlearnActivity"></activity>
     </application>
 
 </manifest>

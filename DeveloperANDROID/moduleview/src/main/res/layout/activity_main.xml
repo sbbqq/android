@@ -10,13 +10,13 @@
 
     <com.example.moduleview.developerandroid.CustomView.HelloCustomView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="100dp"
         app:text="hello,wqq"
         app:textcolor="#FFF000" />
 
     <com.example.moduleview.developerandroid.CustomView.VoiceView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="100dp"
         app:cicle_width="50"
         app:count="12"
         app:progress="60"
@@ -90,13 +90,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     />
-                <TextView
-                    android:text="this is a long term"
-                    android:layout_width="wrap_content"
-                    android:background="@drawable/shapeoftt"
-                    android:gravity="center"
-                    android:layout_height="50dp"
-                    />
+
                 <TextView
                     android:text="day day up"
                     android:textColor="#ffffff"
@@ -178,10 +172,19 @@
                     android:layout_height="50dp"
                     />
                 <TextView
-                    android:text="this is a long term"
+                    android:text="this is a recycleview"
                     android:gravity="center"
+                    android:id="@+id/txrecycleview"
                     android:layout_width="wrap_content"
                     android:background="#fF32F0"
+                    android:layout_height="50dp"
+                    />
+                <TextView
+                    android:text="this is a path operate"
+                    android:layout_width="wrap_content"
+                    android:id="@+id/txpathoperate"
+                    android:background="@drawable/shapeoftt"
+                    android:gravity="center"
                     android:layout_height="50dp"
                     />
                 <TextView

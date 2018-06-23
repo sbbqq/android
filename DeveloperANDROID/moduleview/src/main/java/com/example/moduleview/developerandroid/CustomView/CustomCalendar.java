@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.moduleview.R;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
@@ -33,7 +35,7 @@ public class CustomCalendar extends ViewGroup {
    int lineunit=40;
    int linejianju=20;
    int lineHeight=80;
-   MyDay myDayToday,otherDay;
+   MyDay myDayToday,otherDay,currentshowDay;
 
     public CustomCalendar(Context context) {
         super(context);
@@ -54,13 +56,16 @@ public class CustomCalendar extends ViewGroup {
      public void ini(){
         getCurrentDay();
         testDate();
-        layoutParams=new LayoutParams(120,120);
-        buttonstest=new ArrayList<>();
+        //dataflush();
 
+     }
+     private void dataflush(){
+         Log.e("dateflush","***************");
+         layoutParams=new LayoutParams(120,120);
+         buttonstest=new ArrayList<>();
 
-
-         iniDateData(getCurrentDay());
-        textViewsdayweek=new ArrayList<>();
+         iniDateData(currentshowDay);
+         textViewsdayweek=new ArrayList<>();
          String weekname[]={"周日","周一","周二","周三","周四","周五","周六"};
          for(int i=0;i<7;i++){
              TextView txdayofweek=new TextView(getContext());
@@ -71,20 +76,71 @@ public class CustomCalendar extends ViewGroup {
              this.addView(txdayofweek);
 
          }
-         iniHeadDate(getCurrentDay());
+         //getCurrentDay();
+        iniHeadDate(currentshowDay);
      }
 
      public void iniHeadDate(MyDay myDay){
          //添加四个按钮和日期
          for(int i=0;i<6;i++) {
+             Log.e("i:",i+"");
              if(i!=1&&i!=4) {
                  CustomButton customButton = new CustomButton(getContext());
+                 //customButton.setFocusable(true);
                  customButton.setLayoutParams(new LayoutParams(80, 80));
-                 customButton.setState(0);
+//                 customButton.setOnFocusChangeListener(new OnFocusChangeListener() {
+//                     @Override
+//                     public void onFocusChange(View v, boolean hasFocus) {
+//
+//                         if(hasFocus){
+//                             Log.e("luelue-get","********888");
+//                             ((CustomButton)v).setState(2);
+//                         }
+//                         else{
+//                             Log.e("luelue-leave","********888");
+//                             ((CustomButton)v).setState(1);
+//                         }
+//
+//                     }
+//                 });
+                 //customButton.setState(0);
+                 switch (i){
+                     case 0:
+                         customButton.setId(R.id.year_minus);
+                         break;
+                     case 2:
+                         customButton.setId(R.id.year_plus);
+                         break;
+                     case 3:
+                         customButton.setId(R.id.month_minus);
+                         break;
+                     case 5:
+                         customButton.setId(R.id.month_plus);
+                         break;
+                 }
                  customButton.setOnClickListener(new OnClickListener() {
                      @Override
                      public void onClick(View v) {
                          Log.e("shit","*************");
+                         switch (v.getId()){
+                             case R.id.year_minus:
+                                 Log.e("shit-year","*************");
+                                 new DateTool().dateOporate(currentshowDay,-1,0);
+                                 break;
+                             case R.id.year_plus:
+                                 new DateTool().dateOporate(currentshowDay,+1,0);
+                                 Log.e("shit+year","*************");
+                                 break;
+                             case R.id.month_minus:
+                                 new DateTool().dateOporate(currentshowDay,0,-1);
+                                 Log.e("shit-month","*************");
+                                 break;
+                             case R.id.month_plus:
+                                 new DateTool().dateOporate(currentshowDay,0,+1);
+                                 Log.e("shit+month","*************");
+                                 break;
+                         }
+                         requestLayout();
                      }
                  });
                  this.addView(customButton);
@@ -180,12 +236,16 @@ public class CustomCalendar extends ViewGroup {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+         removeAllViews();
+         Log.e("onMeasure","************");
+        dataflush();
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         for(int i=0;i<getChildCount();i++){
             measureChild(getChildAt(i),widthMeasureSpec,heightMeasureSpec);
         }
         width=getMeasuredWidth();
         height=getMeasuredHeight();
+
        // Log.e("width",widthMeasureSpec+"");
     }
 
@@ -259,6 +319,16 @@ public class CustomCalendar extends ViewGroup {
             return  new MyDay(calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH));
         }
 
+        public MyDay dateOporate(MyDay myDay,int Viyears,int Vimonths){
+            Calendar calendar=Calendar.getInstance();
+            calendar.set(myDay.Y,myDay.M,myDay.D);
+            calendar.add(Calendar.YEAR,Viyears);
+            calendar.add(Calendar.MONTH,Vimonths);
+            myDay.setY(calendar.get(Calendar.YEAR));
+            myDay.setM(calendar.get(Calendar.MONTH));
+            return  myDay;
+        }
+
 
 
         /**
@@ -291,6 +361,7 @@ public class CustomCalendar extends ViewGroup {
         Log.e("Today","Y:"+calendar.get(Calendar.YEAR)+"M:"+calendar.get(Calendar.MONTH)+"Day:"+calendar.get(Calendar.DAY_OF_MONTH));
         MyDay myDay=new MyDay(calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH));
         this.setMyDayToday(myDay);
+        currentshowDay=myDay;
         return  myDay;
     }
 
@@ -316,12 +387,15 @@ public class CustomCalendar extends ViewGroup {
                     Log.e("btnid",v.getId()+"");
                     if(hasFocus){
                         //v.setBackgroundColor(Color.RED);
+                        Log.e("get","*******************"+v.getId());
                         ( (DateShow)v).setStateBig(1);
                     }
                     else{
                         //v.setBackgroundColor(Color.GREEN);
+                        Log.e("left","*******************"+v.getId());
                         ( (DateShow)v).setStateBig(0);
                     }
+
                 }
             });
             this.addView(button);
@@ -346,10 +420,12 @@ public class CustomCalendar extends ViewGroup {
                     Log.e("btnid",v.getId()+"");
                     if(hasFocus){
                         //v.setBackgroundColor(Color.RED);
+                        Log.e("get","*******************"+v.getId());
                         ( (DateShow)v).setStateBig(1);
                     }
                     else{
                         //v.setBackgroundColor(Color.GREEN);
+                        Log.e("left","*******************"+v.getId());
                         ( (DateShow)v).setStateBig(0);
                     }
                 }

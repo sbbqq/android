@@ -7,12 +7,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.moduleview.Adaptor.RecycleAdpTest;
 import com.example.moduleview.developerandroid.CustomView.Main2Activity;
 
 public class MainActivity extends Activity {
 
   TextView textView,textHuixing,txPathMeasure,txpasaier,txblood,txTvtest,txrili;
-  TextView txDate;
+  TextView txDate,txpathoprate,txrecycleview;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,6 +73,20 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this,DatestyleshowActivity.class));
+            }
+        });
+        txpathoprate=(TextView)findViewById(R.id.txpathoperate);
+        txpathoprate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,PathopreateActivity.class));
+            }
+        });
+        txrecycleview=(TextView)findViewById(R.id.txrecycleview);
+        txrecycleview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,RecycleViewlearnActivity.class));
             }
         });
     }
