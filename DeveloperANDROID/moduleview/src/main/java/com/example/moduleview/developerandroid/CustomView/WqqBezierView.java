@@ -61,6 +61,17 @@ public class WqqBezierView extends View {
     private int tangleymove=15;
     private int tangleruondxy=5;
     private int Ymove=40;
+    
+    
+    //draw background 
+    Paint paintBg;
+    private int PaintWidthbg=1;
+    private int gridYNumber=8;
+    private int gridXNumber=14;
+
+    //ｙ轴标尺数据,以及网格－－－横线
+    Paint paintYvalue,paintYline;
+    private int YvalueLeft=40;
 
 
     public WqqBezierView(Context context) {
@@ -104,12 +115,12 @@ public class WqqBezierView extends View {
         PathYaxis=new Path();
         paintXaxis=new Paint();
         paintXaxis.setStyle(Paint.Style.FILL_AND_STROKE);
-        paintXaxis.setStrokeWidth(10);
+        paintXaxis.setStrokeWidth(3);
         paintXaxis.setStrokeCap(Paint.Cap.ROUND);
         paintXaxis.setAntiAlias(true);
         paintYaxis=new Paint();
         paintYaxis.setStyle(Paint.Style.FILL_AND_STROKE);
-        paintYaxis.setStrokeWidth(10);
+        paintYaxis.setStrokeWidth(3);
         paintYaxis.setStrokeCap(Paint.Cap.ROUND);
         paintYaxis.setAntiAlias(true);
 
@@ -131,6 +142,36 @@ public class WqqBezierView extends View {
         paintTipValue.setStrokeCap(Paint.Cap.ROUND);
         paintTipValue.setAntiAlias(true);
 
+
+        paintBg=new Paint();
+       paintBg.setStyle(Paint.Style.FILL);
+       paintBg.setStrokeWidth(PaintWidthbg);
+       paintBg.setTextSize(paintTextSize);
+       paintBg.setColor(0x80C1CDCD);
+       paintBg.setStrokeCap(Paint.Cap.ROUND);
+       paintBg.setAntiAlias(true);
+
+
+
+        //ｙ轴标尺以及网格线－Ｙ线
+        paintYvalue=new Paint();
+        paintYvalue.setTextAlign(Paint.Align.CENTER);
+        paintYvalue.setStyle(Paint.Style.FILL);
+//        paintYvalue.setStrokeWidth(strokewidth);
+        paintYvalue.setTextSize(paintTextSize);
+        paintYvalue.setColor(Color.BLUE);
+
+        paintYvalue.setStrokeCap(Paint.Cap.ROUND);
+        paintYvalue.setAntiAlias(true);
+
+        paintYline=new Paint(Paint.ANTI_ALIAS_FLAG);
+        paintYline.setTextAlign(Paint.Align.CENTER);
+        paintYline.setStrokeWidth(2);
+        //paintYline.setTextSize(paintTextSize);
+        paintYline.setColor(Color.BLUE);
+        paintYline.setPathEffect(new DashPathEffect(new float[] {5, 5}, 0));
+        paintYline.setStrokeCap(Paint.Cap.ROUND);
+        paintYline.setAntiAlias(true);
     }
 
 
@@ -147,6 +188,7 @@ public class WqqBezierView extends View {
         //绘制辅助线
         //canvas.drawPath(mAssistPath,paint);
         drawAxis(canvas);
+        drawBg(canvas);
 
         paint.setColor(Color.GREEN);
         Path dst = new Path();
@@ -183,7 +225,7 @@ public class WqqBezierView extends View {
         path.close();
         Paint paint = new Paint();
         paint.setStyle(Paint.Style.FILL);
-        paint.setColor(0x88CCCCCC);
+        paint.setColor(0x50A4D3EE);
         canvas.drawPath(path, paint);
     }
 
@@ -234,14 +276,40 @@ public class WqqBezierView extends View {
     public void drawAxis(Canvas canvas){
         PathYaxis.moveTo(yLeft,height-xbottom);
 
-        canvas.drawLine(yLeft,height-xbottom,yLeft,xtop,paintYaxis);
+        //canvas.drawLine(yLeft,height-xbottom,yLeft,xtop,paintYaxis);
         for(int i=0;i<YaxisNumber;i++){
-          canvas.drawLine(yLeft,height-xbottom-(i+1)*((heightReal-YaxisLengthMar)/YaxisNumber),yLeft+lengthFlag,height-xbottom-(i+1)*((heightReal-YaxisLengthMar)/YaxisNumber),paintYaxis);
+          canvas.drawLine(0,height-xbottom-(i+1)*((heightReal-YaxisLengthMar)/YaxisNumber),lengthFlag,height-xbottom-(i+1)*((heightReal-YaxisLengthMar)/YaxisNumber),paintYaxis);
+
+            String text=(60*(i+1))+"";
+            Rect rectboud=new Rect();
+            paintYvalue.getTextBounds(text,0,text.length(),rectboud);
+            canvas.drawText(text,YvalueLeft,height-xbottom-(i+1)*((heightReal-YaxisLengthMar)/YaxisNumber)+rectboud.height()/2,paintYvalue);
+            //画横着的虚线
+
+            canvas.drawLine(yLeft,height-xbottom-(i+1)*((heightReal-YaxisLengthMar)/YaxisNumber),width-yright,height-xbottom-(i+1)*((heightReal-YaxisLengthMar)/YaxisNumber),paintYline);
         }
-        canvas.drawLine(yLeft,height-xbottom,width-yright,height-xbottom,paintYaxis);
+        //canvas.drawLine(yLeft,height-xbottom,width-yright,height-xbottom,paintYaxis);
         for(int i=0;i<mPointList.size();i++){
-            canvas.drawLine(yLeft+(i+1)*((widthReal-XaxisLengthMar)/mPointList.size()),height-xbottom,yLeft+(i+1)*((widthReal-XaxisLengthMar)/mPointList.size()),height-xbottom-lengthFlag,paintYaxis);
+           // canvas.drawLine(yLeft+(i+1)*((widthReal-XaxisLengthMar)/mPointList.size()),height-xbottom,yLeft+(i+1)*((widthReal-XaxisLengthMar)/mPointList.size()),height-xbottom-lengthFlag,paintYaxis);
         }
+    }
+
+
+    /**
+     * draw grid bg
+     * @param canvas
+     */
+    private void drawBg(Canvas canvas){
+
+
+        for(int i=0;i<gridXNumber;i++){
+            canvas.drawLine(getRealX(i,gridXNumber),height-xbottom,getRealX(i,gridXNumber),xtop,paintBg);
+        }
+
+        for(int i=0;i<gridYNumber;i++){
+            canvas.drawLine(yLeft,xtop+i*(heightReal)/gridYNumber,width-yright,xtop+i*(heightReal)/gridYNumber,paintBg);
+        }
+
     }
 
     private PathEffect getPathEffect(float length) {
@@ -342,6 +410,17 @@ public class WqqBezierView extends View {
         mPathMeasure = new PathMeasure(mPath, false);
     }
 
+
+
+
+
+
+
+
+
+
+
+
     private float getRealY(Float y){
         Log.e("height",(heightReal-YaxisLengthMar)/(Maxvalue-Minvalue)*y+"");
         return  height-xbottom-(heightReal-YaxisLengthMar)/(Maxvalue-Minvalue)*y;
@@ -350,6 +429,10 @@ public class WqqBezierView extends View {
 
     private float getRealX(int index){
         return yLeft+(index+1)*((widthReal-XaxisLengthMar)/mPointList.size());
+    }
+
+    private float getRealX(int index, int all){
+        return yLeft+(index+1)*((widthReal)/all);
     }
 
     private void getYmaxAndYminValue(){
@@ -367,6 +450,13 @@ public class WqqBezierView extends View {
         if(!Zerostart)
            Minvalue=minValueY;
     }
+
+
+
+
+
+
+
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {

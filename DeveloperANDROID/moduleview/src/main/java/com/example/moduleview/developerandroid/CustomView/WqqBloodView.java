@@ -18,6 +18,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 
+import com.example.moduleview.Modal.BaseResult;
 import com.example.moduleview.Modal.Blood;
 import com.example.moduleview.R;
 
@@ -31,6 +32,7 @@ public class WqqBloodView extends View {
     private float lineSmoothness = 0.2f;
     private List<Point> mPointList;
     private List<Blood> bloodList;
+    private List<BaseResult> baseResults;
     private Path mPath;
     private Path mAssistPath;
     private float drawScale = 1f;
@@ -52,7 +54,7 @@ public class WqqBloodView extends View {
     private float Maxvalue=240;
     private float Minvalue=0;
     private boolean Zerostart=true;
-    private int strokewidth=10;
+    private int strokewidth=3;
 
     Path pathAll;//高压低压之间的阴影
     Paint paintshadow;
@@ -73,9 +75,17 @@ public class WqqBloodView extends View {
     //ｙ轴标尺数据,以及网格－－－横线
     Paint paintYvalue,paintYline;
     private int YvalueLeft=40;
-
     int controlN=0;
     private int Number=6;
+
+    //draw background
+    Paint paintBg;
+    private int PaintWidthbg=1;
+    private int gridYNumber=8;
+    private int gridXNumber=14;
+    
+    //draw bottom 
+    Paint paintBotBg,paintBotXaxis;
 
 
 
@@ -104,6 +114,15 @@ public class WqqBloodView extends View {
 
     public void setBloodList(List<Blood> bloodList) {
         this.bloodList = bloodList;
+    }
+
+
+    public List<BaseResult> getBaseResults() {
+        return baseResults;
+    }
+
+    public void setBaseResults(List<BaseResult> baseResults) {
+        this.baseResults = baseResults;
     }
 
     public void setLineSmoothness(float lineSmoothness) {
@@ -194,26 +213,36 @@ public class WqqBloodView extends View {
         paintYline.setPathEffect(new DashPathEffect(new float[] {5, 5}, 0));
         paintYline.setStrokeCap(Paint.Cap.ROUND);
         paintYline.setAntiAlias(true);
-//        Path path = new Path();
-//        path.moveTo(50, 50);
-//        path.lineTo(50, 200);
-//        canvas.drawPath(path, paint);
-       // controlN=0;
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                while (controlN<=7){
-//                    postInvalidate();
-//                    try{
-//                        Thread.sleep(300);
-//                        controlN++;
-//                    }
-//                    catch (Exception e){
-//
-//                    }
-//                }
-//            }
-//        }).start();
+
+
+//draw bg  set paint
+        paintBg=new Paint();
+        paintBg.setStyle(Paint.Style.FILL);
+        paintBg.setStrokeWidth(PaintWidthbg);
+        paintBg.setTextSize(paintTextSize);
+        paintBg.setColor(0x80C1CDCD);
+        paintBg.setStrokeCap(Paint.Cap.ROUND);
+        paintBg.setAntiAlias(true);
+        
+        
+        //draw bottom 
+        paintBotBg=new Paint();
+        paintBotBg.setStyle(Paint.Style.FILL);
+        paintBotBg.setStrokeWidth(PaintWidthbg);
+        paintBotBg.setTextSize(paintTextSize);
+        paintBotBg.setColor(Color.BLUE);
+        paintBotBg.setStrokeCap(Paint.Cap.ROUND);
+        paintBotBg.setAntiAlias(true);
+
+        paintBotXaxis=new Paint();
+        paintBotXaxis.setStyle(Paint.Style.FILL);
+        paintBotXaxis.setStrokeWidth(PaintWidthbg);
+        paintBotXaxis.setTextSize(paintTextSize);
+        paintBotXaxis.setColor(Color.WHITE);
+        paintBotXaxis.setStrokeCap(Paint.Cap.ROUND);
+        paintBotXaxis.setAntiAlias(true);
+
+
 
     }
 
@@ -232,11 +261,11 @@ public class WqqBloodView extends View {
       // canvas.drawPath(mAssistPath,paint);
         drawAxis(canvas);
         drawBlood(canvas);
+        drawBg(canvas);
+        drawBottom(canvas);
 
 
-        /*greenPaint.setPathEffect(getPathEffect(mPathMeasure.getLength()));
-        canvas.drawPath(mPath, greenPaint);*/
-        //mPath.reset();adb shell screenrecord --bit-rate 2000000 /sdcard/test.mp4
+
 
     }
 
@@ -279,9 +308,9 @@ public class WqqBloodView extends View {
     public void drawAxis(Canvas canvas){
         PathYaxis.moveTo(yLeft,height-xbottom);
 
-        canvas.drawLine(yLeft,height-xbottom,yLeft,xtop,paintYaxis);
+       // canvas.drawLine(yLeft,height-xbottom,yLeft,xtop,paintYaxis);
         for(int i=0;i<YaxisNumber;i++){
-          canvas.drawLine(yLeft,height-xbottom-(i+1)*((heightReal-YaxisLengthMar)/YaxisNumber),yLeft+lengthFlag,height-xbottom-(i+1)*((heightReal-YaxisLengthMar)/YaxisNumber),paintYaxis);
+          canvas.drawLine(0,height-xbottom-(i+1)*((heightReal-YaxisLengthMar)/YaxisNumber),lengthFlag,height-xbottom-(i+1)*((heightReal-YaxisLengthMar)/YaxisNumber),paintYaxis);
           String text=(60*(i+1))+"";
           Rect rectboud=new Rect();
             paintYvalue.getTextBounds(text,0,text.length(),rectboud);
@@ -291,9 +320,9 @@ public class WqqBloodView extends View {
             canvas.drawLine(yLeft,height-xbottom-(i+1)*((heightReal-YaxisLengthMar)/YaxisNumber),width-yright,height-xbottom-(i+1)*((heightReal-YaxisLengthMar)/YaxisNumber),paintYline);
 
         }
-        canvas.drawLine(yLeft,height-xbottom,width-yright,height-xbottom,paintYaxis);
+        //canvas.drawLine(yLeft,height-xbottom,width-yright,height-xbottom,paintYaxis);
         for(int i=0;i<bloodList.size();i++){
-            canvas.drawLine(yLeft+(i+1)*((widthReal-XaxisLengthMar)/bloodList.size()),height-xbottom,yLeft+(i+1)*((widthReal-XaxisLengthMar)/bloodList.size()),height-xbottom-lengthFlag,paintYaxis);
+            //canvas.drawLine(yLeft+(i+1)*((widthReal-XaxisLengthMar)/bloodList.size()),height-xbottom,yLeft+(i+1)*((widthReal-XaxisLengthMar)/bloodList.size()),height-xbottom-lengthFlag,paintYaxis);
         }
     }
 
@@ -390,6 +419,117 @@ public class WqqBloodView extends View {
     }
 
 
+
+
+    /**
+     * draw grid bg
+     * @param canvas
+     */
+    private void  drawBg(Canvas canvas){
+
+
+        for(int i=0;i<gridXNumber;i++){
+            canvas.drawLine(getRealX(i,gridXNumber),height-xbottom,getRealX(i,gridXNumber),xtop,paintBg);
+        }
+
+        for(int i=0;i<gridYNumber;i++){
+            canvas.drawLine(yLeft,xtop+i*(heightReal)/gridYNumber,width-yright,xtop+i*(heightReal)/gridYNumber,paintBg);
+        }
+
+    }
+
+    /**
+     * draw bottom
+     * @param canvas
+     */
+    private void drawBottom(Canvas canvas){
+        RectF rectFbottom=new RectF(0,height-xbottom,width,height);
+        canvas.drawRect(rectFbottom,paintBotBg);
+    }
+
+    /**
+     * draw x axis date value
+     * @param x
+     * @param index
+     * @param canvas
+     */
+    private void drawXaxisValue(float x,int index,Canvas canvas){
+        BaseResult baseResult=baseResults.get(index);
+        String tx1="null";
+        String tx2="null";
+        if(index==0){
+            tx1=baseResult.getY()+"-"+baseResult.getM()+"-"+baseResult.getD();
+            tx2=baseResult.getHour()+":"+baseResult.getMinite();
+            Rect rect1=new Rect(),rect2=new Rect();
+            paintBotXaxis.getTextBounds(tx1,0,tx1.length(),rect1);
+            paintBotXaxis.getTextBounds(tx2,0,tx2.length(),rect2);
+            canvas.drawText(tx1,x,heightReal+xbottom/4-rect1.height()/2,paintBotXaxis);
+            canvas.drawText(tx2,x,heightReal+3*xbottom/4-rect2.height()/2,paintBotXaxis);
+        }
+        else {
+               if(baseResults.get(index-1).getY()!=baseResult.getY()){
+                   tx1=baseResult.getY()+"-"+baseResult.getM()+"-"+baseResult.getD();
+                   tx2=baseResult.getHour()+":"+baseResult.getMinite();
+                   Rect rect1=new Rect(),rect2=new Rect();
+                   paintBotXaxis.getTextBounds(tx1,0,tx1.length(),rect1);
+                   paintBotXaxis.getTextBounds(tx2,0,tx2.length(),rect2);
+                   canvas.drawText(tx1,x,heightReal+xbottom/4-rect1.height()/2,paintBotXaxis);
+                   canvas.drawText(tx2,x,heightReal+3*xbottom/4-rect2.height()/2,paintBotXaxis);
+               }
+               else{
+                    if(baseResults.get(index+1)!=null)
+                    {
+                        if((baseResults.get(index-1).getM()==baseResult.getM()&&baseResults.get(index+1).getD()==baseResult.getD())||(baseResults.get(index+1).getM()==baseResult.getM()&&baseResults.get(index+1).getD()==baseResult.getD())){
+                            tx1=baseResult.getM()+"-"+baseResult.getD();
+                            tx2=baseResult.getHour()+":"+baseResult.getMinite();
+                            Rect rect1=new Rect(),rect2=new Rect();
+                            paintBotXaxis.getTextBounds(tx1,0,tx1.length(),rect1);
+                            paintBotXaxis.getTextBounds(tx2,0,tx2.length(),rect2);
+                            canvas.drawText(tx1,x,heightReal+xbottom/4-rect1.height()/2,paintBotXaxis);
+                            canvas.drawText(tx2,x,heightReal+3*xbottom/4-rect2.height()/2,paintBotXaxis);
+                        }
+                        else{
+                            tx1=baseResult.getM()+"-"+baseResult.getD();
+                            tx2=baseResult.getHour()+":"+baseResult.getMinite();
+                            Rect rect1=new Rect(),rect2=new Rect();
+                            paintBotXaxis.getTextBounds(tx1,0,tx1.length(),rect1);
+                            paintBotXaxis.getTextBounds(tx2,0,tx2.length(),rect2);
+                            canvas.drawText(tx1,x,heightReal+xbottom/4-rect1.height()/2,paintBotXaxis);
+                            canvas.drawText(tx2,x,heightReal+3*xbottom/4-rect2.height()/2,paintBotXaxis);
+                        }
+                    }
+                    else{
+                        if(baseResults.get(index-1).getM()==baseResult.getM()&&baseResults.get(index-1).getD()==baseResult.getD()){
+                            tx1=baseResult.getM()+"-"+baseResult.getD();
+                            tx2=baseResult.getHour()+":"+baseResult.getMinite();
+                            Rect rect1=new Rect(),rect2=new Rect();
+                            paintBotXaxis.getTextBounds(tx1,0,tx1.length(),rect1);
+                            paintBotXaxis.getTextBounds(tx2,0,tx2.length(),rect2);
+                            canvas.drawText(tx1,x,heightReal+xbottom/4-rect1.height()/2,paintBotXaxis);
+                            canvas.drawText(tx2,x,heightReal+3*xbottom/4-rect2.height()/2,paintBotXaxis);
+                        }
+                        else{
+                            tx1=baseResult.getM()+"-"+baseResult.getD();
+                            tx2=baseResult.getHour()+":"+baseResult.getMinite();
+                            Rect rect1=new Rect(),rect2=new Rect();
+                            paintBotXaxis.getTextBounds(tx1,0,tx1.length(),rect1);
+                            paintBotXaxis.getTextBounds(tx2,0,tx2.length(),rect2);
+                            canvas.drawText(tx1,x,heightReal+xbottom/4-rect1.height()/2,paintBotXaxis);
+                            canvas.drawText(tx2,x,heightReal+3*xbottom/4-rect2.height()/2,paintBotXaxis);
+                        }
+                    }
+
+               }
+
+            {
+
+            }
+        }
+        
+        
+    }
+
+
     public int getNumber() {
         return Number;
     }
@@ -435,6 +575,10 @@ public class WqqBloodView extends View {
 
     private float getRealX(int index){
         return yLeft+(index+1)*((widthReal-XaxisLengthMar)/mPointList.size());
+    }
+
+    private float getRealX(int index, int all){
+        return yLeft+(index+1)*((widthReal)/all);
     }
 
     private void getYmaxAndYminValue(){

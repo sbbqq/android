@@ -31,8 +31,7 @@ public class BserActivity extends AppCompatActivity {
         pointList.add(new Point(410, 305));
         pointList.add(new Point(510, 308));
         pointList.add(new Point(610, 306));
-        pointList.add(new Point(710, 320));
-        pointList.add(new Point(810, 329));
+
 
         mBezierView.setPointList(pointList);
         //mBezierView.startAnimation(1000);

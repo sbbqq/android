@@ -10,6 +10,7 @@
 
     <com.example.moduleview.developerandroid.CustomView.WqqBezierView
         android:layout_width="match_parent"
+        android:layerType="software"
         android:layout_height="match_parent"
         android:id="@+id/bezier"
         />
