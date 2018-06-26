@@ -365,6 +365,21 @@
             ]
         },
         {
+            "outputFile": "/home/alone-nine-sword/newandroidwork/DeveloperANDROID/moduleview/build/intermediates/res/merged/debug/values-sw600dp-v13_values-sw600dp-v13.arsc.flat",
+            "map": [
+                {
+                    "source": "/home/alone-nine-sword/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/36c0279d27f48a6549c7832f99e6d55e/res/values-sw600dp-v13/values-sw600dp-v13.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,124,193,263,337,413,472,543",
+                        "endColumns": "68,68,69,73,75,58,70,67",
+                        "endOffsets": "119,188,258,332,408,467,538,606"
+                    }
+                }
+            ]
+        },
+        {
             "outputFile": "/home/alone-nine-sword/newandroidwork/DeveloperANDROID/moduleview/build/intermediates/res/merged/debug/values-v12_values-v12.arsc.flat",
             "map": [
                 {
@@ -376,21 +391,6 @@
                         "endLines": "4,7,8,9",
                         "endColumns": "12,12,118,94",
                         "endOffsets": "274,474,593,688"
-                    }
-                }
-            ]
-        },
-        {
-            "outputFile": "/home/alone-nine-sword/newandroidwork/DeveloperANDROID/moduleview/build/intermediates/res/merged/debug/values-sw600dp-v13_values-sw600dp-v13.arsc.flat",
-            "map": [
-                {
-                    "source": "/home/alone-nine-sword/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/36c0279d27f48a6549c7832f99e6d55e/res/values-sw600dp-v13/values-sw600dp-v13.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,124,193,263,337,413,472,543",
-                        "endColumns": "68,68,69,73,75,58,70,67",
-                        "endOffsets": "119,188,258,332,408,467,538,606"
                     }
                 }
             ]
@@ -636,21 +636,6 @@
             ]
         },
         {
-            "outputFile": "/home/alone-nine-sword/newandroidwork/DeveloperANDROID/moduleview/build/intermediates/res/merged/debug/values-night-v8_values-night-v8.arsc.flat",
-            "map": [
-                {
-                    "source": "/home/alone-nine-sword/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/36c0279d27f48a6549c7832f99e6d55e/res/values-night-v8/values-night-v8.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8",
-                        "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "55,125,209,293,389,491,593",
-                        "endColumns": "69,83,83,95,101,101,93",
-                        "endOffsets": "120,204,288,384,486,588,682"
-                    }
-                }
-            ]
-        },
-        {
             "outputFile": "/home/alone-nine-sword/newandroidwork/DeveloperANDROID/moduleview/build/intermediates/res/merged/debug/values_values.arsc.flat",
             "map": [
                 {
@@ -812,6 +797,21 @@
                         "startOffsets": "43804,43863,43911,44578,44653,44729,46619",
                         "endColumns": "58,47,55,74,75,71,65",
                         "endOffsets": "43858,43906,43962,44648,44724,44796,46680"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/home/alone-nine-sword/newandroidwork/DeveloperANDROID/moduleview/build/intermediates/res/merged/debug/values-night-v8_values-night-v8.arsc.flat",
+            "map": [
+                {
+                    "source": "/home/alone-nine-sword/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/36c0279d27f48a6549c7832f99e6d55e/res/values-night-v8/values-night-v8.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "55,125,209,293,389,491,593",
+                        "endColumns": "69,83,83,95,101,101,93",
+                        "endOffsets": "120,204,288,384,486,588,682"
                     }
                 }
             ]

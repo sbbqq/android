@@ -16,6 +16,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 
+import com.example.moduleview.Modal.BaseResult;
 import com.example.moduleview.R;
 
 import java.util.List;
@@ -27,6 +28,7 @@ import java.util.List;
 public class WqqBezierView extends View {
     private float lineSmoothness = 0.2f;
     private List<Point> mPointList;
+    private List<BaseResult>baseResults;
     private Path mPath;
     private Path mAssistPath;
     private float drawScale = 1f;
@@ -74,6 +76,10 @@ public class WqqBezierView extends View {
     private int YvalueLeft=40;
 
 
+    //draw bottom
+    Paint paintBotBg,paintBotXaxis;
+
+
     public WqqBezierView(Context context) {
         super(context);
         init();
@@ -87,7 +93,7 @@ public class WqqBezierView extends View {
     public void setPointList(List<Point> pointList) {
         mPointList = pointList;
        //getYmaxAndYminValue();
-        measurePath();
+        //measurePath();
 
     }
 
@@ -172,21 +178,48 @@ public class WqqBezierView extends View {
         paintYline.setPathEffect(new DashPathEffect(new float[] {5, 5}, 0));
         paintYline.setStrokeCap(Paint.Cap.ROUND);
         paintYline.setAntiAlias(true);
+
+        //draw bg  set paint
+        paintBg=new Paint();
+        paintBg.setStyle(Paint.Style.FILL);
+        paintBg.setStrokeWidth(PaintWidthbg);
+        paintBg.setTextSize(paintTextSize);
+        paintBg.setColor(0x80C1CDCD);
+        paintBg.setStrokeCap(Paint.Cap.ROUND);
+        paintBg.setAntiAlias(true);
+
+        //draw bottom
+        paintBotBg=new Paint();
+        paintBotBg.setStyle(Paint.Style.FILL);
+        paintBotBg.setStrokeWidth(PaintWidthbg);
+        paintBotBg.setTextSize(paintTextSize);
+        paintBotBg.setColor(Color.BLUE);
+        paintBotBg.setStrokeCap(Paint.Cap.ROUND);
+        paintBotBg.setAntiAlias(true);
+
+        paintBotXaxis=new Paint();
+        paintBotXaxis.setStyle(Paint.Style.FILL);
+        paintBotXaxis.setTextAlign(Paint.Align.CENTER);
+        paintBotXaxis.setStrokeWidth(PaintWidthbg);
+        paintBotXaxis.setTextSize(paintTextSize);
+        paintBotXaxis.setColor(Color.WHITE);
+        paintBotXaxis.setStrokeCap(Paint.Cap.ROUND);
+        paintBotXaxis.setAntiAlias(true);
     }
 
 
 
     @Override
     protected void onDraw(Canvas canvas) {
-        if (mPointList == null)
-            return;
+
         //measurePath();
         Paint paint = new Paint();
         paint.setColor(Color.RED);
         paint.setStrokeWidth(3);
         paint.setStyle(Paint.Style.STROKE);
         //绘制辅助线
-        //canvas.drawPath(mAssistPath,paint);
+       // canvas.drawPath(mAssistPath,paint);
+        drawBottom(canvas);
         drawAxis(canvas);
         drawBg(canvas);
 
@@ -240,16 +273,17 @@ public class WqqBezierView extends View {
         redPaint.setStrokeWidth(3);
         redPaint.setStyle(Paint.Style.FILL);
         pathTips.reset();
-        for (int i=0;i<mPointList.size();i++) {
+        for (int i=0;i<baseResults.size();i++) {
             Log.e("drawtipsandpoint","i:"+i);
             redPaint.setColor(Color.WHITE);
-            canvas.drawCircle(getRealX(i), getRealY((float)(mPointList.get(i).y)), 20, redPaint);
+            BaseResult baseResult=baseResults.get(i);
+            canvas.drawCircle(getRealX(i), getRealY(Float.parseFloat(baseResult.getFirstValue())), 20, redPaint);
             redPaint.setColor(Color.BLUE);
-            canvas.drawCircle(getRealX(i), getRealY((float)(mPointList.get(i).y)), 10, redPaint);
+            canvas.drawCircle(getRealX(i), getRealY(Float.parseFloat(baseResult.getFirstValue())), 10, redPaint);
 
             //画ｔｉｐｓ
             Point point = new Point();
-            point.set((int)getRealX(i), (int)getRealY((float)(mPointList.get(i).y))-Ymove);
+            point.set((int)getRealX(i), (int)getRealY(Float.parseFloat(baseResult.getFirstValue()))-Ymove);
             RectF rectFtip = new RectF(point.x - tipwidth / 2, point.y - tipheight, point.x + tipwidth / 2, point.y);
             pathTips.reset();
             pathTips.addRoundRect(rectFtip, tangleruondxy, tangleruondxy, Path.Direction.CW);
@@ -262,7 +296,7 @@ public class WqqBezierView extends View {
            // canvas.drawPath(pathAll, paintshadow);
             canvas.drawPath(pathTips, paintTips);
             Rect rectbound = new Rect();
-            String text = mPointList.get(i).y+"";
+            String text = Float.parseFloat(baseResult.getFirstValue())+"";
             paintTipValue.getTextBounds(text, 0, text.length(), rectbound);
 
             canvas.drawText(text, point.x, point.y - tipheight / 2 + rectbound.height() / 2, paintTipValue);
@@ -289,12 +323,22 @@ public class WqqBezierView extends View {
             canvas.drawLine(yLeft,height-xbottom-(i+1)*((heightReal-YaxisLengthMar)/YaxisNumber),width-yright,height-xbottom-(i+1)*((heightReal-YaxisLengthMar)/YaxisNumber),paintYline);
         }
         //canvas.drawLine(yLeft,height-xbottom,width-yright,height-xbottom,paintYaxis);
-        for(int i=0;i<mPointList.size();i++){
+        for(int i=0;i<baseResults.size();i++){
            // canvas.drawLine(yLeft+(i+1)*((widthReal-XaxisLengthMar)/mPointList.size()),height-xbottom,yLeft+(i+1)*((widthReal-XaxisLengthMar)/mPointList.size()),height-xbottom-lengthFlag,paintYaxis);
+            drawXaxisValue(getRealX(i),i,canvas);
         }
     }
 
 
+
+    /**
+     * draw bottom
+     * @param canvas
+     */
+    private void drawBottom(Canvas canvas){
+        RectF rectFbottom=new RectF(0,height-xbottom,width,height);
+        canvas.drawRect(rectFbottom,paintBotBg);
+    }
     /**
      * draw grid bg
      * @param canvas
@@ -310,10 +354,107 @@ public class WqqBezierView extends View {
             canvas.drawLine(yLeft,xtop+i*(heightReal)/gridYNumber,width-yright,xtop+i*(heightReal)/gridYNumber,paintBg);
         }
 
+
+
+    }
+
+    /**
+     * draw x axis date value
+     * @param x
+     * @param index
+     * @param canvas
+     */
+    private void drawXaxisValue(float x,int index,Canvas canvas){
+        BaseResult baseResult=baseResults.get(index);
+        String tx1="null";
+        String tx2="null";
+        int flag=0;//;0 第一个 1 代表 不同年 2：同年不同天（） 3 同年同天（包括同月）
+        if(index==0){
+            tx1=baseResult.getY()+"-"+baseResult.getM()+"-"+baseResult.getD();
+            tx2=baseResult.getHour()+":"+baseResult.getMinite();
+            Rect rect1=new Rect(),rect2=new Rect();
+            paintBotXaxis.getTextBounds(tx1,0,tx1.length(),rect1);
+            paintBotXaxis.getTextBounds(tx2,0,tx2.length(),rect2);
+            canvas.drawText(tx1,x,heightReal+xtop+xbottom/4+rect1.height()/2,paintBotXaxis);
+            canvas.drawText(tx2,x,heightReal+xtop+3*xbottom/4+rect2.height()/2,paintBotXaxis);
+            flag=0;
+        }
+        else {
+            flag=1;
+            if(baseResults.get(index-1).getY()!=baseResult.getY()){
+                tx1=baseResult.getY()+"-"+baseResult.getM()+"-"+baseResult.getD();
+                tx2=baseResult.getHour()+":"+baseResult.getMinite();
+                Rect rect1=new Rect(),rect2=new Rect();
+                paintBotXaxis.getTextBounds(tx1,0,tx1.length(),rect1);
+                paintBotXaxis.getTextBounds(tx2,0,tx2.length(),rect2);
+                canvas.drawText(tx1,x,heightReal+xtop+xbottom/4+rect1.height()/2,paintBotXaxis);
+                canvas.drawText(tx2,x,heightReal+xtop+3*xbottom/4+rect2.height()/2,paintBotXaxis);
+            }
+            else{
+                if(index<=baseResults.size()-2)
+                {
+                    if((baseResults.get(index-1).getM()==baseResult.getM()&&baseResults.get(index-1).getD()==baseResult.getD())||(baseResults.get(index+1).getM()==baseResult.getM()&&baseResults.get(index+1).getD()==baseResult.getD())){
+                        flag=3;
+                    }
+                    else{
+                        flag=2;
+                    }
+                }
+                else{
+                    if(baseResults.get(index-1).getM()==baseResult.getM()&&baseResults.get(index-1).getD()==baseResult.getD()){
+                        flag=3;
+                    }
+                    else{
+                        flag=2;
+                    }
+                }
+
+            }
+
+            {
+
+            }
+        }
+        switch ( flag){
+            case 0:
+                break;
+            case 1:
+                break;
+            case 2:
+                tx1=baseResult.getM()+"-"+baseResult.getD();
+                // tx2=baseResult.getHour()+":"+baseResult.getMinite();
+                Rect rect1=new Rect(),rect2=new Rect();
+                paintBotXaxis.getTextBounds(tx1,0,tx1.length(),rect1);
+                // paintBotXaxis.getTextBounds(tx2,0,tx2.length(),rect2);
+                canvas.drawText(tx1,x,heightReal+xtop+xbottom/2+rect1.height()/2,paintBotXaxis);
+                //  canvas.drawText(tx2,x,heightReal+3*xbottom/4-rect2.height()/2,paintBotXaxis);
+                break;
+            case 3:
+                tx1=baseResult.getM()+"-"+baseResult.getD();
+                tx2=baseResult.getHour()+":"+baseResult.getMinite();
+                Rect rect11=new Rect(),rect22=new Rect();
+                paintBotXaxis.getTextBounds(tx1,0,tx1.length(),rect11);
+                paintBotXaxis.getTextBounds(tx2,0,tx2.length(),rect22);
+                canvas.drawText(tx1,x,heightReal+xtop+xbottom/4+rect11.height()/2,paintBotXaxis);
+                canvas.drawText(tx2,x,heightReal+xtop+3*xbottom/4+rect22.height()/2,paintBotXaxis);
+                break;
+
+        }
+
     }
 
     private PathEffect getPathEffect(float length) {
         return new DashPathEffect(new float[]{length * drawScale, length}, 0);
+    }
+
+    public List<BaseResult> getBaseResults() {
+        return baseResults;
+    }
+
+    public void setBaseResults(List<BaseResult> baseResults) {
+        this.baseResults = baseResults;
+        measurePath();
+        this.invalidate();
     }
 
     private void measurePath() {
@@ -337,13 +478,15 @@ public class WqqBezierView extends View {
         float nextNPointX;
         float nextNPointY;
 
-        final int lineSize = mPointList.size();
-        for (int valueIndex = 0; valueIndex <= lineSize-2; ++valueIndex) {
+        final int lineSize = baseResults.size();
 
+        for (int valueIndex = 0; valueIndex <= lineSize-2; ++valueIndex) {
+              BaseResult baseResult=baseResults.get(valueIndex);
+              Log.e("fisrtvalue",baseResult.getFirstValue()+"i:"+valueIndex);
             currentPointX=getRealX(valueIndex);//mPointList.get(valueIndex).x;
-            currentPointY=getRealY((float)(mPointList.get(valueIndex).y));
+            currentPointY=getRealY((float)(Float.parseFloat(baseResult.getFirstValue())));
             nextPointX=getRealX(valueIndex+1);//mPointList.get(valueIndex+1).x;
-            nextPointY=getRealY((float)(mPointList.get(valueIndex+1).y));
+            nextPointY=getRealY(Float.parseFloat(baseResults.get(valueIndex+1).getFirstValue()));
 
             if( valueIndex==lineSize-2) {
                 nextNPointX=0;//any value
@@ -351,7 +494,7 @@ public class WqqBezierView extends View {
             }
             else{
                 nextNPointX = getRealX(valueIndex + 2);//mPointList.get(valueIndex + 2).x;
-                nextNPointY = getRealY((float)(mPointList.get(valueIndex+2).y));
+                nextNPointY = getRealY(Float.parseFloat(baseResults.get(valueIndex+2).getFirstValue()));
             }
 
 
@@ -428,11 +571,11 @@ public class WqqBezierView extends View {
     }
 
     private float getRealX(int index){
-        return yLeft+(index+1)*((widthReal-XaxisLengthMar)/mPointList.size());
+        return yLeft+(index)*((widthReal-XaxisLengthMar)/(baseResults.size()-1));
     }
 
     private float getRealX(int index, int all){
-        return yLeft+(index+1)*((widthReal)/all);
+        return yLeft+(index)*((widthReal)/all);
     }
 
     private void getYmaxAndYminValue(){
@@ -481,6 +624,7 @@ public class WqqBezierView extends View {
      setMeasuredDimension(widthsize,heightsize);
          widthReal=widthsize-yLeft-yright;
          heightReal=heightsize-xbottom-xtop;
+         if(baseResults!=null)
          measurePath();
     }
 

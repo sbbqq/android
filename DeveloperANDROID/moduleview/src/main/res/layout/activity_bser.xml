@@ -15,27 +15,9 @@
         android:id="@+id/bezier"
         />
 
-    <Button
-        android:text="生成"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/button"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="28dp"
-        android:onClick="onClick"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="28dp" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="numberDecimal"
-        android:ems="10"
-        android:layout_alignParentBottom="true"
-        android:layout_toStartOf="@+id/button"
-        android:id="@+id/editText"
-        android:layout_toLeftOf="@+id/button" />
+
+
 
 
 </RelativeLayout>

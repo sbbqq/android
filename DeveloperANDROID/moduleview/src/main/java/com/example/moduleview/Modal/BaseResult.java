@@ -9,8 +9,8 @@ import android.content.Intent;
 public class BaseResult {
     private int Y,M,D;
     private int Hour,Minite;
-    private String FirstValue;
-    private String SecondValue;
+    private String FirstValue="80";
+    private String SecondValue="120";
 
     public BaseResult(int y, int m, int d, int hour, int minite) {
         Y = y;
@@ -81,5 +81,9 @@ public class BaseResult {
     }
      private float getfloatValue(String value){
         return Float.parseFloat(value);
+     }
+     public void setValue(String f,String s){
+         this.FirstValue=f;
+         this.SecondValue=s;
      }
 }
