@@ -1,4 +1,0 @@
-#Tue Jun 26 15:13:20 CST 2018
-base.0=/home/alone-nine-sword/newandroidwork/DeveloperANDROID/moduleview/build/intermediates/transforms/dexMerger/debug/10
-path.0=classes.dex
-renamed.0=classes.dex

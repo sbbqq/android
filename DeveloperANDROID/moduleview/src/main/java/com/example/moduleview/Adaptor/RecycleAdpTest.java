@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.moduleview.Interface.InPosition;
 import com.example.moduleview.R;
 
 import java.util.ArrayList;
@@ -25,6 +26,8 @@ import java.util.ArrayList;
 public class RecycleAdpTest extends RecyclerView.Adapter<RecycleAdpTest.MyViewHolder> {
     ArrayList<String>arrayList;
     Context context;
+    InPosition inPosition;
+    int lastposition=0;
     @Override
     public RecycleAdpTest.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         MyViewHolderchild myViewHolder=new MyViewHolderchild(LayoutInflater.from(context).inflate(R.layout.layout_item_recycle,null,false));
@@ -76,10 +79,13 @@ public class RecycleAdpTest extends RecyclerView.Adapter<RecycleAdpTest.MyViewHo
                  if(hasFocus){
                      Log.e("getfocus",position+"");
                      focusStatus(v);
+                     inPosition.transpos(position,lastposition);
+
                  }
                  else{
                      Log.e("leavefocus",position+"");
                      normalStatus(v);
+                     lastposition=position;
                  }
              }
          });
@@ -169,7 +175,12 @@ public class RecycleAdpTest extends RecyclerView.Adapter<RecycleAdpTest.MyViewHo
         this.context = context;
     }
 
+    public InPosition getInPosition() {
+        return inPosition;
+    }
 
-
+    public void setInPosition(InPosition inPosition) {
+        this.inPosition = inPosition;
+    }
 }
 

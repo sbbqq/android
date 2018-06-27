@@ -752,6 +752,10 @@
         "source": "/home/alone-nine-sword/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/36c0279d27f48a6549c7832f99e6d55e/res/drawable/abc_ic_arrow_drop_right_black_24dp.xml"
     },
     {
+        "merged": "/home/alone-nine-sword/newandroidwork/DeveloperANDROID/moduleview/build/intermediates/res/merged/debug/layout_layout_item_value.xml.flat",
+        "source": "/home/alone-nine-sword/newandroidwork/DeveloperANDROID/moduleview/src/main/res/layout/layout_item_value.xml"
+    },
+    {
         "merged": "/home/alone-nine-sword/newandroidwork/DeveloperANDROID/moduleview/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_ic_star_black_36dp.png.flat",
         "source": "/home/alone-nine-sword/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/36c0279d27f48a6549c7832f99e6d55e/res/drawable-hdpi-v4/abc_ic_star_black_36dp.png"
     },
