@@ -8,38 +8,47 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
+import com.example.moduleview.Adaptor.RecycleAdpFamily;
 import com.example.moduleview.Adaptor.RecycleAdpTest;
 import com.example.moduleview.Interface.InPosition;
+import com.example.moduleview.Modal.Attribute;
+import com.example.moduleview.Modal.Family;
 
 import java.util.ArrayList;
 
 public class RecycleViewlearnActivity extends Activity implements InPosition {
 RecyclerView recyclerView,recyclerView2;
-ArrayList<String>arrayList;
-RecycleAdpTest adpTest;
+ArrayList<Family>arrayList;
+RecycleAdpFamily adpTest;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycle_viewlearn);
 
         recyclerView=(RecyclerView)findViewById(R.id.recycleviewtest);
-        recyclerView2=(RecyclerView)findViewById(R.id.recycleviewtest2);
+       // recyclerView2=(RecyclerView)findViewById(R.id.recycleviewtest2);
         inidata();
     }
     public void inidata(){
         arrayList=new ArrayList<>();
         for(int i=0;i<8;i++){
-            arrayList.add(i+"");
+            Family family=new Family(i+"hhhfdsf",1);
+             for(int j=0;j<3;j++){
+             Attribute attribute=new Attribute(i,"i");
+             family.getAttributes().add(attribute);
+
+             }
+            arrayList.add(family);
         }
-        adpTest=new RecycleAdpTest(arrayList,this);
+        adpTest=new RecycleAdpFamily(arrayList,this);
         adpTest.setInPosition(this);
-        recyclerView.setAdapter(adpTest);
+
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
-        recyclerView2.setAdapter(adpTest);
-        recyclerView2.setLayoutManager(new GridLayoutManager(this,3));
+//        recyclerView2.setAdapter(adpTest);
+//        recyclerView2.setLayoutManager(new GridLayoutManager(this,3));
 
-
+        recyclerView.setAdapter(adpTest);
     }
 
 

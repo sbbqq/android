@@ -14,23 +14,27 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.moduleview.Interface.InPosition;
+import com.example.moduleview.Modal.Family;
 import com.example.moduleview.R;
+import com.example.moduleview.developerandroid.CustomView.FamailyGroup;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
  * Created by wqq on 18-6-21.
  */
 
-public class RecycleAdpTest extends RecyclerView.Adapter<RecycleAdpTest.MyViewHolder> {
-    ArrayList<String>arrayList;
+public class RecycleAdpFamily extends RecyclerView.Adapter<RecycleAdpFamily.MyViewHolder> {
+
+    List<Family>families;
     Context context;
     InPosition inPosition;
     int lastposition=0;
     @Override
-    public RecycleAdpTest.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        MyViewHolderchild myViewHolder=new MyViewHolderchild(LayoutInflater.from(context).inflate(R.layout.layout_item_recycle,null,false));
+    public RecycleAdpFamily.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        MyViewHolderchild myViewHolder=new MyViewHolderchild(LayoutInflater.from(context).inflate(R.layout.layout_hehe,null,false));
         return  myViewHolder;
     }
 
@@ -44,7 +48,7 @@ public class RecycleAdpTest extends RecyclerView.Adapter<RecycleAdpTest.MyViewHo
 
     @Override
     public int getItemCount() {
-        return arrayList.size();
+        return families.size();
     }
 
 
@@ -52,14 +56,14 @@ public class RecycleAdpTest extends RecyclerView.Adapter<RecycleAdpTest.MyViewHo
     public abstract  class MyViewHolder<T> extends RecyclerView.ViewHolder
     {
         View itemView;
-        Button tv;
+        TextView tv;
 
         public MyViewHolder(View view)
         {
             super(view);
             this.itemView=view;
             view.setFocusable(true);
-            tv = (Button) view.findViewById(R.id.txt_recycle_item_test);
+            tv = (TextView) view.findViewById(R.id.tx_attr_whom);
         }
         public abstract void setUpView(int position);
     }
@@ -72,7 +76,7 @@ public class RecycleAdpTest extends RecyclerView.Adapter<RecycleAdpTest.MyViewHo
 
         @Override
         public void setUpView(final int position) {
-           // tv.setText(arrayList.get(position));
+           tv.setText(families.get(position).getWhom());
          itemView.setOnFocusChangeListener(new View.OnFocusChangeListener() {
              @Override
              public void onFocusChange(View v, boolean hasFocus) {
@@ -164,16 +168,11 @@ public class RecycleAdpTest extends RecyclerView.Adapter<RecycleAdpTest.MyViewHo
     }
 
 
-
-
-    public RecycleAdpTest(ArrayList<String> arrayList) {
-        this.arrayList = arrayList;
-    }
-
-    public RecycleAdpTest(ArrayList<String> arrayList, Context context) {
-        this.arrayList = arrayList;
+    public RecycleAdpFamily(List<Family> families, Context context) {
+        this.families = families;
         this.context = context;
     }
+
 
     public InPosition getInPosition() {
         return inPosition;

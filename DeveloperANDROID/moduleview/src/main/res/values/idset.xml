@@ -4,4 +4,9 @@
     <item type="id" name="year_minus" />
     <item type="id" name="month_plus" />
     <item type="id" name="month_minus" />
+
+    //!----------------family-id-------------------->
+
+    <item type="id" name="fam_pic"/>
+
 </resources>

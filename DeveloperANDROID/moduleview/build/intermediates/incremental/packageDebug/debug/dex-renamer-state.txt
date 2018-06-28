@@ -1,4 +1,19 @@
-#Wed Jun 27 15:28:53 CST 2018
-base.0=/home/alone-nine-sword/newandroidwork/DeveloperANDROID/moduleview/build/intermediates/transforms/dexMerger/debug/0
+#Thu Jun 28 20:28:20 CST 2018
+path.1=classes.dex
 path.0=classes.dex
+renamed.5=classes6.dex
+renamed.4=classes5.dex
+renamed.3=classes4.dex
+renamed.2=classes3.dex
+renamed.1=classes2.dex
 renamed.0=classes.dex
+base.5=/home/alone-nine-sword/newandroidwork/DeveloperANDROID/moduleview/build/intermediates/transforms/dexMerger/debug/14
+base.4=/home/alone-nine-sword/newandroidwork/DeveloperANDROID/moduleview/build/intermediates/transforms/dexMerger/debug/17
+base.3=/home/alone-nine-sword/newandroidwork/DeveloperANDROID/moduleview/build/intermediates/transforms/dexMerger/debug/12
+base.2=/home/alone-nine-sword/newandroidwork/DeveloperANDROID/moduleview/build/intermediates/transforms/dexMerger/debug/15
+base.1=/home/alone-nine-sword/newandroidwork/DeveloperANDROID/moduleview/build/intermediates/transforms/dexMerger/debug/13
+base.0=/home/alone-nine-sword/newandroidwork/DeveloperANDROID/moduleview/build/intermediates/transforms/dexMerger/debug/16
+path.5=classes.dex
+path.4=classes.dex
+path.3=classes.dex
+path.2=classes.dex

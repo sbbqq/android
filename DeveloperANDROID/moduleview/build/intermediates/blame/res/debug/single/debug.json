@@ -208,6 +208,10 @@
         "source": "/home/alone-nine-sword/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/36c0279d27f48a6549c7832f99e6d55e/res/drawable-xxxhdpi-v4/abc_ic_star_half_black_16dp.png"
     },
     {
+        "merged": "/home/alone-nine-sword/newandroidwork/DeveloperANDROID/moduleview/build/intermediates/res/merged/debug/layout_layout_hehe.xml.flat",
+        "source": "/home/alone-nine-sword/newandroidwork/DeveloperANDROID/moduleview/src/main/res/layout/layout_hehe.xml"
+    },
+    {
         "merged": "/home/alone-nine-sword/newandroidwork/DeveloperANDROID/moduleview/build/intermediates/res/merged/debug/drawable_abc_ic_go_search_api_material.xml.flat",
         "source": "/home/alone-nine-sword/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/36c0279d27f48a6549c7832f99e6d55e/res/drawable/abc_ic_go_search_api_material.xml"
     },
@@ -268,12 +272,12 @@
         "source": "/home/alone-nine-sword/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/c0af134d1e864b34c42e03e71df45f9c/res/layout/notification_template_big_media.xml"
     },
     {
-        "merged": "/home/alone-nine-sword/newandroidwork/DeveloperANDROID/moduleview/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_scrubber_control_to_pressed_mtrl_000.png.flat",
-        "source": "/home/alone-nine-sword/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/36c0279d27f48a6549c7832f99e6d55e/res/drawable-xxxhdpi-v4/abc_scrubber_control_to_pressed_mtrl_000.png"
-    },
-    {
         "merged": "/home/alone-nine-sword/newandroidwork/DeveloperANDROID/moduleview/build/intermediates/res/merged/debug/drawable_abc_cab_background_top_material.xml.flat",
         "source": "/home/alone-nine-sword/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/36c0279d27f48a6549c7832f99e6d55e/res/drawable/abc_cab_background_top_material.xml"
+    },
+    {
+        "merged": "/home/alone-nine-sword/newandroidwork/DeveloperANDROID/moduleview/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_scrubber_control_to_pressed_mtrl_000.png.flat",
+        "source": "/home/alone-nine-sword/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/36c0279d27f48a6549c7832f99e6d55e/res/drawable-xxxhdpi-v4/abc_scrubber_control_to_pressed_mtrl_000.png"
     },
     {
         "merged": "/home/alone-nine-sword/newandroidwork/DeveloperANDROID/moduleview/build/intermediates/res/merged/debug/drawable_abc_switch_thumb_material.xml.flat",
@@ -682,6 +686,10 @@
     {
         "merged": "/home/alone-nine-sword/newandroidwork/DeveloperANDROID/moduleview/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_ic_menu_paste_mtrl_am_alpha.png.flat",
         "source": "/home/alone-nine-sword/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/36c0279d27f48a6549c7832f99e6d55e/res/drawable-xxxhdpi-v4/abc_ic_menu_paste_mtrl_am_alpha.png"
+    },
+    {
+        "merged": "/home/alone-nine-sword/newandroidwork/DeveloperANDROID/moduleview/build/intermediates/res/merged/debug/layout_layout_item_head.xml.flat",
+        "source": "/home/alone-nine-sword/newandroidwork/DeveloperANDROID/moduleview/src/main/res/layout/layout_item_head.xml"
     },
     {
         "merged": "/home/alone-nine-sword/newandroidwork/DeveloperANDROID/moduleview/build/intermediates/res/merged/debug/layout_abc_dialog_title_material.xml.flat",
