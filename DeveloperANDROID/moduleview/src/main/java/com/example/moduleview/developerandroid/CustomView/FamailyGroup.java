@@ -11,6 +11,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.example.moduleview.Modal.Family;
 import com.example.moduleview.R;
@@ -67,17 +68,46 @@ public class FamailyGroup extends ViewGroup {
        addView(relativeLayoutHead);
        addView(imageViewbody);
        //requestLayout();
-       iniView();
+       //iniView();
 
    }
     private void iniView(){
-
+          removeAllViews();
+          ini();
         for(int i=0;i<family.getAttributes().size();i++){
-            LinearLayout linearLayoutattr=(LinearLayout)LayoutInflater.from(context).inflate(R.layout.layout_item_value,null,false);
-            linearLayoutattr.setLayoutParams(new LayoutParams(width/3,height/4));
-            addView(linearLayoutattr);
+            switch (family.getAttributes().get(i).getFlag()){////0 血压 1 血糖 2 体温 3 体重
+                case 0:
+                    LinearLayout linearLayoutattr=(LinearLayout)LayoutInflater.from(context).inflate(R.layout.layout_item_value,null,false);
+                    TextView textValue=(TextView)linearLayoutattr.findViewById(R.id.tx_attr_value_blood);
+                   // textValue.setText(family.getAttributes().get(i).getValue()+"");
+                    linearLayoutattr.setLayoutParams(new LayoutParams(width/3,height/4));
+                    addView(linearLayoutattr);
+                    break;
+                case 1:
+                    LinearLayout linearLayoutattrsugar=(LinearLayout)LayoutInflater.from(context).inflate(R.layout.layout_item_value,null,false);
+                    TextView textValuesugar=(TextView)linearLayoutattrsugar.findViewById(R.id.tx_attr_value_bloodsugar);
+                    //textValuesugar.setText(family.getAttributes().get(i).getValue()+"");
+                    linearLayoutattrsugar.setLayoutParams(new LayoutParams(width/3,height/4));
+                    addView(linearLayoutattrsugar);
+                    break;
+                case 2:
+                    LinearLayout linearLayoutattrtempature=(LinearLayout)LayoutInflater.from(context).inflate(R.layout.layout_item_value,null,false);
+                    TextView textValuetempatur=(TextView)linearLayoutattrtempature.findViewById(R.id.tx_attr_value_tempature);
+                    //textValuetempatur.setText(family.getAttributes().get(i).getValue()+"");
+                    linearLayoutattrtempature.setLayoutParams(new LayoutParams(width/3,height/4));
+                    addView( linearLayoutattrtempature);
+                    break;
+                case 3:
+                    LinearLayout linearLayoutattrweight=(LinearLayout)LayoutInflater.from(context).inflate(R.layout.layout_item_value,null,false);
+                    TextView textValueweight=(TextView)linearLayoutattrweight.findViewById(R.id.tx_attr_value_blood);
+                   // textValueweight.setText(family.getAttributes().get(i).getValue()+"");
+                    linearLayoutattrweight.setLayoutParams(new LayoutParams(width/3,height/4));
+                    addView(linearLayoutattrweight);
+                    break;
+            }
+           ;
         }
-        //requestLayout();
+        requestLayout();
     }
 
     @Override
@@ -92,14 +122,15 @@ public class FamailyGroup extends ViewGroup {
              else if(i==2||i==3||i==4){
                  int left=0;int right=width/3;
                  int top=height/4+(i-2)*height/4;
-                 int bot=top+getChildAt(i).getMeasuredHeight();
-                 getChildAt(i).layout(left,right,top,bot);
+                 int bot=top+height/4;
+                 getChildAt(i).layout(left,top,right,bot);
+                 Log.e("witch:",i+"<--:i"+"top:"+top+"bot:"+bot+"left:"+left+"right:"+right);
              }
              else if(i==5||i==6||i==7){
                  int left=width*2/3;int right=width;
                  int top=height/4+(i-5)*height/4;
                  int bot=top+getChildAt(i).getMeasuredHeight();
-                 getChildAt(i).layout(left,right,top,bot);
+                 getChildAt(i).layout(left,top,right,bot);
              }
          }
          Log.e("sizechild",getChildCount()+"");

@@ -35,6 +35,7 @@ public class RecycleAdpFamily extends RecyclerView.Adapter<RecycleAdpFamily.MyVi
     @Override
     public RecycleAdpFamily.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         MyViewHolderchild myViewHolder=new MyViewHolderchild(LayoutInflater.from(context).inflate(R.layout.layout_hehe,null,false));
+
         return  myViewHolder;
     }
 
@@ -57,6 +58,9 @@ public class RecycleAdpFamily extends RecyclerView.Adapter<RecycleAdpFamily.MyVi
     {
         View itemView;
         TextView tv;
+        FamailyGroup famailyGroup;
+        TextView tevblood,txvweight,txvsugar,txvt;
+        TextView txvalue;
 
         public MyViewHolder(View view)
         {
@@ -64,6 +68,9 @@ public class RecycleAdpFamily extends RecyclerView.Adapter<RecycleAdpFamily.MyVi
             this.itemView=view;
             view.setFocusable(true);
             tv = (TextView) view.findViewById(R.id.tx_attr_whom);
+            famailyGroup=(FamailyGroup)view.findViewById(R.id.familygroup);
+            //txvalue=(TextView)famailyGroup.findViewById(R.id.tx_attr_value);
+
         }
         public abstract void setUpView(int position);
     }
@@ -77,6 +84,24 @@ public class RecycleAdpFamily extends RecyclerView.Adapter<RecycleAdpFamily.MyVi
         @Override
         public void setUpView(final int position) {
            tv.setText(families.get(position).getWhom());
+           famailyGroup.setFamily(families.get(position));
+            tevblood=(TextView)famailyGroup.findViewById(R.id.tx_attr_value_blood);
+            txvsugar=(TextView)famailyGroup.findViewById(R.id.tx_attr_value_bloodsugar);
+            txvweight=(TextView)famailyGroup.findViewById(R.id.tx_attr_value_weight);
+            txvt=(TextView)famailyGroup.findViewById(R.id.tx_attr_value_tempature);
+           // txvalue.setText(families.get(position));
+            if(tevblood!=null){
+              tevblood.setText(families.get(position).getAttrByFlag(0).getValue());
+            }
+            if(txvsugar!=null){
+                tevblood.setText(families.get(position).getAttrByFlag(1).getValue());
+            }
+            if(txvweight!=null){
+                tevblood.setText(families.get(position).getAttrByFlag(2).getValue());
+            }
+            if(txvt!=null){
+                tevblood.setText(families.get(position).getAttrByFlag(3).getValue());
+            }
          itemView.setOnFocusChangeListener(new View.OnFocusChangeListener() {
              @Override
              public void onFocusChange(View v, boolean hasFocus) {
@@ -166,6 +191,7 @@ public class RecycleAdpFamily extends RecyclerView.Adapter<RecycleAdpFamily.MyVi
             }
         }
     }
+
 
 
     public RecycleAdpFamily(List<Family> families, Context context) {

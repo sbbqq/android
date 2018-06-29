@@ -42,6 +42,15 @@ public class Family {
         this.sex = sex;
     }
 
+   public Attribute getAttrByFlag(int Flag){
+        for(int i=0;i<attributes.size();i++){
+             if(getAttributes().get(i).getFlag()==Flag)
+             {
+                 return  getAttributes().get(i);
 
+             }
+        }
+        return  null;
+   }
 
 }

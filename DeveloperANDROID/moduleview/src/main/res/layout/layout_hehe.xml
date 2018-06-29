@@ -4,5 +4,6 @@
     android:layout_height="match_parent">
 <com.example.moduleview.developerandroid.CustomView.FamailyGroup
     android:layout_width="match_parent"
+    android:id="@+id/familygroup"
     android:layout_height="match_parent"></com.example.moduleview.developerandroid.CustomView.FamailyGroup>
 </LinearLayout>

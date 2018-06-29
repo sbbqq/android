@@ -34,7 +34,7 @@ RecycleAdpFamily adpTest;
         for(int i=0;i<8;i++){
             Family family=new Family(i+"hhhfdsf",1);
              for(int j=0;j<3;j++){
-             Attribute attribute=new Attribute(i,"i");
+             Attribute attribute=new Attribute(j,"ij:"+i+j);
              family.getAttributes().add(attribute);
 
              }
