@@ -33,7 +33,7 @@ RecycleAdpFamily adpTest;
         arrayList=new ArrayList<>();
         for(int i=0;i<8;i++){
             Family family=new Family(i+"hhhfdsf",1);
-             for(int j=0;j<3;j++){
+             for(int j=0;j<4;j++){
              Attribute attribute=new Attribute(j,"ij:"+i+j);
              family.getAttributes().add(attribute);
 
@@ -64,5 +64,10 @@ RecycleAdpFamily adpTest;
                 recyclerView.scrollToPosition(nowpos-1);
             }
          }
+    }
+
+    @Override
+    public void dataNotify() {
+        adpTest.notifyDataSetChanged();
     }
 }

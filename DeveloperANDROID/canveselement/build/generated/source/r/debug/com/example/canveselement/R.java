@@ -2819,9 +2819,10 @@ public final class R {
     public static final int uniform=0x7f07007b;
     public static final int up=0x7f07007c;
     public static final int useLogo=0x7f07007d;
-    public static final int withText=0x7f07007e;
-    public static final int wrap=0x7f07007f;
-    public static final int wrap_content=0x7f070080;
+    public static final int webview=0x7f07007e;
+    public static final int withText=0x7f07007f;
+    public static final int wrap=0x7f070080;
+    public static final int wrap_content=0x7f070081;
   }
   public static final class integer {
     public static final int abc_config_activityDefaultDur=0x7f080000;
@@ -2858,28 +2859,30 @@ public final class R {
     public static final int abc_search_dropdown_item_icons_2line=0x7f090018;
     public static final int abc_search_view=0x7f090019;
     public static final int abc_select_dialog_material=0x7f09001a;
-    public static final int activity_main=0x7f09001b;
-    public static final int activity_main2=0x7f09001c;
-    public static final int notification_action=0x7f09001d;
-    public static final int notification_action_tombstone=0x7f09001e;
-    public static final int notification_media_action=0x7f09001f;
-    public static final int notification_media_cancel_action=0x7f090020;
-    public static final int notification_template_big_media=0x7f090021;
-    public static final int notification_template_big_media_custom=0x7f090022;
-    public static final int notification_template_big_media_narrow=0x7f090023;
-    public static final int notification_template_big_media_narrow_custom=0x7f090024;
-    public static final int notification_template_custom_big=0x7f090025;
-    public static final int notification_template_icon_group=0x7f090026;
-    public static final int notification_template_lines_media=0x7f090027;
-    public static final int notification_template_media=0x7f090028;
-    public static final int notification_template_media_custom=0x7f090029;
-    public static final int notification_template_part_chronometer=0x7f09002a;
-    public static final int notification_template_part_time=0x7f09002b;
-    public static final int select_dialog_item_material=0x7f09002c;
-    public static final int select_dialog_multichoice_material=0x7f09002d;
-    public static final int select_dialog_singlechoice_material=0x7f09002e;
-    public static final int support_simple_spinner_dropdown_item=0x7f09002f;
-    public static final int tooltip=0x7f090030;
+    public static final int activity_a=0x7f09001b;
+    public static final int activity_b=0x7f09001c;
+    public static final int activity_main=0x7f09001d;
+    public static final int activity_main2=0x7f09001e;
+    public static final int notification_action=0x7f09001f;
+    public static final int notification_action_tombstone=0x7f090020;
+    public static final int notification_media_action=0x7f090021;
+    public static final int notification_media_cancel_action=0x7f090022;
+    public static final int notification_template_big_media=0x7f090023;
+    public static final int notification_template_big_media_custom=0x7f090024;
+    public static final int notification_template_big_media_narrow=0x7f090025;
+    public static final int notification_template_big_media_narrow_custom=0x7f090026;
+    public static final int notification_template_custom_big=0x7f090027;
+    public static final int notification_template_icon_group=0x7f090028;
+    public static final int notification_template_lines_media=0x7f090029;
+    public static final int notification_template_media=0x7f09002a;
+    public static final int notification_template_media_custom=0x7f09002b;
+    public static final int notification_template_part_chronometer=0x7f09002c;
+    public static final int notification_template_part_time=0x7f09002d;
+    public static final int select_dialog_item_material=0x7f09002e;
+    public static final int select_dialog_multichoice_material=0x7f09002f;
+    public static final int select_dialog_singlechoice_material=0x7f090030;
+    public static final int support_simple_spinner_dropdown_item=0x7f090031;
+    public static final int tooltip=0x7f090032;
   }
   public static final class mipmap {
     public static final int ic_launcher=0x7f0a0000;

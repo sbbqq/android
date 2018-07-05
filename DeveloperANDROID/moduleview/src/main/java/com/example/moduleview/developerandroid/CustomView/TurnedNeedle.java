@@ -56,19 +56,19 @@ public class TurnedNeedle extends View {
         super.onDraw(canvas);
         Path path = new Path();                                 // 创建 Path
         canvas.translate(500,500);
-        path.addCircle(0, 0, 400, Path.Direction.CCW);           // 添加一个圆形
+        path.addCircle(0, 0, 400, Path.Direction.CW);           // 添加一个圆形
 
         PathMeasure measure = new PathMeasure(path, false);     // 创建 PathMeasure
 
-        currentValue += 0.005;                                  // 计算当前的位置在总长度上的比例[0,1]
+        currentValue += 0.001;                                  // 计算当前的位置在总长度上的比例[0,1]
         if (currentValue >= 1) {
             currentValue = 0;
         }
 
 // 获取当前位置的坐标以及趋势的矩阵
-        measure.getMatrix(measure.getLength() * currentValue, mMatrix, PathMeasure.TANGENT_MATRIX_FLAG );//PathMeasure.TANGENT_MATRIX_FLAG || PathMeasure.POSITION_MATRIX_FLAG
+        measure.getMatrix(measure.getLength() * currentValue, mMatrix, PathMeasure.TANGENT_MATRIX_FLAG | PathMeasure.POSITION_MATRIX_FLAG );//PathMeasure.TANGENT_MATRIX_FLAG || PathMeasure.POSITION_MATRIX_FLAG
 
-        //mMatrix.preTranslate(-mBitmap.getWidth() / 2, -mBitmap.getHeight() / 2);   // <-- 将图片绘制中心调整到与当前点重合(注意:此处是前乘pre)
+        mMatrix.preTranslate(-mBitmap.getWidth() / 2, -mBitmap.getHeight() / 2);   // <-- 将图片绘制中心调整到与当前点重合(注意:此处是前乘pre)
 
         canvas.drawPath(path, mDeafultPaint);                                   // 绘制 Path
         canvas.drawBitmap(mBitmap, mMatrix, mDeafultPaint);                     // 绘制箭头

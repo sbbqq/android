@@ -28,19 +28,25 @@ import java.util.List;
 
 public class RecycleAdpFamily extends RecyclerView.Adapter<RecycleAdpFamily.MyViewHolder> {
 
-    List<Family>families;
+    public  List<Family>families;
     Context context;
     InPosition inPosition;
     int lastposition=0;
     @Override
     public RecycleAdpFamily.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        MyViewHolderchild myViewHolder=new MyViewHolderchild(LayoutInflater.from(context).inflate(R.layout.layout_hehe,null,false));
+        Log.e("onCreateVIEWHOLDER","*********************"+viewType);
+        View view=LayoutInflater.from(context).inflate(R.layout.layout_hehe,null,false);
 
+
+         FamailyGroup famailyGroup=(FamailyGroup)view.findViewById(R.id.familygroup);
+         famailyGroup.setRecycleAdpFamily(this);
+        MyViewHolderchild myViewHolder=new MyViewHolderchild(view);
         return  myViewHolder;
     }
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
+        Log.e("ONbINDVIEWHOLDER","**************************"+position);
           holder.setUpView(position);
     }
 
@@ -51,6 +57,7 @@ public class RecycleAdpFamily extends RecyclerView.Adapter<RecycleAdpFamily.MyVi
     public int getItemCount() {
         return families.size();
     }
+
 
 
 
@@ -69,6 +76,8 @@ public class RecycleAdpFamily extends RecyclerView.Adapter<RecycleAdpFamily.MyVi
             view.setFocusable(true);
             tv = (TextView) view.findViewById(R.id.tx_attr_whom);
             famailyGroup=(FamailyGroup)view.findViewById(R.id.familygroup);
+            Log.e("familyid",famailyGroup.getId()+"");
+
             //txvalue=(TextView)famailyGroup.findViewById(R.id.tx_attr_value);
 
         }
@@ -77,30 +86,50 @@ public class RecycleAdpFamily extends RecyclerView.Adapter<RecycleAdpFamily.MyVi
 
     public class MyViewHolderchild extends MyViewHolder{
 
+
         public MyViewHolderchild(View view) {
             super(view);
+            Log.e("myHodlchidl init","********************");
         }
 
         @Override
         public void setUpView(final int position) {
-           tv.setText(families.get(position).getWhom());
+            Log.e("setUpview",position+"");
+
            famailyGroup.setFamily(families.get(position));
+
+           //famailyGroup.setFamily(families.get(position));
             tevblood=(TextView)famailyGroup.findViewById(R.id.tx_attr_value_blood);
             txvsugar=(TextView)famailyGroup.findViewById(R.id.tx_attr_value_bloodsugar);
             txvweight=(TextView)famailyGroup.findViewById(R.id.tx_attr_value_weight);
             txvt=(TextView)famailyGroup.findViewById(R.id.tx_attr_value_tempature);
+            tv = (TextView) famailyGroup.findViewById(R.id.tx_attr_whom);
+            tv.setText(families.get(position).getWhom());
            // txvalue.setText(families.get(position));
             if(tevblood!=null){
               tevblood.setText(families.get(position).getAttrByFlag(0).getValue());
+                Log.e("not-null","********************"+position);
+            }
+            else{
+                Log.e("null","********************"+position);
             }
             if(txvsugar!=null){
                 tevblood.setText(families.get(position).getAttrByFlag(1).getValue());
             }
+            else{
+               // Log.e("null","*********************8");
+            }
             if(txvweight!=null){
-                tevblood.setText(families.get(position).getAttrByFlag(2).getValue());
+              tevblood.setText(families.get(position).getAttrByFlag(2).getValue());
+            }
+            else{
+             //   Log.e("null","*********************8");
             }
             if(txvt!=null){
                 tevblood.setText(families.get(position).getAttrByFlag(3).getValue());
+            }
+            else{
+               // Log.e("null","*********************8");
             }
          itemView.setOnFocusChangeListener(new View.OnFocusChangeListener() {
              @Override
@@ -125,6 +154,7 @@ public class RecycleAdpFamily extends RecyclerView.Adapter<RecycleAdpFamily.MyVi
                  Log.e("click",position+"");
              }
          });
+         //inPosition.dataNotify();
         }
 
 
@@ -195,6 +225,7 @@ public class RecycleAdpFamily extends RecyclerView.Adapter<RecycleAdpFamily.MyVi
 
 
     public RecycleAdpFamily(List<Family> families, Context context) {
+        Log.e("adpter-construct","*****************");
         this.families = families;
         this.context = context;
     }

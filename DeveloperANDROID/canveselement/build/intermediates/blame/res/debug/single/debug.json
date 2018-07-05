@@ -104,6 +104,10 @@
         "source": "/home/wqq/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/98959b2a4697054835af6db9324ed99b/res/color/abc_primary_text_material_dark.xml"
     },
     {
+        "merged": "/home/wqq/android-reposity/DeveloperANDROID/canveselement/build/intermediates/res/merged/debug/layout_activity_b.xml.flat",
+        "source": "/home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/res/layout/activity_b.xml"
+    },
+    {
         "merged": "/home/wqq/android-reposity/DeveloperANDROID/canveselement/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_ic_star_half_black_48dp.png.flat",
         "source": "/home/wqq/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/98959b2a4697054835af6db9324ed99b/res/drawable-xxhdpi-v4/abc_ic_star_half_black_48dp.png"
     },
@@ -1364,12 +1368,12 @@
         "source": "/home/wqq/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/98959b2a4697054835af6db9324ed99b/res/drawable-mdpi-v4/abc_ic_star_half_black_36dp.png"
     },
     {
-        "merged": "/home/wqq/android-reposity/DeveloperANDROID/canveselement/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_tab_indicator_mtrl_alpha.9.png.flat",
-        "source": "/home/wqq/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/98959b2a4697054835af6db9324ed99b/res/drawable-xxhdpi-v4/abc_tab_indicator_mtrl_alpha.9.png"
-    },
-    {
         "merged": "/home/wqq/android-reposity/DeveloperANDROID/canveselement/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_switch_track_mtrl_alpha.9.png.flat",
         "source": "/home/wqq/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/98959b2a4697054835af6db9324ed99b/res/drawable-xxhdpi-v4/abc_switch_track_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "/home/wqq/android-reposity/DeveloperANDROID/canveselement/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_tab_indicator_mtrl_alpha.9.png.flat",
+        "source": "/home/wqq/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/98959b2a4697054835af6db9324ed99b/res/drawable-xxhdpi-v4/abc_tab_indicator_mtrl_alpha.9.png"
     },
     {
         "merged": "/home/alone-nine-sword/newandroidwork/DeveloperANDROID/canveselement/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_ab_share_pack_mtrl_alpha.9.png.flat",
@@ -2874,6 +2878,10 @@
     {
         "merged": "/home/wqq/android-reposity/DeveloperANDROID/canveselement/build/intermediates/res/merged/debug/anim_abc_fade_out.xml.flat",
         "source": "/home/wqq/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/98959b2a4697054835af6db9324ed99b/res/anim/abc_fade_out.xml"
+    },
+    {
+        "merged": "/home/wqq/android-reposity/DeveloperANDROID/canveselement/build/intermediates/res/merged/debug/layout_activity_a.xml.flat",
+        "source": "/home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/res/layout/activity_a.xml"
     },
     {
         "merged": "/home/alone-nine-sword/newandroidwork/DeveloperANDROID/canveselement/build/intermediates/res/merged/debug/drawable-xxxhdpi_ic_launcher_background.png.flat",

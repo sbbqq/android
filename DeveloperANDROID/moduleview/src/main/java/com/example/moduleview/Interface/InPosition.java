@@ -6,4 +6,5 @@ package com.example.moduleview.Interface;
 
 public interface InPosition {
     public void transpos(int nowpos,int lastpos);
+    public void dataNotify();
 }
