@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebResourceRequest;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -19,12 +20,13 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
         webView = (WebView) findViewById(R.id.webview);
-        webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
-        webView.getSettings().setDomStorageEnabled(true);
+      //  webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
+       // webView.getSettings().setDomStorageEnabled(true);
         webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
         webView.getSettings().setJavaScriptEnabled(true);
+        webView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
         webView.addJavascriptInterface(this, "nativeMethod");
-        webView.loadUrl("http://47.93.57.7/Myfirst/HelloWorld.html");//http://10.130.95.112:8088/test //"http://10.190.0.99:8088/test"  //http://healthrecord.haier.net
+        webView.loadUrl("http://47.93.57.7:8088");//http://10.130.95.112:8088/test //"http://10.190.0.99:8088/test"  //http://healthrecord.haier.net  //http://47.93.57.7/Myfirst/HelloWorld.html
 
         webView.setWebViewClient(new WebViewClient() {
 
@@ -62,14 +64,18 @@ public class MainActivity extends AppCompatActivity {
 
     @JavascriptInterface
     public void toActivity(String activityName) {
+        Log.e("getfrom html",activityName);
         //此处应该定义常量对应，同时提供给web页面编写者
         if (TextUtils.equals(activityName, "a")) {
+
             startActivity(new Intent(this, AActivity.class));
         } else {
             Intent intent=new Intent(MainActivity.this,BActivity.class);
-            intent.putExtra("para","b");
+
+            intent.putExtra("para",activityName);
             startActivity(intent);
         }
+        //finish();
 
     }
 

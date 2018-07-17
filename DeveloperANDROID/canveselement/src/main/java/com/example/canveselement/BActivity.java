@@ -12,8 +12,8 @@ public class BActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getIntent().getCharSequenceExtra("para");
-        Log.e("para","***************");
+     String para=   getIntent().getStringExtra("para");
+        Log.e("para","***************"+para);
         setContentView(R.layout.activity_b);
 
 
@@ -25,7 +25,7 @@ public class BActivity extends AppCompatActivity {
         webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
         webView.getSettings().setJavaScriptEnabled(true);
        // webView.addJavascriptInterface(this, "nativeMethod");
-        webView.loadUrl("http://47.93.57.7/Myfirst");//http://10.130.95.112:8088/test //"http://10.190.0.99:8088/test"  //http://healthrecord.haier.net
+        webView.loadUrl(para);//http://10.130.95.112:8088/test //"http://10.190.0.99:8088/test"  //http://healthrecord.haier.net
 
         webView.setWebViewClient(new WebViewClient() {
 

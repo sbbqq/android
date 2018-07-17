@@ -1,1 +1,1 @@
-include ':app', ':moduleview', ':canveselement'
+include ':app', ':moduleview', ':canveselement', ':tvtest'

@@ -8,7 +8,6 @@
     <TextView
         android:layout_width="match_parent"
         android:text="88sdfsdfsfdfdf"
-        android:background="#458459"
         android:textColor="#000000"
         android:textSize="20sp"
         android:gravity="center"

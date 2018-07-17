@@ -2,6 +2,10 @@ package com.example.moduleview.developerandroid.CustomView;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Path;
+import android.graphics.RectF;
 import android.support.v7.widget.RecyclerView;
 import android.text.Layout;
 import android.util.AttributeSet;
@@ -31,21 +35,29 @@ public class FamailyGroup extends ViewGroup {
     ImageView imageViewbody;
     int width,height;
     RecycleAdpFamily recycleAdpFamily;
+
+    Paint paintBg;
+    Path pathbg;
+    boolean IsFocus=false;
     public FamailyGroup(Context context) {
         super(context);
         this.context=context;
+        inidata();
         //ini();
     }
 
     public FamailyGroup(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.context=context;
+      inidata();
        //ini();
     }
 
     public FamailyGroup(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         this.context=context;
+        inidata();
+
        // ini();
     }
 
@@ -60,6 +72,16 @@ public class FamailyGroup extends ViewGroup {
         //ini();
         iniView();
 
+    }
+    public void inidata(){
+        setWillNotDraw(false);
+
+        paintBg=new Paint();
+        paintBg.setStrokeWidth(10);
+        paintBg.setAntiAlias(true);
+        paintBg.setStyle(Paint.Style.STROKE);
+        paintBg.setColor(Color.WHITE);
+        pathbg=new Path();
     }
    public void ini(){
 
@@ -157,8 +179,22 @@ public class FamailyGroup extends ViewGroup {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         Log.e("notifyied","*************************");
-        recycleAdpFamily.notifyDataSetChanged();
+        drawBg(canvas,IsFocus);
+       // recycleAdpFamily.notifyDataSetChanged();
     }
+
+
+    public void drawBg(Canvas canvas,boolean isFocus){
+        pathbg.reset();
+             if(isFocus){
+                 pathbg.addRoundRect(new RectF(0,0,width,height),new float[]{20.0f,20.0f,20.0f,20.0f,20.0f,20.0f,20.0f,20.0f}, Path.Direction.CCW);
+             }else{
+             pathbg.reset();
+             Log.e("reset","******************leave");
+             }
+             canvas.drawPath(pathbg,paintBg);
+    }
+
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
@@ -184,5 +220,14 @@ public class FamailyGroup extends ViewGroup {
 
     public void setRecycleAdpFamily(RecycleAdpFamily recycleAdpFamily) {
         this.recycleAdpFamily = recycleAdpFamily;
+    }
+
+
+    public boolean isFocus() {
+        return IsFocus;
+    }
+
+    public void setFocus(boolean focus) {
+        IsFocus = focus;
     }
 }

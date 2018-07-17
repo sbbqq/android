@@ -114,35 +114,41 @@ public class RecycleAdpFamily extends RecyclerView.Adapter<RecycleAdpFamily.MyVi
                 Log.e("null","********************"+position);
             }
             if(txvsugar!=null){
-                tevblood.setText(families.get(position).getAttrByFlag(1).getValue());
+                txvsugar.setText(families.get(position).getAttrByFlag(1).getValue());
             }
             else{
-               // Log.e("null","*********************8");
+               Log.e("null","*********************8");
             }
             if(txvweight!=null){
-              tevblood.setText(families.get(position).getAttrByFlag(2).getValue());
+              txvweight.setText(families.get(position).getAttrByFlag(2).getValue());
             }
             else{
-             //   Log.e("null","*********************8");
+              Log.e("null","*********************8");
             }
             if(txvt!=null){
-                tevblood.setText(families.get(position).getAttrByFlag(3).getValue());
+                txvt.setText(families.get(position).getAttrByFlag(3).getValue());
             }
             else{
-               // Log.e("null","*********************8");
+              Log.e("null","*********************8");
             }
          itemView.setOnFocusChangeListener(new View.OnFocusChangeListener() {
              @Override
              public void onFocusChange(View v, boolean hasFocus) {
                  if(hasFocus){
                      Log.e("getfocus",position+"");
-                     focusStatus(v);
+                    // focusStatus(v);
+
+                     famailyGroup.setFocus(true);
+                     famailyGroup.invalidate();
                      inPosition.transpos(position,lastposition);
 
                  }
                  else{
                      Log.e("leavefocus",position+"");
-                     normalStatus(v);
+                    // normalStatus(v);
+                     famailyGroup.setFocus(false);
+                     famailyGroup.invalidate();
+                     //famailyGroup.invalidate();
                      lastposition=position;
                  }
              }

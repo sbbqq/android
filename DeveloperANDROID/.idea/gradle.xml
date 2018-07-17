@@ -12,6 +12,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/canveselement" />
             <option value="$PROJECT_DIR$/moduleview" />
+            <option value="$PROJECT_DIR$/tvtest" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

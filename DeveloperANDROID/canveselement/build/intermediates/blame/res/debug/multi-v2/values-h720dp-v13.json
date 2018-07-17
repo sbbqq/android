@@ -14,21 +14,6 @@
                     }
                 }
             ]
-        },
-        {
-            "outputFile": "/home/alone-nine-sword/newandroidwork/DeveloperANDROID/canveselement/build/intermediates/incremental/mergeDebugResources/merged.dir/values-h720dp-v13/values-h720dp-v13.xml",
-            "map": [
-                {
-                    "source": "/home/alone-nine-sword/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/36c0279d27f48a6549c7832f99e6d55e/res/values-h720dp-v13/values-h720dp-v13.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "66",
-                        "endOffsets": "117"
-                    }
-                }
-            ]
         }
     ]
 }

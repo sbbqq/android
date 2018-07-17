@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Mon Jul 02 16:27:58 CST 2018
+#Mon Jul 09 09:36:04 CST 2018
 2.base=/home/wqq/android-reposity/DeveloperANDROID/canveselement/build/intermediates/transforms/dexMerger/debug/17
 5.set=DEX
 0.path=classes.dex

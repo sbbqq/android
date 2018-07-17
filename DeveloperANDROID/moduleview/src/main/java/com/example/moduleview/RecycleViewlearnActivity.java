@@ -3,6 +3,7 @@ package com.example.moduleview;
 import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -26,6 +27,7 @@ RecycleAdpFamily adpTest;
         setContentView(R.layout.activity_recycle_viewlearn);
 
         recyclerView=(RecyclerView)findViewById(R.id.recycleviewtest);
+
        // recyclerView2=(RecyclerView)findViewById(R.id.recycleviewtest2);
         inidata();
     }

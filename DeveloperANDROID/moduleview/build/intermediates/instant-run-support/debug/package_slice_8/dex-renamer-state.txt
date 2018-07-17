@@ -1,4 +1,4 @@
-#Thu Jul 05 17:28:22 CST 2018
+#Tue Jul 17 18:39:42 CST 2018
 base.0=/home/wqq/android-reposity/DeveloperANDROID/moduleview/build/intermediates/transforms/dexMerger/debug/9
 path.0=classes.dex
 renamed.0=classes.dex
