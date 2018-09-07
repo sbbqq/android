@@ -1,4 +1,0 @@
-#Wed Jul 11 17:10:42 CST 2018
-base.0=/home/wqq/android-reposity/DeveloperANDROID/canveselement/build/intermediates/transforms/dexMerger/debug/5
-path.0=classes.dex
-renamed.0=classes.dex

@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:2:1-28:12
-INJECTED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:2:1-28:12
-INJECTED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:2:1-28:12
-INJECTED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:2:1-28:12
+ADDED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:2:1-29:12
+INJECTED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:2:1-29:12
+INJECTED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:2:1-29:12
+INJECTED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:2:1-29:12
 MERGED from [com.android.support:appcompat-v7:26.1.0] /home/wqq/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/98959b2a4697054835af6db9324ed99b/AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/wqq/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/a3ba826fed27085c54f6917809656fc3/AndroidManifest.xml:2:1-11:12
 MERGED from [com.android.support:animated-vector-drawable:26.1.0] /home/wqq/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.1.0.aar/0d9f007d0c385104636c9731331160eb/AndroidManifest.xml:17:1-28:12
@@ -15,20 +15,20 @@ MERGED from [com.android.support:support-core-utils:26.1.0] /home/wqq/.gradle/ca
 MERGED from [com.android.support:support-core-ui:26.1.0] /home/wqq/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/a960052a06a121dd8adc54af6fb11268/AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support:support-compat:26.1.0] /home/wqq/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/c9fc61a6fdc5b1dc43e3484f5edb3d37/AndroidManifest.xml:17:1-31:12
 MERGED from [android.arch.lifecycle:runtime:1.0.0] /home/wqq/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/9359d6d0309c1fb50968907950c28b6f/AndroidManifest.xml:17:1-30:12
-INJECTED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:2:1-28:12
-INJECTED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:2:1-28:12
-INJECTED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:2:1-28:12
+INJECTED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:2:1-29:12
+INJECTED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:2:1-29:12
+INJECTED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:2:1-29:12
 	package
 		ADDED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:3:5-40
 		INJECTED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml
 		INJECTED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml
 	android:versionName
 		INJECTED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml
-		ADDED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:2:1-28:12
+		ADDED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:2:1-29:12
 		INJECTED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml
 	android:versionCode
 		INJECTED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml
-		ADDED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:2:1-28:12
+		ADDED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:2:1-29:12
 		INJECTED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml
 	xmlns:android
 		ADDED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:2:11-69
@@ -37,7 +37,7 @@ ADDED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/An
 	android:name
 		ADDED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:5:22-64
 application
-ADDED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:7:5-26:19
+ADDED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:7:5-27:19
 MERGED from [com.android.support:appcompat-v7:26.1.0] /home/wqq/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/98959b2a4697054835af6db9324ed99b/AndroidManifest.xml:25:5-29:19
 MERGED from [com.android.support:appcompat-v7:26.1.0] /home/wqq/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/98959b2a4697054835af6db9324ed99b/AndroidManifest.xml:25:5-29:19
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/wqq/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/a3ba826fed27085c54f6917809656fc3/AndroidManifest.xml:9:5-20
@@ -61,45 +61,47 @@ MERGED from [com.android.support:support-compat:26.1.0] /home/wqq/.gradle/caches
 MERGED from [android.arch.lifecycle:runtime:1.0.0] /home/wqq/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/9359d6d0309c1fb50968907950c28b6f/AndroidManifest.xml:24:5-28:19
 MERGED from [android.arch.lifecycle:runtime:1.0.0] /home/wqq/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/9359d6d0309c1fb50968907950c28b6f/AndroidManifest.xml:24:5-28:19
 	android:supportsRtl
-		ADDED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:12:9-35
+		ADDED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:13:9-35
 	android:label
 		ADDED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:10:9-41
+	android:hardwareAccelerated
+		ADDED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:11:9-44
 	android:roundIcon
-		ADDED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:11:9-54
+		ADDED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:12:9-54
 	android:icon
 		ADDED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:9:9-43
 	android:allowBackup
 		ADDED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:8:9-35
 	android:theme
-		ADDED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:13:9-40
+		ADDED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:14:9-40
 activity#com.example.canveselement.MainActivity
-ADDED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:14:9-20:20
+ADDED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:15:9-21:20
 	android:name
-		ADDED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:14:19-47
+		ADDED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:15:19-47
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:15:13-19:29
+ADDED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:16:13-20:29
 action#android.intent.action.MAIN
-ADDED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:16:17-69
+ADDED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:17:17-69
 	android:name
-		ADDED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:16:25-66
+		ADDED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:17:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:18:17-77
+ADDED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:19:17-77
 	android:name
-		ADDED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:18:27-74
+		ADDED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:19:27-74
 activity#com.example.canveselement.Canves.Main2Activity
-ADDED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:21:9-58
+ADDED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:22:9-58
 	android:name
-		ADDED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:21:19-55
+		ADDED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:22:19-55
 activity#com.example.canveselement.AActivity
-ADDED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:22:9-47
-	android:name
-		ADDED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:22:19-44
-activity#com.example.canveselement.BActivity
-ADDED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:23:9-25:25
-	android:theme
-		ADDED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:24:13-72
+ADDED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:23:9-47
 	android:name
 		ADDED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:23:19-44
+activity#com.example.canveselement.BActivity
+ADDED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:24:9-26:25
+	android:theme
+		ADDED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:25:13-72
+	android:name
+		ADDED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml:24:19-44
 uses-sdk
 INJECTED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /home/wqq/android-reposity/DeveloperANDROID/canveselement/src/main/AndroidManifest.xml

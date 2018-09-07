@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/relparent"
+    android:layout_height="match_parent"
+    tools:context="com.example.tvtest.SouExchange">
+    <LinearLayout
+        android:layout_width="1000px"
+        android:id="@+id/soulone"
+        android:background="@color/colorPrimary"
+        android:layout_height="300px">
+        <TextView
+            android:layout_width="match_parent"
+            android:text="0ne"
+            android:textSize="100sp"
+            android:gravity="center"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="920px"
+        android:id="@+id/soultwo"
+        android:layout_toRightOf="@+id/soulone"
+        android:background="@color/colorAccent"
+        android:layout_alignParentRight="true"
+        android:layout_height="300px">
+        <TextView
+            android:layout_width="match_parent"
+            android:text="two"
+            android:textSize="100sp"
+            android:gravity="center"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="soulExchange"
+        android:textSize="20sp"
+        android:id="@+id/btnsoulexchagne"
+        android:padding="10dp"
+        android:layout_height="wrap_content" />
+<com.example.tvtest.WeightShow
+    android:layout_width="600px"
+    android:id="@+id/weighshow"
+    android:background="#000000"
+    android:layout_below="@+id/soultwo"
+    android:layout_height="130px" />
+</RelativeLayout>

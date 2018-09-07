@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_marginTop="20dp"
+                android:layout_height="0dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="体重:"
+                    android:id="@+id/weight_name"
+                    android:textColor="#88C4FF"
+                    android:textSize="25px"
+                    android:layout_centerVertical="true"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="60"
+                    android:layout_marginLeft="25px"
+                    android:layout_toRightOf="@id/weight_name"
+                    android:id="@+id/weight_value"
+                    android:textColor="#88C4FF"
+                    android:textSize="25px"
+                    android:layout_centerVertical="true"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="中等"
+                    android:layout_marginLeft="25px"
+                    android:layout_toRightOf="@id/weight_value"
+                    android:id="@+id/weight_status"
+                    android:textColor="#88C4FF"
+                    android:textSize="25px"
+                    android:layout_centerVertical="true"
+                    android:layout_height="wrap_content" />
+                <com.example.tvtest.WeightShow
+                    android:layout_marginRight="100px"
+                    android:layout_width="400px"
+                    android:background="@color/colorAccent"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_height="180px" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_marginTop="80px"
+                android:layout_height="0dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="BMI:"
+                    android:id="@+id/bmi_name"
+                    android:textColor="#88C4FF"
+                    android:textSize="25px"
+                    android:layout_centerVertical="true"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="60"
+                    android:layout_marginLeft="25px"
+                    android:layout_toRightOf="@id/bmi_name"
+                    android:id="@+id/bmi_value"
+                    android:textColor="#88C4FF"
+                    android:textSize="25px"
+                    android:layout_centerVertical="true"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="中等"
+                    android:layout_marginLeft="25px"
+                    android:layout_toRightOf="@id/bmi_value"
+                    android:id="@+id/bmi_status"
+                    android:textColor="#88C4FF"
+                    android:textSize="25px"
+                    android:layout_centerVertical="true"
+                    android:layout_height="wrap_content" />
+                <com.example.tvtest.WeightShow
+                    android:layout_marginRight="100px"
+                    android:layout_width="400px"
+                    android:background="@color/colorAccent"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_height="180px" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="0dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="体脂率:"
+                    android:id="@+id/fatper_name"
+                    android:textColor="#88C4FF"
+                    android:textSize="25px"
+                    android:layout_centerVertical="true"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="60"
+                    android:layout_marginLeft="25px"
+                    android:layout_toRightOf="@id/fatper_name"
+                    android:id="@+id/fatper_value"
+                    android:textColor="#88C4FF"
+                    android:textSize="25px"
+                    android:layout_centerVertical="true"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="中等"
+                    android:layout_marginLeft="25px"
+                    android:layout_toRightOf="@id/fatper_value"
+                    android:id="@+id/fatper_status"
+                    android:textColor="#88C4FF"
+                    android:textSize="25px"
+                    android:layout_centerVertical="true"
+                    android:layout_height="wrap_content" />
+                <com.example.tvtest.WeightShow
+                    android:layout_marginRight="100px"
+                    android:layout_width="400px"
+                    android:background="@color/colorAccent"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_height="180px" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="0dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="体重:"
+                    android:id="@+id/pr_name"
+                    android:textColor="#88C4FF"
+                    android:textSize="25px"
+                    android:layout_centerVertical="true"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="60"
+                    android:layout_marginLeft="25px"
+                    android:layout_toRightOf="@id/pr_name"
+                    android:id="@+id/pr_value"
+                    android:textColor="#88C4FF"
+                    android:textSize="25px"
+                    android:layout_centerVertical="true"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="中等"
+                    android:layout_marginLeft="25px"
+                    android:layout_toRightOf="@id/pr_value"
+                    android:id="@+id/pr_status"
+                    android:textColor="#88C4FF"
+                    android:textSize="25px"
+                    android:layout_centerVertical="true"
+                    android:layout_height="wrap_content" />
+                <com.example.tvtest.WeightShow
+                    android:layout_marginRight="100px"
+                    android:layout_width="400px"
+                    android:background="@color/colorAccent"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_height="180px" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="0dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="代谢:"
+                    android:id="@+id/bodyburn_name"
+                    android:textColor="#88C4FF"
+                    android:textSize="25px"
+                    android:layout_centerVertical="true"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="60"
+                    android:layout_marginLeft="25px"
+                    android:layout_toRightOf="@id/bodyburn_name"
+                    android:id="@+id/bodyburn_value"
+                    android:textColor="#88C4FF"
+                    android:textSize="25px"
+                    android:layout_centerVertical="true"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="中等"
+                    android:layout_marginLeft="25px"
+                    android:layout_toRightOf="@id/bodyburn_value"
+                    android:id="@+id/bodyburn_status"
+                    android:textColor="#88C4FF"
+                    android:textSize="25px"
+                    android:layout_centerVertical="true"
+                    android:layout_height="wrap_content" />
+                <com.example.tvtest.WeightShow
+                    android:layout_marginRight="100px"
+                    android:layout_width="400px"
+                    android:background="@color/colorAccent"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_height="180px" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+</RelativeLayout>
