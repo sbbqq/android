@@ -2,11 +2,15 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/4.2test/4.2test.iml" filepath="$PROJECT_DIR$/4.2test/4.2test.iml" />
       <module fileurl="file://$PROJECT_DIR$/DeveloperANDROID.iml" filepath="$PROJECT_DIR$/DeveloperANDROID.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/canveselement/canveselement.iml" filepath="$PROJECT_DIR$/canveselement/canveselement.iml" />
       <module fileurl="file://$PROJECT_DIR$/moduleview/moduleview.iml" filepath="$PROJECT_DIR$/moduleview/moduleview.iml" />
       <module fileurl="file://$PROJECT_DIR$/retrofit/retrofit.iml" filepath="$PROJECT_DIR$/retrofit/retrofit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/testentry/testentry.iml" filepath="$PROJECT_DIR$/testentry/testentry.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tvces&amp;awe/tvces&amp;awe.iml" filepath="$PROJECT_DIR$/tvces&amp;awe/tvces&amp;awe.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tvshow/tvshow.iml" filepath="$PROJECT_DIR$/tvshow/tvshow.iml" />
       <module fileurl="file://$PROJECT_DIR$/tvtest/tvtest.iml" filepath="$PROJECT_DIR$/tvtest/tvtest.iml" />
     </modules>
   </component>

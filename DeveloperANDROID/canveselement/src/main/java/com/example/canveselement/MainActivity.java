@@ -1,18 +1,23 @@
 package com.example.canveselement;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.view.View;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
     WebView webView;
+    ImageView imgBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +25,13 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
         webView = (WebView) findViewById(R.id.webview);
+        imgBack=(ImageView)findViewById(R.id.imgback);
+        imgBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                webView.goBack();
+            }
+        });
       // webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
      webView.getSettings().setDomStorageEnabled(true);
 
@@ -46,9 +58,9 @@ public class MainActivity extends AppCompatActivity {
         webView.setWebViewClient(new WebViewClient());
         webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
         webView.getSettings().setJavaScriptEnabled(true);
-        webView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
-      webView.addJavascriptInterface(this, "user");//http://123.103.113.201:8085
-       webView.loadUrl("http://123.103.113.201:8085/build/index.html");//http://10.130.95.112:8088/test //"http://10.190.0.99:8088/test"  //http://healthrecord.haier.net  //http://47.93.57.7/Myfirst/HelloWorld.html
+        webView.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
+      webView.addJavascriptInterface(this, "user");//http://123.103.113.201:8085   http://thealth.haier.net/login
+       webView.loadUrl("https://www.haier.com/cn/smarthome/information/advisory/W020180918805702974131.jpg");//http://10.130.95.112:8088/test //"http://10.190.0.99:8088/test"  //http://healthrecord.haier.net  //http://47.93.57.7/Myfirst/HelloWorld.html
         //webView.loadUrl("http://my.fridge.com/build/index.html");
         webView.setWebViewClient(new WebViewClient() {
 
@@ -82,6 +94,11 @@ public class MainActivity extends AppCompatActivity {
                                          //view.loadUrl(url);
                                      }
 
+                                     @Override
+                                     public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                                         super.onPageStarted(view, url, favicon);
+                                         Log.e("onPagestarted","*****************");
+                                     }
                                  }
 
 
@@ -123,5 +140,15 @@ public class MainActivity extends AppCompatActivity {
     @JavascriptInterface
     public void secondWay(String urlpara){
 
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        if(keyCode==KeyEvent.KEYCODE_BACK){
+           Log.e("back","******************");
+        }
+
+        return false;
     }
 }

@@ -9,10 +9,14 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/4.2test" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/canveselement" />
             <option value="$PROJECT_DIR$/moduleview" />
             <option value="$PROJECT_DIR$/retrofit" />
+            <option value="$PROJECT_DIR$/testentry" />
+            <option value="$PROJECT_DIR$/tvces&amp;awe" />
+            <option value="$PROJECT_DIR$/tvshow" />
             <option value="$PROJECT_DIR$/tvtest" />
           </set>
         </option>

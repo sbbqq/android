@@ -1,0 +1,11 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#app {
+  width: 120rem;
+  height: 67.5rem;
+  background: url("../assets/background.png") no-repeat;
+  background-size: contain;
+}

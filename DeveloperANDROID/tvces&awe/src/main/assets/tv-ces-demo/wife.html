@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,maximum-scale=1.0,minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="referrer" content="no-referrer" />
+
+  <title>tv-healthrecord</title>
+</head>
+
+<link rel="stylesheet" href="./static/font.css" type="text/css">
+<link rel="stylesheet" href="./static/main.css" type="text/css">
+<link rel="stylesheet" href="./static/myself.css" type="text/css">
+
+<body>
+  <div id="app">
+    <div class="user-content">
+      <div class="aside-content">
+        <div class="avatar">
+          <img src="./assets/ui_po05.png" alt="image"><br>
+          <span>Wife</span>
+        </div>
+        <div class="item-list">
+          <ul>
+            <li @click="$_switchModule('weight')" @focus="$_setStyle('weight')" :class="item_select === 'weight' ? 'item-focus' : ''">
+              <i class="icon-weight"></i>
+              <span>体重</span>
+            </li>
+            <li @click="$_switchModule('pressure')" @focus="$_setStyle('pressure')" :class="item_select === 'pressure' ? 'item-focus' : ''">
+              <i class="icon-pressure" style="margin-right: 1.375rem"></i>
+              <span>血压</span>
+            </li>
+            <li @click="$_switchModule('sugar')" @focus="$_setStyle('sugar')" :class="item_select === 'sugar' ? 'item-focus' : ''">
+              <i class="icon-blood-sugar" style="margin-right: 2.3125rem"></i>
+              <span>血糖</span>
+            </li>
+            <li @click="$_switchModule('temperature')" @focus="$_setStyle('temperature')" :class="item_select === 'temperature' ? 'item-focus' : ''">
+              <i class="icon-temperature" style="margin-right: 2.375rem"></i>
+              <span>体温</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- weight right side -->
+      <div v-if="item_select === 'weight'" class="weight-bg" @focus="this.blur()">
+        <div class="weight-content">
+          <div class="weight-result">
+            <div class="result">
+              <p>最近测量结果 <span>2018-11-21 10:05</span></p>
+              <div class="result-content">
+                <div class="result-left">
+                  55
+                </div>
+                <div class="result-kg">
+                  KG
+                </div>
+                <div class="result-status">
+                  标准
+                </div>
+              </div>
+              <div class="result-background">
+                <br><br><br><br><br>
+                <p>
+                  BMI值
+                  <label>22.9</label>
+                  标准，目标 <label>50.7</label> kg，
+                  <label>
+                    还需减重 4.3 kg
+                  </label>
+                </p>
+              </div>
+            </div>
+            <div class="suggestion">
+              <p class="suggestion-title">
+                健康建议
+              </p>
+              <p class="suggestion-content">
+                体重在合理的范围内。注意保持，生活作息规律，注意摄入充足水分，增强代谢。饭后记走一走是保持良好身材的秘方。
+              </p>
+              <div class="weight-range">
+                <div v-if="last_weight_data.weight_status" class="open-icon">
+                  <span class="thinnish-bg open-icon-line">
+                    <span></span>
+                    <div ref="thin" :class="last_weight_data.weight_status === last_weight_data.weight_range_describe[0] ? 'triangle show' : 'triangle'">
+                      <div v-if="last_weight_data.weight_status === last_weight_data.weight_range_describe[0]" :class="last_weight_data.weight_status === last_weight_data.weight_range_describe[0] ? 'show-label' : ''">
+                        55
+                      </div>
+                    </div>
+                    <span>偏瘦</span>
+                  </span>
+                  <span class="standard-bg open-icon-line">
+                    <span>50.6</span>
+                    <div ref="standard" :class="last_weight_data.weight_status === last_weight_data.weight_range_describe[1] ? 'triangle show' : 'triangle'">
+                      <div v-if="last_weight_data.weight_status === last_weight_data.weight_range_describe[1]" :class="last_weight_data.weight_status === last_weight_data.weight_range_describe[1] ? 'show-label' : ''">
+                        55
+                      </div>
+                    </div>
+                    <span>标准</span>
+                  </span>
+                  <span class="chubby-bg open-icon-line">
+                    <span>68.6</span>
+                    <div ref="chubby" :class="last_weight_data.weight_status === last_weight_data.weight_range_describe[2] ? 'triangle show' : 'triangle'">
+                      <div v-if="last_weight_data.weight_status === last_weight_data.weight_range_describe[2]" :class="last_weight_data.weight_status === last_weight_data.weight_range_describe[2] ? 'show-label' : ''">
+                        55
+                      </div>
+                    </div>
+                    <span>偏胖</span>
+                  </span>
+                  <span class="fat-bg open-icon-line">
+                    <span>81.7</span>
+                    <div ref="fat" :class="last_weight_data.weight_status === last_weight_data.weight_range_describe[3] ? 'triangle show' : 'triangle'">
+                      <div v-if="last_weight_data.weight_status === last_weight_data.weight_range_describe[3]" :class="last_weight_data.weight_status === last_weight_data.weight_range_describe[3] ? 'show-label' : ''">
+                        55
+                      </div>
+                    </div>
+                    <span>肥胖</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="weight-chart">
+            <div class="chart-title">
+              <span class="left-title">最近七次体重数据</span>
+              <span class="right-title">单位：KG</span>
+            </div>
+            <div id="weightChart" style="width: 100%; height: 34.625rem;">
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- pressure right side -->
+      <div v-if="item_select === 'pressure'" class="pressure-bg" @focus="this.blur()">
+        <div class="pressure-content">
+          <div class="pressure-result">
+            <div class="result">
+              <p>最近测量结果 <span>2018-12-22 10:04</span></p>
+              <div class="result-content">
+                <div class="result-left">
+                  122/102
+                </div>
+                <div class="result-kg">
+                  mmHg
+                </div>
+                <div class="result-status">
+                  高血压
+                </div>
+              </div>
+              <div class="result-background">
+                <br><br><br><br>
+              </div>
+            </div>
+            <div class="suggestion">
+              <p class="suggestion-title">
+                健康建议
+              </p>
+              <p class="suggestion-content">
+                减少钠盐摄入，增加钾盐摄入；控制体重；不吸烟；不过量饮酒；适当进行些体育运动；减轻精神压力，保持心理平衡。
+              </p>
+            </div>
+          </div>
+          <div class="pressure-chart">
+            <div class="chart-title">
+              <span class="left-title">最近七次血压数据</span>
+              <span class="right-title">单位：mmHg</span>
+            </div>
+            <div id="pressureChart" style="width: 100%; height: 34.625rem;">
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- sugar right side -->
+      <div v-if="item_select === 'sugar'" class="sugar-bg" @focus="this.blur()">
+        <div class="sugar-content">
+          <div class="sugar-result">
+            <div class="result">
+              <p>最近测量结果 <span>2018-11-08 14:34</span></p>
+              <div class="result-content">
+                <div class="result-left">
+                  5.6
+                </div>
+                <div class="result-kg">
+                  mmol/L
+                </div>
+                <div class="result-status">
+                  稍高
+                </div>
+              </div>
+              <div class="result-background">
+
+              </div>
+            </div>
+            <div class="suggestion">
+              <p class="suggestion-title">
+                健康建议
+              </p>
+              <p class="suggestion-content">
+                您的血糖值稍高，请咨询医生。
+              </p>
+            </div>
+          </div>
+          <div class="sugar-chart">
+            <div class="chart-title">
+              <span class="left-title">最近七次血糖数据</span>
+              <span class="right-title">单位：mmol/L</span>
+            </div>
+            <div id="sugarChart" style="width: 100%; height: 34.625rem;">
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- temperature right side -->
+      <div v-if="item_select === 'temperature'" class="temperature-bg" @focus="this.blur()">
+        <div class="temperature-content">
+          <div class="temperature-result">
+            <div class="result">
+              <p>最近测量结果 <span>2018-11-22 15:14</span></p>
+              <div class="result-content">
+                <div class="result-left">
+                  37.1
+                </div>
+                <div class="result-kg">
+                  ℃
+                </div>
+                <div class="result-status">
+                  正常
+                </div>
+              </div>
+              <div class="result-background">
+              </div>
+            </div>
+            <div class="suggestion">
+              <p class="suggestion-title">
+                健康建议
+              </p>
+              <p class="suggestion-content">
+                您的体温正常。
+              </p>
+              <div class="temperature-range">
+                <div class="open-icon">
+                  <span class="thinnish-bg open-icon-line">
+                    <span></span>
+                    <div ref="lower" :class="last_temperature_data.temperature.status === '偏低' ? 'triangle show' : 'triangle'">
+                      <div v-if="last_temperature_data.temperature.status === '偏低'" class="show-label">
+                        38.1
+                      </div>
+                    </div>
+                    <span>偏低</span>
+                  </span>
+                  <span class="standard-bg open-icon-line">
+                    <span>35.8</span>
+                    <div ref="standard" class="triangle show">
+                      <div class="show-label">
+                        37.1
+                      </div>
+                    </div>
+                    <span>正常</span>
+                  </span>
+                  <span class="fat-bg open-icon-line">
+                    <span>37.4</span>
+                    <div ref="higher" :class="last_temperature_data.temperature.status === '偏高' ? 'triangle show' : 'triangle'">
+                      <div v-if="last_temperature_data.temperature.status === '偏高'" class="show-label">
+                        38.1
+                      </div>
+                    </div>
+                    <span>偏高</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="temperature-chart">
+            <div class="chart-title">
+              <span class="left-title">最近七次体温数据</span>
+              <span class="right-title">单位：℃</span>
+            </div>
+            <div id="temperatureChart" style="width: 100%; height: 34.625rem;">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
+<script src="./static/vue.min.js"></script>
+<script src="./static/echarts.min.js"></script>
+<script>
+  const html = document.getElementsByTagName('html')[0];
+  const w = document.documentElement.clientWidth || document.body.clientWidth;
+  html.style.fontSize = (w / 1920) * 16 + "px";
+
+  const myself = new Vue({
+    el: '#app',
+    data() {
+      return {
+        item_select: 'weight',
+        last_weight_data: {
+          weight_range_describe: [],
+          weight_range: []
+        },
+        last_temperature_data: {}
+      }
+    },
+    mounted() {
+      this.last_weight_data = {
+        "weight_status": "标准",
+        "weight": 55,
+        "weight_range_describe": ["偏瘦", "标准", "偏胖", "肥胖"],
+        "weight_range": [50.6, 68.6, 81.7],
+        "status": "标准",
+        "bmi": 22.9,
+        "muscle_percent": 0,
+        "weight_id": "706",
+        "axunge": 0,
+        "weight_level": "1",
+        "bmi_status": "标准",
+        "axunge_percent": 0,
+        "bmi_range": [18.5, 24, 28],
+        "bmi_level": "1",
+        "create_date": "2018-08-31 10:05",
+        "tools_name": "手动录入",
+        "weight_change": -1,
+        "bone": 0,
+        "resistance": 0,
+        "tools_id": "default",
+        "bmi_suggestion": "体重在合理的范围内。注意保持，生活作息规律，注意摄入充足水分，增强代谢。饭后记走一走是保持良好身材的秘方。",
+        "weight_suggestion": "体重在合理的范围内。注意保持，生活作息规律，注意摄入充足水分，增强代谢。饭后记走一走是保持良好身材的秘方。",
+        "bmi_range_describe": ["偏瘦", "标准", "偏胖", "肥胖"],
+        "need_change": -4.3,
+        "standard_weight": 50.7,
+      }
+      let weight = this.last_weight_data.weight
+      let range1 = this.last_weight_data.weight_range[0]
+      let range2 = this.last_weight_data.weight_range[1]
+      let range3 = this.last_weight_data.weight_range[2]
+      if (weight <= range1) { // 偏瘦
+        setTimeout(() => { // to fix dom render issue
+          this.$refs.thin.style.left = `${parseInt(((1 - (range1 - weight) / 100) * 100).toFixed(2))}%`
+          console.log(this.$refs.thin.style.left)
+        }, 0);
+      } else if (weight <= range2) { // 正常
+        setTimeout(() => {
+          this.$refs.standard.style.left = `30%`
+          console.log(this.$refs.standard.style.left)
+        }, 0);
+      } else if (weight <= range3) { // 偏胖
+        setTimeout(() => {
+          this.$refs.chubby.style.left =
+            `${parseInt(((range3 - weight) / (range3 - range2) * 100).toFixed(2))}%`
+          console.log(this.$refs.chubby.style.left)
+        }, 0);
+      } else { // 肥胖
+        setTimeout(() => {
+          this.$refs.fat.style.left = `${parseInt(((1 - (weight - range3) / 100) * 100).toFixed(2))}%`
+          console.log(this.$refs.fat.style.left)
+        }, 0);
+      }
+      this.$nextTick(() => {
+        this.weightChartOption();
+      })
+    },
+    methods: {
+      $_setStyle(item) {
+        this.item_select = item;
+      },
+      $_switchModule(arg) {
+        this.item_select = arg;
+        switch (arg) {
+          case 'weight':
+            this.$nextTick(() => {
+              this.weightChartOption();
+            });
+            break;
+          case 'pressure':
+            this.$nextTick(() => {
+              this.pressureChartOption();
+            });
+            break;
+          case 'sugar':
+            this.$nextTick(() => {
+              this.sugarChartOption();
+            });
+            break;
+          case 'temperature':
+            this.last_temperature_data = {
+              "suggestion": {
+                "suggestion_id": null,
+                "suggestion_type": "2",
+                "score": "2",
+                "symptom": "正常",
+                "suggestion": "您的体温正常。",
+                "symptom_en": "Fever",
+                "suggestion_en": "Your temperature is too high, please drink plenty of water, eat more fresh fruits and vegetables, vitamin supplements, active exercise can increase the body resistance, often massage the nose two side Yingxiang acupoint can also alleviate the inhibited effect, also can drink some brown sugar ginger water, sweating, soon will be fine, eating a little light as long as have a good rest",
+                "suggestion_dict_id": "",
+                "suggestion_dict_name": "",
+                "level": "2",
+                "data": null
+              },
+              "temperature": {
+                "temperature_id": "1004",
+                "create_date": "2018-06-01 15:14",
+                "temperature_data": 37.1,
+                "user_id": "15712783211",
+                "status": "正常",
+                "status_en": null,
+                "tools_name": "手动录入",
+                "check_id": null,
+                "statics_id": null
+              }
+            }
+            let temperature = this.last_temperature_data.temperature.temperature_data
+            if (temperature <= 35.8) { // lower
+              this.$refs.lower.style.left = `${parseInt(((1 - (35.8 - temperature) / 100) * 100).toFixed(2))}%`
+            } else if (temperature <= 37.4) { // standard
+              this.$refs.standard.style.left = `60%`
+            } else { // higher
+              setTimeout(() => {
+                this.$refs.higher.style.left = `50%`
+              }, 0);
+            }
+            this.$nextTick(() => {
+              this.temperatureChartOption();
+            })
+            break;
+          default:
+            break;
+        }
+      },
+      // 体重趋势图
+      weightChartOption() {
+        let weightChart = echarts.init(document.getElementById("weightChart"));
+        const option = {
+          grid: {
+            left: '5%',
+            right: '0%',
+          },
+          tooltip: {
+            show: false,
+            trigger: 'axis'
+          },
+          xAxis: {
+            type: 'category',
+            boundaryGap: true,
+            data: ['2018-06-01', '2018-07-12', '2018-7-25', '2018-08-20', '2018-09-28', '2018-10-16',
+              '2018-11-21'
+            ], // 动态加载
+            axisLine: {
+              lineStyle: {
+                color: 'rgba(255,255,255,0.32)'
+              }
+            },
+            axisLabel: {
+              interval: 0,
+              verticalAlign: 'top',
+              lineHeight: 50,
+              color: '#EEEEEE',
+              height: 50,
+              borderWidth: 200,
+              textBorderWidth: 200,
+              rich: {}
+            }
+          },
+          yAxis: {
+            type: 'value',
+            min: function (value) {
+              return parseInt(value.min - 5);
+            },
+            max: function (value) {
+              return parseInt(value.max + 5);
+            },
+            axisLine: {
+              lineStyle: {
+                color: 'rgba(255,255,255,0)'
+              }
+            },
+            axisLabel: {
+              color: "rgba(255,255,255,0.32)"
+            },
+            splitLine: {
+              show: true,
+              color: '#fff',
+              lineStyle: {
+                type: 'dashed'
+              }
+            }
+          },
+          series: [{
+            name: '体重',
+            type: 'line',
+            data: [56, 58, 59, 61, 59, 57, 55], // 动态加载
+            smooth: true,
+            symbolSize: 10,
+            itemStyle: {
+              color: {
+                type: 'linear',
+                x: 0,
+                y: 0,
+                x2: 0,
+                y2: 1,
+                colorStops: [{
+                  offset: 0,
+                  color: '#27B5E9' // 0% 处的颜色
+                }, {
+                  offset: 1,
+                  color: '#2283E2' // 100% 处的颜色
+                }],
+                globalCoord: false // 缺省为 false
+              },
+            },
+            lineStyle: {
+              width: 6
+            },
+            markPoint: {
+              // 动态生成
+              data: [{
+                  value: 56,
+                  xAxis: 0,
+                  yAxis: 59
+                },
+                {
+                  value: 58,
+                  xAxis: 1,
+                  yAxis: 61
+                },
+                {
+                  value: 59,
+                  xAxis: 2,
+                  yAxis: 62
+                },
+                {
+                  value: 61,
+                  xAxis: 3,
+                  yAxis: 64
+                },
+                {
+                  value: 59,
+                  xAxis: 4,
+                  yAxis: 62
+                },
+                {
+                  value: 57,
+                  xAxis: 5,
+                  yAxis: 60
+                },
+                {
+                  value: 55,
+                  xAxis: 6,
+                  yAxis: 58
+                }
+              ],
+              symbol: 'path://M8,12 L50.7291667,12 L57.5,0 L64.2708333,12 L107,12 C111.418278,12 115,15.581722 115,20 L115,57 C115,61.418278 111.418278,65 107,65 L8,65 C3.581722,65 -1.36697717e-14,61.418278 -1.42108547e-14,57 L0,20 C1.42102658e-15,15.581722 3.581722,12 8,12 Z" id="Rectangle-43',
+              symbolSize: [55, 30],
+              symbolRotate: 180,
+              label: {
+                fontSize: 16
+              },
+              itemStyle: {
+                color: '#26A5FD'
+              }
+            },
+            markLine: {
+              data: [{
+                type: 'average',
+                name: '平均值',
+              }]
+            }
+          }]
+        };
+        weightChart.setOption(option)
+      },
+      // 血压趋势图
+      pressureChartOption() {
+        let pressureChart = echarts.init(document.getElementById('pressureChart'));
+        let diastolicData = [
+          [89, 89],
+          [71, 71],
+          [90, 90],
+          [92, 92],
+          [85, 85],
+          [88, 88],
+          [102, 102]
+        ];
+        let systolicData = [
+          [111, 111],
+          [109, 109],
+          [101, 101],
+          [122, 122],
+          [112, 112],
+          [116, 116],
+          [122, 122]
+        ];
+        let createDate = ['2018-06-01', '2018-07-19', '2018-08-12', '2018-09-10', '2018-10-11', '2018-11-01',
+          '2018-12-22'
+        ];
+        let markData = [{
+            value: '111/89',
+            xAxis: 0,
+            yAxis: '121'
+          },
+          {
+            value: '109/71',
+            xAxis: 1,
+            yAxis: '119'
+          },
+          {
+            value: '101/90',
+            xAxis: 2,
+            yAxis: '111'
+          },
+          {
+            value: '122/92',
+            xAxis: 3,
+            yAxis: '132'
+          },
+          {
+            value: '112/85',
+            xAxis: 4,
+            yAxis: '122'
+          },
+          {
+            value: '116/88',
+            xAxis: 5,
+            yAxis: '126'
+          },
+          {
+            value: '122/102',
+            xAxis: 6,
+            yAxis: '132'
+          }
+        ];
+
+        let startPoint = [] // 第一范围起始点
+        let endPoint = [] // 第一范围结束点
+        let startPointTwo = [] // 第二范围起始点
+        let endPointTwo = [] // 第二范围结束点
+        for (let i = 0; i < systolicData.length; i++) {
+          let s1 = systolicData[i][0]
+          let s2 = systolicData[i][1]
+          let d1 = diastolicData[i][0]
+          let d2 = diastolicData[i][1]
+          if (s1 > d1) {
+            startPoint.push(d1)
+            if (s1 > d2) { // 没有交叉的情况
+              endPoint.push(s1 - d1)
+              // endPoint.push(d2 - d1)
+              startPointTwo.push(s1 - d2)
+              endPointTwo.push(s2 - s1)
+            } else { // 交叉或者包含
+              endPoint.push(Math.max(s2, d2) - d1)
+              startPointTwo.push(0) // 用0补位
+              endPointTwo.push(0)
+            }
+          } else {
+            startPoint.push(s1)
+            if (s2 < d1) { // 没有交叉的情况
+              endPoint.push(s2 - s1)
+              startPointTwo.push(d1 - s2)
+              endPointTwo.push(d2 - d1)
+            } else { // 交叉或者包含
+              endPoint.push(Math.max(s2, d2) - s1)
+              startPointTwo.push(0) // 用0补位
+              endPointTwo.push(0)
+            }
+          }
+        }
+        let option = {
+          grid: {
+            left: '5%',
+            right: '0%',
+          },
+          tooltip: {
+            show: false,
+            trigger: 'axis'
+          },
+          xAxis: {
+            type: 'category',
+            boundaryGap: true,
+            data: createDate, // 动态加载
+            axisLine: {
+              lineStyle: {
+                color: 'rgba(255,255,255,0.32)'
+              }
+            },
+            axisLabel: {
+              interval: 0,
+              verticalAlign: 'top',
+              lineHeight: 50,
+              color: '#EEEEEE',
+              height: 50,
+              borderWidth: 200,
+              textBorderWidth: 200,
+              rich: {}
+            }
+          },
+          yAxis: {
+            type: 'value',
+            min: 50,
+            max: 180,
+            // max: function(value) {
+            //     return value.max + 30
+            // },
+            axisLine: {
+              lineStyle: {
+                color: 'rgba(255,255,255,0)'
+              }
+            },
+            axisLabel: {
+              color: "rgba(255,255,255,0.32)"
+            },
+            splitLine: {
+              show: true,
+              color: '#fff',
+              lineStyle: {
+                type: 'dashed'
+              }
+            }
+          },
+          series: [{
+              name: '收缩压（高压）',
+              type: 'scatter',
+              symbol: 'path://M72.7298934,265.587179 C71.8487072,264.609765 71.6068626,261.796411 72.90493,260.443319 C74.3512252,258.935716 76.6789148,258.942782 78.143963,260.439706 L88.0011252,270.511334 L97.5972664,260.705857 C99.0613637,259.214425 101.36603,259.214425 102.829234,260.709464 C104.390255,262.304449 104.390255,264.971341 102.829234,266.561502 L90.6221358,279.034188 C89.1574008,280.535327 86.8449738,280.535327 85.3837694,279.037801 C77.8458374,271.066767 73.6278788,266.583227 72.7298934,265.587179 Z',
+              symbolSize: [40, 20], // 空心标记的大小
+              itemStyle: {
+                normal: {
+                  color: '#26A5FD'
+                }
+              },
+              markPoint: {
+                // 动态生成
+                data: markData,
+                symbol: 'path://M8,12 L50.7291667,12 L57.5,0 L64.2708333,12 L107,12 C111.418278,12 115,15.581722 115,20 L115,57 C115,61.418278 111.418278,65 107,65 L8,65 C3.581722,65 -1.36697717e-14,61.418278 -1.42108547e-14,57 L0,20 C1.42102658e-15,15.581722 3.581722,12 8,12 Z" id="Rectangle-43',
+                symbolSize: [55, 30],
+                symbolRotate: 180,
+                label: {
+                  fontSize: 16
+                }
+              },
+              data: systolicData.map(function (d) {
+                return d[0]
+              })
+            },
+            {
+              name: '收缩压（高压）',
+              type: 'scatter',
+              symbol: 'path://M72.7298934,265.587179 C71.8487072,264.609765 71.6068626,261.796411 72.90493,260.443319 C74.3512252,258.935716 76.6789148,258.942782 78.143963,260.439706 L88.0011252,270.511334 L97.5972664,260.705857 C99.0613637,259.214425 101.36603,259.214425 102.829234,260.709464 C104.390255,262.304449 104.390255,264.971341 102.829234,266.561502 L90.6221358,279.034188 C89.1574008,280.535327 86.8449738,280.535327 85.3837694,279.037801 C77.8458374,271.066767 73.6278788,266.583227 72.7298934,265.587179 Z',
+              symbolSize: [40, 20],
+              itemStyle: {
+                normal: {
+                  color: '#26A5FD'
+                }
+              },
+              data: systolicData.map(function (d) {
+                return d[1]
+              })
+            },
+            {
+              name: '舒张压（低压）',
+              type: 'scatter',
+              symbolRotate: 180,
+              symbol: 'path://M72.7298934,426.031623 C71.8487072,425.054209 71.6068626,422.240855 72.90493,420.887764 C74.3512252,419.380161 76.6789148,419.387227 78.143963,420.884151 L88.0011252,430.955778 L97.5972664,421.150302 C99.0613637,419.658869 101.36603,419.658869 102.829234,421.153908 C104.390255,422.748894 104.390255,425.415785 102.829234,427.005946 L90.6221358,439.478632 C89.1574008,440.979771 86.8449738,440.979771 85.3837694,439.482245 C77.8458374,431.511212 73.6278788,427.027671 72.7298934,426.031623 Z',
+              symbolSize: [40, 20],
+              itemStyle: {
+                normal: {
+                  color: '#26A5FD'
+                }
+              },
+              data: diastolicData.map(function (d) {
+                return d[0]
+              })
+            },
+            {
+              name: '舒张压（低压）',
+              type: 'scatter',
+              symbolRotate: 180,
+              symbol: 'path://M72.7298934,426.031623 C71.8487072,425.054209 71.6068626,422.240855 72.90493,420.887764 C74.3512252,419.380161 76.6789148,419.387227 78.143963,420.884151 L88.0011252,430.955778 L97.5972664,421.150302 C99.0613637,419.658869 101.36603,419.658869 102.829234,421.153908 C104.390255,422.748894 104.390255,425.415785 102.829234,427.005946 L90.6221358,439.478632 C89.1574008,440.979771 86.8449738,440.979771 85.3837694,439.482245 C77.8458374,431.511212 73.6278788,427.027671 72.7298934,426.031623 Z',
+              symbolSize: [40, 20],
+              itemStyle: {
+                normal: {
+                  color: '#26A5FD'
+                }
+              },
+              data: diastolicData.map(function (d) {
+                return d[1]
+              })
+            },
+            {
+              name: '起始点',
+              stack: true,
+              type: 'bar',
+              barGap: '0',
+              barWidth: 40,
+              data: startPoint,
+              itemStyle: {
+                normal: {
+                  color: 'transparent'
+                }
+              },
+              tooltip: {
+                show: false
+              }
+            },
+            {
+              name: '范围',
+              stack: true,
+              type: 'bar',
+              barGap: '0',
+              barWidth: 40,
+              data: endPoint,
+              itemStyle: {
+                normal: {
+                  color: '#26A5FD',
+                  opacity: 0.2
+                }
+              },
+              tooltip: {
+                show: false
+              }
+            },
+          ]
+        }
+        pressureChart.setOption(option);
+      },
+      // 血糖趋势图
+      sugarChartOption() {
+        let sugarChart = echarts.init(document.getElementById("sugarChart"));
+        let option = {
+          grid: {
+            left: '5%',
+            right: '0%',
+          },
+          tooltip: {
+            show: false,
+            trigger: 'axis'
+          },
+          xAxis: {
+            type: 'category',
+            boundaryGap: true,
+            data: ['2018-06-01', '2018-07-03', '2018-07-27', '2018-08-07', '2018-09-20', '2018-10-27',
+              '2018-11-08'
+            ], // 动态加载
+            axisLine: {
+              lineStyle: {
+                color: 'rgba(255,255,255,0.32)'
+              }
+            },
+            axisLabel: {
+              interval: 0,
+              verticalAlign: 'top',
+              lineHeight: 50,
+              color: '#EEEEEE',
+              height: 50,
+              borderWidth: 200,
+              textBorderWidth: 200,
+              rich: {}
+            }
+          },
+          yAxis: {
+            type: 'value',
+            min: function (value) {
+              return parseInt(value.min - 1);
+            },
+            max: function (value) {
+              return parseInt(value.max + 3);
+            },
+            axisLine: {
+              lineStyle: {
+                color: 'rgba(255,255,255,0)'
+              }
+            },
+            axisLabel: {
+              color: "rgba(255,255,255,0.32)"
+            },
+            splitLine: {
+              show: true,
+              color: '#fff',
+              lineStyle: {
+                type: 'dashed'
+              }
+            }
+          },
+          series: [{
+            name: '血糖',
+            type: 'line',
+            data: [6.8, 6.4, 5.8, 6.2, 6.0, 5.9, 5.6], // 动态加载
+            smooth: true,
+            symbolSize: 10,
+            itemStyle: {
+              color: {
+                type: 'linear',
+                x: 0,
+                y: 0,
+                x2: 0,
+                y2: 1,
+                colorStops: [{
+                  offset: 0,
+                  color: '#27B5E9' // 0% 处的颜色
+                }, {
+                  offset: 1,
+                  color: '#2283E2' // 100% 处的颜色
+                }],
+                globalCoord: false // 缺省为 false
+              },
+            },
+            lineStyle: {
+              width: 6
+            },
+            markPoint: {
+              // 动态生成
+              data: [{
+                  value: 6.8,
+                  xAxis: 0,
+                  yAxis: 7.8
+                },
+                {
+                  value: 6.4,
+                  xAxis: 1,
+                  yAxis: 7.4
+                },
+                {
+                  value: 5.8,
+                  xAxis: 2,
+                  yAxis: 6.8
+                },
+                {
+                  value: 6.2,
+                  xAxis: 3,
+                  yAxis: 7.2
+                },
+                {
+                  value: 6.0,
+                  xAxis: 4,
+                  yAxis: 7.0
+                },
+                {
+                  value: 5.9,
+                  xAxis: 5,
+                  yAxis: 6.9
+                },
+                {
+                  value: 5.6,
+                  xAxis: 6,
+                  yAxis: 6.6
+                }
+              ],
+              symbol: 'path://M8,12 L50.7291667,12 L57.5,0 L64.2708333,12 L107,12 C111.418278,12 115,15.581722 115,20 L115,57 C115,61.418278 111.418278,65 107,65 L8,65 C3.581722,65 -1.36697717e-14,61.418278 -1.42108547e-14,57 L0,20 C1.42102658e-15,15.581722 3.581722,12 8,12 Z" id="Rectangle-43',
+              symbolSize: [55, 30],
+              symbolRotate: 180,
+              label: {
+                fontSize: 16
+              },
+              itemStyle: {
+                color: '#26A5FD'
+              }
+            },
+            markLine: {
+              data: [{
+                type: 'average',
+                name: '平均值',
+              }]
+            }
+          }]
+        };
+        sugarChart.setOption(option);
+      },
+      // 体温趋势图
+      temperatureChartOption() {
+        let temperatureChart = echarts.init(document.getElementById('temperatureChart'));
+        let option = {
+          grid: {
+            left: '5%',
+            right: '0%',
+          },
+          tooltip: {
+            show: false,
+            trigger: 'axis'
+          },
+          xAxis: {
+            type: 'category',
+            boundaryGap: true,
+            data: ['2018-06-01', '2018-07-12', '2018-07-21', '2018-08-10', '2018-09-12', '2018-10-19',
+              '2018-11-22'
+            ], // 动态加载
+            axisLine: {
+              lineStyle: {
+                color: 'rgba(255,255,255,0.32)'
+              }
+            },
+            axisLabel: {
+              interval: 0,
+              verticalAlign: 'top',
+              lineHeight: 50,
+              color: '#EEEEEE',
+              height: 50,
+              borderWidth: 200,
+              textBorderWidth: 200,
+              rich: {}
+            }
+          },
+          yAxis: {
+            type: 'value',
+            min: 34,
+            max: 46,
+            axisLine: {
+              lineStyle: {
+                color: 'rgba(255,255,255,0)'
+              }
+            },
+            axisLabel: {
+              color: "rgba(255,255,255,0.32)"
+            },
+            splitLine: {
+              show: true,
+              color: '#fff',
+              lineStyle: {
+                type: 'dashed'
+              }
+            }
+          },
+          series: [{
+            name: '体温',
+            type: 'line',
+            data: [38.1, 37.6, 37.3, 36.7, 37.8, 37.9, 37.1], // 动态加载
+            smooth: true,
+            symbolSize: 10,
+            itemStyle: {
+              color: {
+                type: 'linear',
+                x: 0,
+                y: 0,
+                x2: 0,
+                y2: 1,
+                colorStops: [{
+                  offset: 0,
+                  color: '#27B5E9' // 0% 处的颜色
+                }, {
+                  offset: 1,
+                  color: '#2283E2' // 100% 处的颜色
+                }],
+                globalCoord: false // 缺省为 false
+              },
+            },
+            lineStyle: {
+              width: 6
+            },
+            markPoint: {
+              // 动态生成
+              data: [{
+                  value: 38.1,
+                  xAxis: 0,
+                  yAxis: 39.1
+                },
+                {
+                  value: 37.6,
+                  xAxis: 1,
+                  yAxis: 38.6
+                },
+                {
+                  value: 37.3,
+                  xAxis: 2,
+                  yAxis: 38.3
+                },
+                {
+                  value: 36.7,
+                  xAxis: 3,
+                  yAxis: 37.7
+                },
+                {
+                  value: 37.8,
+                  xAxis: 4,
+                  yAxis: 38.8
+                },
+                {
+                  value: 37.9,
+                  xAxis: 5,
+                  yAxis: 38.9
+                },
+                {
+                  value: 37.1,
+                  xAxis: 6,
+                  yAxis: 38.1
+                }
+              ],
+              symbol: 'path://M8,12 L50.7291667,12 L57.5,0 L64.2708333,12 L107,12 C111.418278,12 115,15.581722 115,20 L115,57 C115,61.418278 111.418278,65 107,65 L8,65 C3.581722,65 -1.36697717e-14,61.418278 -1.42108547e-14,57 L0,20 C1.42102658e-15,15.581722 3.581722,12 8,12 Z" id="Rectangle-43',
+              symbolSize: [55, 30],
+              symbolRotate: 180,
+              label: {
+                fontSize: 16
+              },
+              itemStyle: {
+                color: '#26A5FD'
+              }
+            },
+            markLine: {
+              data: [{
+                type: 'average',
+                name: '平均值',
+              }]
+            }
+          }]
+        };
+        temperatureChart.setOption(option)
+      },
+    }
+  })
+
+</script>
+
+</html>

@@ -1,0 +1,730 @@
+.fat-bg {
+  background: #ED587B;
+  border-radius: 0 1rem 1rem 0;
+}
+
+.chubby-bg {
+  background: #DBA314;
+}
+
+.thinnish-bg {
+  background: #2DA2CC;
+  border-radius: 1rem 0 0 1rem;
+}
+
+.standard-bg {
+  background: #2283E2;
+}
+
+
+.item-focus {
+  background-image: -webkit-linear-gradient(-90deg, #223E70 0%, #3A77B9 100%);
+  background-image: -moz-linear-gradient(-90deg, #223E70 0%, #3A77B9 100%);
+  background-image: -o-linear-gradient(-90deg, #223E70 0%, #3A77B9 100%);
+  background-image: linear-gradient(-90deg, #223E70 0%, #3A77B9 100%);
+  border: .25rem solid #FFFFFF !important;
+  box-shadow: 0 .125rem .625rem 0 rgba(255, 255, 255, 0.50), 0 0 1.25rem 0 #4F76E9 !important;
+  border-radius: 1rem !important;
+  outline: none;
+}
+
+.user-content {
+  display: inline-flex;
+  width: 100%;
+}
+
+.aside-content {
+  width: 23.63rem;
+  height: 100%;
+  padding: 2.13rem 2.5rem;
+
+}
+
+.aside-content .avatar {
+  width: 100%;
+  text-align: center;
+
+}
+
+.aside-content .avatar img {
+  width: 8.375rem;
+  height: 8.375rem;
+  border-radius: 50%;
+}
+
+.aside-content .avatar span {
+  opacity: 0.72;
+  font-family: NotoSansCJKsc-Medium;
+  font-size: 1.5rem;
+  color: #FFFFFF;
+  letter-spacing: 0;
+}
+
+.aside-content .item-list {
+  width: 100%;
+  text-align: center;
+  margin-top: 3.75rem;
+
+}
+
+.aside-content .item-list ul {
+  list-style: none;
+
+}
+
+.aside-content .item-list ul li {
+  height: 4.5rem;
+  line-height: 4.5rem;
+  margin: 1.875rem 0;
+  outline: none;
+}
+
+.aside-content .item-list ul li i {
+  font-size: 2.125rem;
+  color: #FFFFFF;
+  opacity: 0.5;
+  margin-right: 1.75rem;
+}
+
+.aside-content .item-list ul li span {
+  text-decoration: none;
+  opacity: 0.5;
+  font-family: SourceHanSansCN-Regular;
+  font-size: 2.125rem;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  text-align: justify;
+}
+
+/* weight css */
+.weight-bg {
+  display: inline-flex;
+  width: 100%;
+  height: 100%;
+
+}
+
+.weight-bg .weight-content {
+  width: 100%;
+  height: 100%;
+  padding: 1.875rem;
+}
+
+.weight-bg .weight-content .weight-result {
+  width: 100%;
+  height: 23.125rem;
+  display: inline-flex;
+}
+
+.weight-bg .weight-content .weight-result .result {
+  background: url('../assets/weight-result-background.png') no-repeat;
+  background-size: 100% 100%;
+  border-radius: 1rem;
+  width: 49%;
+  margin: 0 1% 2% 0;
+}
+
+.weight-bg .weight-content .weight-result .result .result-background {
+  width: 100%;
+  height: 9.6875rem;
+}
+
+.weight-bg .weight-content .weight-result .result .result-background p {
+  opacity: 0.8;
+  font-family: NotoSansCJKsc-Regular;
+  font-size: 1.375rem;
+  color: #FAFAFA;
+  text-align: right;
+}
+
+.weight-bg .weight-content .weight-result .result p {
+  font-family: NotoSansCJKsc-Regular;
+  font-size: 1.75rem;
+  color: #FFFFFF;
+  padding: 1rem 1.5rem;
+}
+
+.weight-bg .weight-content .weight-result .result p span {
+  opacity: 0.8;
+  font-family: NotoSansCJKsc-Regular;
+  font-size: 1.375rem;
+  color: #FAFAFA;
+  text-align: center;
+  margin-left: 1.125rem;
+}
+
+.weight-bg .weight-content .weight-result .result .result-content {
+  width: 100%;
+  text-align: center;
+  height: calc(100% - 14.1875rem);
+  display: inline-flex;
+}
+
+.weight-bg .weight-content .weight-result .result .result-content .result-left {
+  margin-left: 12.5rem;
+  min-width: 9.0625rem;
+  height: 5.9375rem;
+  line-height: 10rem;
+  font-family: Roboto-Bold;
+  font-size: 4.5rem;
+  color: #FFFFFF;
+  text-align: center;
+  text-shadow: 0 1rem 1.5rem rgba(26, 101, 176, 0.40);
+}
+
+.weight-bg .weight-content .weight-result .result .result-content .result-kg {
+  width: 3.75rem;
+  height: 5.9375rem;
+  line-height: 10rem;
+  font-family: Roboto-Bold;
+  font-size: 1.375rem;
+  color: #FAFAFA;
+}
+
+.weight-bg .weight-content .weight-result .result .result-content .result-status {
+  min-width: 4.5rem;
+  height: 2.5rem;
+  background: #FFFFFF;
+  border-radius: .5rem;
+  font-family: NotoSansCJKsc-Regular;
+  font-size: 1.375rem;
+  color: #2283E2;
+  text-align: center;
+  line-height: 2.5rem;
+  margin: auto auto 0 auto;
+}
+
+.weight-bg .weight-content .weight-result .suggestion {
+  background: url('../assets/suggestion.png') no-repeat;
+  background-size: 100% 100%;
+  border-radius: 1rem;
+  width: 49%;
+  margin: 0 0 2% 1%;
+  position: relative;
+  
+}
+.weight-bg .weight-content .weight-result .suggestion .suggestion-title {
+  font-family: NotoSansCJKsc-Regular;
+  font-size: 1.75rem;
+  color: #FFFFFF;
+  margin: 1rem 1.5rem 0 1.5rem;
+}
+.weight-bg .weight-content .weight-result .suggestion .suggestion-content {
+  font-family: NotoSansCJKsc-Regular;
+  font-size: 1.375rem;
+  color: #FAFAFA;
+  line-height: 2.1875rem;
+  margin: 0 1.5rem;
+}
+.weight-bg .weight-content .weight-result .suggestion .weight-range {
+  align-self: center;
+  position: absolute;
+  width: 100%;
+  bottom: .5rem;
+
+  
+}
+.weight-bg .weight-content .weight-result .suggestion .weight-range .open-icon {
+  text-align: center;
+}
+.weight-bg .weight-content .weight-result .suggestion .weight-range .open-icon .open-icon-line {
+  width: 23%;
+  height: 1rem;
+  display: inline-block;
+  position: relative;
+}
+.weight-bg .weight-content .weight-result .suggestion .weight-range .open-icon .open-icon-line span:first-child {
+  position: absolute;
+  left: -.8rem;
+  top: -1.5rem;
+  opacity: 0.6;
+  font-family: Roboto-Medium;
+  font-size: 1rem;
+  color: #767676;
+}
+.weight-bg .weight-content .weight-result .suggestion .weight-range .open-icon .open-icon-line span:last-child {
+  margin-left: 1rem;
+  display: inline-block;
+  padding-top: 1.4rem;
+  font-family: NotoSansCJKsc-Regular;
+  font-size: 1rem;
+  color: #767676;
+  text-align: center;
+}
+.weight-bg .weight-content .weight-result .suggestion .weight-range .open-icon .open-icon-line .triangle {
+  width: .1875rem;
+  height: 2.375rem;
+  background: #5AAEFF;
+  position: absolute;
+  top: -1rem;
+  display: none;
+}
+.weight-bg .weight-content .weight-result .suggestion .weight-range .open-icon .open-icon-line  .show {
+  display: inline;
+  z-index: 1
+}
+.weight-bg .weight-content .weight-result .suggestion .weight-range .open-icon .open-icon-line .show-label {
+  position: absolute;
+  top: -1.5rem;
+  left: -1.875rem;
+  width: 4rem;
+  height: 1.75rem;
+  background: #5aaeff;
+  border-radius: 21.08px 21.08px 21.08px 21.08px;
+  text-align: center;
+  color: #fff;
+  line-height: 1.75rem;
+}
+.weight-bg .weight-content .weight-chart {
+  height: 38.375rem;
+  width: 100%;
+  background: url('../assets/chart-background.png') no-repeat;
+  background-size: 100% 100%;
+  border-radius: 1rem;
+}
+
+.weight-bg .weight-content .weight-chart .chart-title {
+  padding: .625rem 1.25rem;
+}
+
+.weight-bg .weight-content .weight-chart .chart-title .left-title {
+  font-family: NotoSansCJKsc-Regular;
+  font-size: 1.75rem;
+  color: #FFFFFF;
+}
+
+.weight-bg .weight-content .weight-chart .chart-title .right-title {
+  font-family: NotoSansCJKsc-Regular;
+  font-size: 1.375rem;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  text-align: right;
+  float: right;
+}
+
+/* pressure css */
+.pressure-bg {
+  display: inline-flex;
+  width: 100%;
+  height: 100%;
+}
+
+.pressure-bg .pressure-content {
+  width: 100%;
+  height: 100%;
+  padding: 1.875rem;
+}
+
+.pressure-bg .pressure-content .pressure-result {
+  width: 100%;
+  height: 23.125rem;
+  display: inline-flex;
+}
+.pressure-bg .pressure-content .pressure-result .result {
+  background: url('../assets/weight-result-background.png') no-repeat;
+  background-size: 100% 100%;
+  border-radius: 1rem;
+  width: 49%;
+  margin: 0 1% 2% 0;
+}
+.pressure-bg .pressure-content .pressure-result .result p {
+  font-family: NotoSansCJKsc-Regular;
+  font-size: 1.75rem;
+  color: #ffffff;
+  padding: 1rem 1.5rem;
+}
+.pressure-bg .pressure-content .pressure-result .result p span {
+  opacity: 0.8;
+  font-family: NotoSansCJKsc-Regular;
+  font-size: 1.375rem;
+  color: #fafafa;
+  text-align: center;
+  margin-left: 1.125rem;
+}
+.pressure-bg .pressure-content .pressure-result .result .result-content {
+  width: 100%;
+  text-align: center;
+  height: calc(100% - 14.1875rem);
+  display: inline-flex;
+}
+.pressure-bg .pressure-content .pressure-result .result .result-content .result-left {
+  margin-left: 6.25rem;
+  min-width: 15rem;
+  height: 5.9375rem;
+  line-height: 10rem;
+  font-family: Roboto-Bold;
+  font-size: 4.5rem;
+  color: #ffffff;
+  text-align: center;
+  text-shadow: 0 1rem 1.5rem rgba(26, 101, 176, 0.4);
+}
+.pressure-bg .pressure-content .pressure-result .result .result-content .result-kg {
+  width: 5rem;
+  height: 5.9375rem;
+  line-height: 10rem;
+  font-family: Roboto-Bold;
+  font-size: 1.375rem;
+  color: #fafafa;
+}
+.pressure-bg .pressure-content .pressure-result .result .result-content .result-status {
+  width: 4.5rem;
+  height: 2.5rem;
+  background: #ffffff;
+  border-radius: .5rem;
+  font-family: NotoSansCJKsc-Regular;
+  font-size: 1.375rem;
+  color: #2283e2;
+  text-align: center;
+  line-height: 2.5rem;
+  margin: auto auto 0 auto;
+}
+.pressure-bg .pressure-content .pressure-result .result .result-background {
+  width: 100%;
+  height: 9.6875rem;
+}
+.pressure-bg .pressure-content .pressure-result .suggestion {
+  background: url("../assets/suggestion-bg.png") no-repeat;
+  background-size: 100% 100%;
+  border-radius: 1rem;
+  width: 49%;
+  margin: 0 0 2% 1%;
+  position: relative;
+}
+.pressure-bg .pressure-content .pressure-result .suggestion .suggestion-title {
+  font-family: NotoSansCJKsc-Regular;
+  font-size: 1.75rem;
+  color: #ffffff;
+  margin: 1rem 1.5rem 0 1.5rem;
+}
+.pressure-bg .pressure-content .pressure-result .suggestion .suggestion-content {
+  font-family: NotoSansCJKsc-Regular;
+  font-size: 1.375rem;
+  color: #fafafa;
+  line-height: 2.1875rem;
+  margin: 0 1.5rem;
+}
+.pressure-bg .pressure-content .pressure-chart {
+  height: 38.375rem;
+  width: 100%;
+  background: url('../assets/chart-background.png') no-repeat;
+  background-size: 100% 100%;
+  border-radius: 1rem;
+}
+.pressure-bg .pressure-content .pressure-chart .chart-title {
+  padding: .625rem 1.25rem;
+}
+.pressure-bg .pressure-content .pressure-chart .chart-title .left-title {
+  font-family: NotoSansCJKsc-Regular;
+  font-size: 1.75rem;
+  color: #ffffff;
+}
+.pressure-bg .pressure-content .pressure-chart .chart-title .right-title {
+  font-family: NotoSansCJKsc-Regular;
+  font-size: 1.375rem;
+  color: #ffffff;
+  letter-spacing: 0;
+  text-align: right;
+  float: right;
+}
+/* sugar css */
+.sugar-bg {
+  display: inline-flex;
+  width: 100%;
+  height: 100%;
+}
+.sugar-bg .sugar-content {
+  width: 100%;
+  height: 100%;
+  padding: 1.875rem;
+}
+.sugar-bg .sugar-content .sugar-chart {
+  height: 38.375rem;
+  width: 100%;
+  background: url('../assets/chart-background.png') no-repeat;
+  background-size: 100% 100%;
+  border-radius: 1rem;
+  
+}
+.sugar-bg .sugar-content .sugar-chart .chart-title {
+  padding: .625rem 1.25rem;
+}
+.sugar-bg .sugar-content .sugar-chart .chart-title .left-title {
+  font-family: NotoSansCJKsc-Regular;
+  font-size: 1.75rem;
+  color: #ffffff;
+}
+.sugar-bg .sugar-content .sugar-chart .chart-title .right-title {
+  font-family: NotoSansCJKsc-Regular;
+  font-size: 1.375rem;
+  color: #ffffff;
+  letter-spacing: 0;
+  text-align: right;
+  float: right;
+}
+.sugar-bg .sugar-content .sugar-result {
+  width: 100%;
+  height: 23.125rem;
+  display: inline-flex;
+}
+.sugar-bg .sugar-content .sugar-result .suggestion {
+  background: url("../assets/suggestion-bg.png") no-repeat;
+  background-size: 100% 100%;
+  border-radius: 1rem;
+  width: 49%;
+  margin: 0 0 2% 1%;
+  position: relative;
+}
+.sugar-bg .sugar-content .sugar-result .suggestion .suggestion-title {
+  font-family: NotoSansCJKsc-Regular;
+  font-size: 1.75rem;
+  color: #ffffff;
+  margin: 1rem 1.5rem 0 1.5rem;
+}
+.sugar-bg .sugar-content .sugar-result .suggestion .suggestion-content {
+  font-family: NotoSansCJKsc-Regular;
+  font-size: 1.375rem;
+  color: #fafafa;
+  line-height: 2.1875rem;
+  margin: 0 1.5rem;
+}
+.sugar-bg .sugar-content .sugar-result .result {
+  background: url('../assets/weight-result-background.png') no-repeat;
+  background-size: 100% 100%;
+  border-radius: 1rem;
+  width: 49%;
+  margin: 0 1% 2% 0;
+}
+.sugar-bg .sugar-content .sugar-result .result .result-background {
+  width: 100%;
+  height: 9.6875rem;
+}
+.sugar-bg .sugar-content .sugar-result .result p {
+  font-family: NotoSansCJKsc-Regular;
+  font-size: 1.75rem;
+  color: #ffffff;
+  padding: 1rem 1.5rem;
+}
+.sugar-bg .sugar-content .sugar-result .result p span {
+  opacity: 0.8;
+  font-family: NotoSansCJKsc-Regular;
+  font-size: 1.375rem;
+  color: #fafafa;
+  text-align: center;
+  margin-left: 1.125rem;
+}
+.sugar-bg .sugar-content .sugar-result .result .result-content {
+  width: 100%;
+  text-align: center;
+  height: calc(100% - 14.1875rem);
+  display: inline-flex;
+}
+.sugar-bg .sugar-content .sugar-result .result .result-content .result-left {
+  margin-left: 12.5rem;
+  min-width: 9.0625rem;
+  height: 5.9375rem;
+  line-height: 10rem;
+  font-family: Roboto-Bold;
+  font-size: 4.5rem;
+  color: #ffffff;
+  text-align: center;
+  text-shadow: 0 1rem 1.5rem rgba(26, 101, 176, 0.4);
+}
+.sugar-bg .sugar-content .sugar-result .result .result-content .result-kg {
+  min-width: 3.75rem;
+  height: 5.9375rem;
+  line-height: 10rem;
+  font-family: Roboto-Bold;
+  font-size: 1.375rem;
+  color: #fafafa;
+}
+.sugar-bg .sugar-content .sugar-result .result .result-content .result-status {
+  width: 4.5rem;
+  height: 2.5rem;
+  background: #ffffff;
+  border-radius: .5rem;
+  font-family: NotoSansCJKsc-Regular;
+  font-size: 1.375rem;
+  color: #2283e2;
+  text-align: center;
+  line-height: 2.5rem;
+  margin: auto auto 0 auto;
+}
+/* temperature css */
+.temperature-bg {
+  display: inline-flex;
+  width: 100%;
+  height: 100%;
+}
+.temperature-bg .temperature-content {
+  width: 100%;
+  height: 100%;
+  padding: 1.875rem;
+}
+.temperature-bg .temperature-content .temperature-result {
+  width: 100%;
+  height: 23.125rem;
+  display: inline-flex;
+}
+.temperature-bg .temperature-content .temperature-result .result {
+  background: url('../assets/weight-result-background.png') no-repeat;
+  background-size: 100% 100%;
+  border-radius: 1rem;
+  width: 49%;
+  margin: 0 1% 2% 0;
+}
+.temperature-bg .temperature-content .temperature-result .result p {
+  font-family: NotoSansCJKsc-Regular;
+  font-size: 1.75rem;
+  color: #FFFFFF;
+  padding: 1rem 1.5rem;
+}
+.temperature-bg .temperature-content .temperature-result .result p span {
+  opacity: 0.8;
+  font-family: NotoSansCJKsc-Regular;
+  font-size: 1.375rem;
+  color: #FAFAFA;
+  text-align: center;
+  margin-left: 1.125rem;
+}
+.temperature-bg .temperature-content .temperature-result .result .result-content {
+  width: 100%;
+  text-align: center;
+  height: calc(100% - 14.1875rem);
+  display: inline-flex;
+}
+.temperature-bg .temperature-content .temperature-result .result .result-content .result-left {
+  margin-left: 12.5rem;
+  min-width: 9.0625rem;
+  height: 5.9375rem;
+  line-height: 10rem;
+  font-family: Roboto-Bold;
+  font-size: 4.5rem;
+  color: #FFFFFF;
+  text-align: center;
+  text-shadow: 0 1rem 1.5rem rgba(26,101,176,0.40);
+}
+.temperature-bg .temperature-content .temperature-result .result .result-content .result-kg {
+  width: 3.75rem;
+  height: 5.9375rem;
+  line-height: 10rem;
+  font-family: Roboto-Bold;
+  font-size: 1.375rem;
+  color: #FAFAFA;
+}
+.temperature-bg .temperature-content .temperature-result .result .result-content .result-status {
+  width: 4.5rem;
+  height: 2.5rem;
+  background: #FFFFFF;
+  border-radius: .5rem;
+  font-family: NotoSansCJKsc-Regular;
+  font-size: 1.375rem;
+  color: #2283E2;
+  text-align: center;
+  line-height: 2.5rem;
+  margin: auto auto 0 auto;
+}
+.temperature-bg .temperature-content .temperature-result .result .result-background {
+  width: 100%;
+  height: 9.6875rem;
+}
+.temperature-bg .temperature-content .temperature-result .suggestion {
+  background: url('../assets/suggestion.png') no-repeat;
+  background-size: 100% 100%;
+  border-radius: 1rem;
+  width: 49%;
+  margin: 0 0 2% 1%;
+  position: relative;
+}
+.temperature-bg .temperature-content .temperature-result .suggestion .temperature-range {
+  align-self:center;
+  position: absolute;
+  width: 100%;
+  bottom: .5rem;
+}
+.temperature-bg .temperature-content .temperature-result .suggestion .temperature-range .open-icon {
+  text-align: center;
+}
+.temperature-bg .temperature-content .temperature-result .suggestion .temperature-range .open-icon .open-icon-line {
+  width: 30%;
+  height: 1rem;
+  display: inline-block;
+  position: relative;
+}
+.temperature-bg .temperature-content .temperature-result .suggestion .temperature-range .open-icon .open-icon-line span:first-child{
+  position: absolute;
+  left: -.8rem;
+  top: -1.5rem;
+  opacity: 0.6;
+  font-family: Roboto-Medium;
+  font-size: 1rem;
+  color: #767676;
+}
+.temperature-bg .temperature-content .temperature-result .suggestion .temperature-range .open-icon .open-icon-line span:last-child{
+  margin-left: 1rem;
+  display: inline-block;
+  padding-top: 1.4rem;
+  font-family: NotoSansCJKsc-Regular;
+  font-size: 1rem;
+  color: #767676;
+  text-align: center;
+}
+.temperature-bg .temperature-content .temperature-result .suggestion .temperature-range .open-icon .open-icon-line .triangle{
+  width: .1875rem;
+  height: 2.375rem;
+  background: #5AAEFF;
+  position: absolute;
+  top: -1rem;
+  visibility: hidden;
+}
+.temperature-bg .temperature-content .temperature-result .suggestion .temperature-range .open-icon .open-icon-line .show{
+  visibility: visible;
+  z-index: 1
+}
+.temperature-bg .temperature-content .temperature-result .suggestion .temperature-range .open-icon .open-icon-line .show-label {
+  position: absolute;
+  top: -1.5rem;
+  left: -1.875rem;
+  width: 4rem;
+  height: 1.75rem;
+  background: #5aaeff;
+  border-radius: 21.08px 21.08px 21.08px 21.08px;
+  text-align: center;
+  color: #fff;
+  line-height: 1.75rem;
+}
+.temperature-bg .temperature-content .temperature-result .suggestion .suggestion-content {
+  font-family: NotoSansCJKsc-Regular;
+  font-size: 1.375rem;
+  color: #FAFAFA;
+  line-height: 2.1875rem;
+  margin: 0 1.5rem;
+}
+.temperature-bg .temperature-content .temperature-result .suggestion .suggestion-title {
+  font-family: NotoSansCJKsc-Regular;
+  font-size: 1.75rem;
+  color: #FFFFFF;
+  margin: 1rem 1.5rem 0 1.5rem;
+}
+.temperature-bg .temperature-content .temperature-chart {
+  height: 38.375rem;
+  width: 100%;
+  background: url('../assets/chart-background.png') no-repeat;
+  background-size: 100% 100%;
+  border-radius: 1rem;
+}
+.temperature-bg .temperature-content .temperature-chart .chart-title {
+  padding: .625rem 1.25rem;
+}
+.temperature-bg .temperature-content .temperature-chart .chart-title .left-title {
+  font-family: NotoSansCJKsc-Regular;
+  font-size: 1.75rem;
+  color: #FFFFFF;
+}
+.temperature-bg .temperature-content .temperature-chart .chart-title .right-title {
+  font-family: NotoSansCJKsc-Regular;
+  font-size: 1.375rem;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  text-align: right;
+  float: right;
+}
