@@ -1,0 +1,26 @@
+<!DOCTYPE html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,user-scalable=0,maximum-scale=1,minimum-scale=1"><meta name=referrer content=no-referrer><meta http-equiv=Cache-Control content="public, max-age=60"><title>tv-healthrecord</title><link href=/tv/static/css/app.53a451415e2da917b801cff13e27c345.css rel=stylesheet></head><style>* {
+      margin: 0;
+      padding: 0;
+    }
+    /* .mint-toast {
+      width: 800px;
+    } */
+    .mint-toast-text {
+      font-size: 1.875rem;
+    }</style><body><div id=app></div><script type=text/javascript src=/tv/static/js/manifest.708618970a35ba056746.js></script><script type=text/javascript src=/tv/static/js/vendor.0b7c0b9cc4ee8c149ba2.js></script><script type=text/javascript src=/tv/static/js/app.1f033712c0751b91ad78.js></script></body><script>var env = navigator.userAgent.toLowerCase();
+
+    var RedirectURL = 'http://healthrecord.haier.net/tv/index.html';
+    // var RedirectURL = 'http://healthrecord.haier.net/';
+    if (!window.sessionStorage.hadLogin) { // 处理免登录
+      window.sessionStorage.hadLogin = true;
+      <!--window.location.replace(-->
+        <!--'https://account.haier.com/oauth/authorize?client_id=jiangkangyun&response_type=code&state=qazwsx&redirect_uri=' +-->
+        <!--RedirectURL)-->
+    } else if (window.location.href.indexOf('code') > -1) { //获取code
+      let url = window.location.href;
+      let code = url.substring(url.indexOf("=") + 1,url.indexOf("&"));
+      sessionStorage.setItem('getFirstCodeOne', code);
+      if (env.indexOf('uplus') > -1) { //APP环境
+        window.history.go(-1)
+      }
+    }</script></html>

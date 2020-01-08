@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60px" height="60px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>Rectangle 17</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-3" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="记睡眠-02" transform="translate(-610.000000, -309.000000)">
+            <g id="Group-19" transform="translate(610.000000, 309.000000)">
+                <rect id="Rectangle-17" x="0" y="0" width="60" height="60"></rect>
+                <ellipse id="Oval-Copy-6" fill="#81C1FF" cx="30" cy="55" rx="14" ry="5"></ellipse>
+                <circle id="Oval-8-Copy-2" stroke="#2283E2" stroke-width="3" cx="30" cy="28" r="26"></circle>
+                <path d="M16.3402651,22.6244913 C17.7765748,23.9578247 19.2128846,24.6244913 20.6491943,24.6244913 C22.085504,24.6244913 23.5218137,23.9578247 24.9581235,22.6244913" id="Path-47" stroke="#2283E2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M36.3402651,22.6244913 C37.7765748,23.9578247 39.2128846,24.6244913 40.6491943,24.6244913 C42.085504,24.6244913 43.5218137,23.9578247 44.9581235,22.6244913" id="Path-47-Copy" stroke="#2283E2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M21,40 C23.9649319,41.3333333 26.9298638,42 29.8947956,42 C32.8597275,42 35.8246594,41.3333333 38.7895913,40" id="Path-48" stroke="#2283E2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+            </g>
+        </g>
+    </g>
+</svg>

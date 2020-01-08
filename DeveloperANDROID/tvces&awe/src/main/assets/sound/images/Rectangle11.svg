@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60px" height="60px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>Rectangle 11</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-3" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="记睡眠-03" transform="translate(-696.000000, -380.000000)">
+            <g id="Group-3" transform="translate(696.000000, 380.000000)">
+                <rect id="Rectangle-11" fill="#D8D8D8" opacity="0" x="0" y="0" width="60" height="60"></rect>
+                <g id="Group-9" transform="translate(2.000000, 11.000000)" stroke="#2283E2">
+                    <circle id="Oval-17" stroke-width="2.5" cx="43.9375" cy="13.0625" r="13.0625"></circle>
+                    <circle id="Oval-17-Copy" stroke-width="2.5" cx="13.0625" cy="13.0625" r="13.0625"></circle>
+                    <path d="M28.5,38 C30.1056017,30.0833333 33.4979471,26.125 38.6770361,26.125 C43.8561252,26.125 47.2484706,30.0833333 48.8540723,38" id="Path-58" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M9.5,37.8741237 C11.9619511,27.5431504 16.8031145,24.0251752 24.0234903,27.320198" id="Path-59" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M35.625,14.25 C36.7621568,18.4803855 39.1345671,20.824713 42.7422309,21.2829826 C46.3498946,21.7412522 49.519151,20.4877986 52.25,17.5226217 L35.625,14.25 Z" id="Path-60" stroke-width="2" fill="#81C1FF" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M7.125,14.25 C8.26215681,18.4803855 10.6345671,20.824713 14.2422309,21.2829826 C17.8498946,21.7412522 21.019151,20.4877986 23.75,17.5226217 L7.125,14.25 Z" id="Path-60-Copy" stroke-width="2" fill="#81C1FF" stroke-linecap="round" stroke-linejoin="round" transform="translate(15.437500, 17.812500) rotate(-30.000000) translate(-15.437500, -17.812500) "></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
