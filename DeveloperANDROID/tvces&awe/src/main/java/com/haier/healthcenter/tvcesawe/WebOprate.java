@@ -5,4 +5,5 @@ package com.haier.healthcenter.tvcesawe;
  */
 
 public interface WebOprate {
+    public void load();
 }

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
@@ -25,7 +26,7 @@ public class TurnedNeedle extends View {
     private float[] tan;                // 当前点的tangent值,用于计算图片所需旋转的角度
     private Bitmap mBitmap;             // 箭头图片
     private Matrix mMatrix;// 矩
-    Paint mDeafultPaint;
+    Paint mDeafultPaint,paintother;
     public TurnedNeedle(Context context) {
         super(context);
         ini();
@@ -46,9 +47,13 @@ public class TurnedNeedle extends View {
         pos = new float[2];
         tan = new float[2];
         BitmapFactory.Options options = new BitmapFactory.Options();
-        options.inSampleSize =4;       // 缩放图片
-        mBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.needle, options);
+        options.inSampleSize =6;       // 缩放图片
+        mBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.huixing, options);
         mMatrix = new Matrix();
+        paintother=new Paint();
+        paintother.setStyle(Paint.Style.STROKE);
+        paintother.setStrokeWidth(20);
+        paintother.setColor(Color.RED);
     }
 
     @Override
@@ -56,7 +61,7 @@ public class TurnedNeedle extends View {
         super.onDraw(canvas);
         Path path = new Path();                                 // 创建 Path
         canvas.translate(500,500);
-        path.addCircle(0, 0, 400, Path.Direction.CW);           // 添加一个圆形
+        path.addCircle(0, 0, 350, Path.Direction.CW);           // 添加一个圆形
 
         PathMeasure measure = new PathMeasure(path, false);     // 创建 PathMeasure
 
@@ -66,12 +71,20 @@ public class TurnedNeedle extends View {
         }
 
 // 获取当前位置的坐标以及趋势的矩阵
-        measure.getMatrix(measure.getLength() * currentValue, mMatrix, PathMeasure.TANGENT_MATRIX_FLAG | PathMeasure.POSITION_MATRIX_FLAG );//PathMeasure.TANGENT_MATRIX_FLAG || PathMeasure.POSITION_MATRIX_FLAG
+       // measure.getMatrix(measure.getLength() * currentValue, mMatrix,  PathMeasure.POSITION_MATRIX_FLAG );//PathMeasure.TANGENT_MATRIX_FLAG || PathMeasure.POSITION_MATRIX_FLAG
+        measure.getPosTan(measure.getLength() * currentValue,pos,tan);
 
-        mMatrix.preTranslate(-mBitmap.getWidth() / 2, -mBitmap.getHeight() / 2);   // <-- 将图片绘制中心调整到与当前点重合(注意:此处是前乘pre)
+       // mMatrix.preTranslate(-mBitmap.getWidth() / 2, -mBitmap.getHeight() / 2);   // <-- 将图片绘制中心调整到与当前点重合(注意:此处是前乘pre)
+        mMatrix.reset();                                                        // 重置Matrix
+        float degrees = (float) (Math.atan2(tan[1], tan[0]) * 180.0 / Math.PI); // 计算图片旋转角度
+        mMatrix.preTranslate(pos[0], pos[1]);//pos[0] - mBitmap.getWidth() / 2, pos[1] - mBitmap.getHeight() / 2
+        mMatrix.preRotate(degrees-90+9 );   // 旋转图片//mBitmap.getWidth() / 2, mBitmap.getHeight() / 2
 
         canvas.drawPath(path, mDeafultPaint);                                   // 绘制 Path
-        canvas.drawBitmap(mBitmap, mMatrix, mDeafultPaint);                     // 绘制箭头
+        canvas.drawBitmap(mBitmap, mMatrix, mDeafultPaint);
+        // 绘制箭头
+        canvas.drawPoint(0,0,paintother);
+        canvas.drawCircle(0,0,430,mDeafultPaint);
 
         invalidate();
     }

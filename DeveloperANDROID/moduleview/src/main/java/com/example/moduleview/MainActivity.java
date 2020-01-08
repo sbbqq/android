@@ -13,7 +13,7 @@ import com.example.moduleview.developerandroid.CustomView.Main2Activity;
 public class MainActivity extends Activity {
 
   TextView textView,textHuixing,txPathMeasure,txpasaier,txblood,txTvtest,txrili;
-  TextView txDate,txpathoprate,txrecycleview;
+  TextView txDate,txpathoprate,txrecycleview,txhuixing;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,5 +89,13 @@ public class MainActivity extends Activity {
                 startActivity(new Intent(MainActivity.this,RecycleViewlearnActivity.class));
             }
         });
+        txhuixing=(TextView)findViewById(R.id.txhuixing);
+        txhuixing.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,HuixingActivity.class));
+            }
+        });
     }
+
 }

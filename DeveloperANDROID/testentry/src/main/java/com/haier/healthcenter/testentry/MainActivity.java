@@ -18,7 +18,7 @@ import com.tencent.bugly.beta.Beta;
 import com.tencent.bugly.crashreport.CrashReport;
 
 public class MainActivity extends AppCompatActivity {
-   Button button;
+   Button button,buttonNetSet;
    EditText editText,editText2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +36,13 @@ public class MainActivity extends AppCompatActivity {
                 startAnotherApp("com.haier.healthcenter.mirrorhealth","com.haier.healthcenter.mirrorhealth.healthcenter.LoginLoadtActivity");
                // Beta.checkUpgrade();
                 //getToken();
+            }
+        });
+        buttonNetSet=(Button)findViewById(R.id.butnetset);
+        buttonNetSet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
         Log.e("hehe","*********************");
@@ -64,10 +71,11 @@ public class MainActivity extends AppCompatActivity {
         if (checkPackInfo(packname)) {
            // Intent intent = packageManager.getLaunchIntentForPackage(packname);
             Intent intent=new Intent();
-            intent.setAction("com.android.activity");
+            intent.setAction("com.healthcenter.Login");
            // intent.setClassName(packname,classname);
-            intent.putExtra("username",editText.getText().toString());
-            intent.putExtra("pwd",editText2.getText().toString());
+            //intent.putExtra("username",editText.getText().toString());
+          //  intent.putExtra("pwd",editText2.getText().toString());
+            intent.putExtra("token","368fe030-cf58-4abd-af96-4921196aa28f");
             Log.e("putbefor","name"+editText.getText().toString()+"pwd:"+editText2.getText());
 
             startActivity(intent);

@@ -1,4 +1,6 @@
-package com.haiyisoft.haieryl.util;
+package com.example.retrofit.util;
+
+import android.util.Log;
 
 import com.alibaba.fastjson.JSONObject;
 
@@ -37,6 +39,7 @@ public class BluetoothUtil {
         JSONObject parserReturn = WeightUnitUtil.parser(bBuffer[12], bBuffer[11],
                 scaleProperty, true);
         parserReturn.put("resistance", Resistance);
+        Log.e("wei&&res",parserReturn.toJSONString());
         return parserReturn;
     }
 

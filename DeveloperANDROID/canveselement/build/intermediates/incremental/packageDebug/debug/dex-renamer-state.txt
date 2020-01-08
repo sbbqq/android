@@ -1,0 +1,4 @@
+#Wed Jan 08 15:33:36 CST 2020
+base.0=/home/alone-nine-sword/touying/android-reposity/DeveloperANDROID/canveselement/build/intermediates/transforms/dexMerger/debug/0
+path.0=classes.dex
+renamed.0=classes.dex

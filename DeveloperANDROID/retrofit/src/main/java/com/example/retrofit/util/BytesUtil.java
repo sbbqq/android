@@ -1,4 +1,6 @@
-package com.haiyisoft.haieryl.util;
+package com.example.retrofit.util;
+
+import android.util.Log;
 
 /**
  * @Description 字节工具包
@@ -80,9 +82,12 @@ public class BytesUtil {
      */
     public static int bytesToInt(byte[] src) {
         String tmp = BytesUtil.bytesToHexString(src);
+
+
         int sum = 0;
         try {
             sum = Integer.parseInt(tmp, 16);
+            Log.e("tmp",tmp+"tmpToInt:--->"+sum);
         } catch (NumberFormatException e) {
 
         }

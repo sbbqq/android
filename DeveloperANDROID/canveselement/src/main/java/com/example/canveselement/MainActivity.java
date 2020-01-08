@@ -58,51 +58,51 @@ public class MainActivity extends AppCompatActivity {
         webView.setWebViewClient(new WebViewClient());
         webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
         webView.getSettings().setJavaScriptEnabled(true);
-        webView.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
-      webView.addJavascriptInterface(this, "user");//http://123.103.113.201:8085   http://thealth.haier.net/login
-       webView.loadUrl("https://www.haier.com/cn/smarthome/information/advisory/W020180918805702974131.jpg");//http://10.130.95.112:8088/test //"http://10.190.0.99:8088/test"  //http://healthrecord.haier.net  //http://47.93.57.7/Myfirst/HelloWorld.html
+       webView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);//
+      //webView.addJavascriptInterface(this, "user");//http://123.103.113.201:8085   http://thealth.haier.net/login
+       webView.loadUrl("file:///android_asset/index.html");//http://10.130.95.112:8088/test //"http://10.190.0.99:8088/test"  //http://healthrecord.haier.net  //http://47.93.57.7/Myfirst/HelloWorld.html
         //webView.loadUrl("http://my.fridge.com/build/index.html");
-        webView.setWebViewClient(new WebViewClient() {
-
-                                     @Override
-                                     public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                                         Log.e("shouldouver",url);
-                                         WebView.HitTestResult hit = webView.getHitTestResult();
-                                         int hitType = hit.getType();
-
-                                         if (hitType != WebView.HitTestResult.UNKNOWN_TYPE) {
-                                              // view.loadUrl(url);
-                                             //这里执行自定义的操作
-                                             return true;
-
-                                         } else {
-
-                                             //重定向时hitType为0 ,执行默认的操作
-                                             Log.e("rego","********************");
-                                             //view.loadUrl(url);
-                                             return false;
-                                         }
-                                         // view.loadUrl(url);
-                                           //   return  true;
-                                     }
-
-
-                                     @Override
-                                     public void onPageFinished(WebView view, String url) {
-                                         super.onPageFinished(view, url);
-                                         Log.e("onPagefinish",url+"");
-                                         //view.loadUrl(url);
-                                     }
-
-                                     @Override
-                                     public void onPageStarted(WebView view, String url, Bitmap favicon) {
-                                         super.onPageStarted(view, url, favicon);
-                                         Log.e("onPagestarted","*****************");
-                                     }
-                                 }
-
-
-                                 );
+//        webView.setWebViewClient(new WebViewClient() {
+//
+//                                     @Override
+//                                     public boolean shouldOverrideUrlLoading(WebView view, String url) {
+//                                         Log.e("shouldouver",url);
+////                                         WebView.HitTestResult hit = webView.getHitTestResult();
+////                                         int hitType = hit.getType();
+////
+////                                         if (hitType != WebView.HitTestResult.UNKNOWN_TYPE) {
+////                                              // view.loadUrl(url);
+////                                             //这里执行自定义的操作
+////                                             return true;
+////
+////                                         } else {
+////
+////                                             //重定向时hitType为0 ,执行默认的操作
+////                                             Log.e("rego","********************");
+////                                             //view.loadUrl(url);
+////                                             return false;
+////                                         }
+////                                         // view.loadUrl(url);
+//                                             return  false;
+//                                     }
+//
+//
+//                                     @Override
+//                                     public void onPageFinished(WebView view, String url) {
+//                                         super.onPageFinished(view, url);
+//                                         Log.e("onPagefinish",url+"");
+//                                         //view.loadUrl(url);
+//                                     }
+//
+//                                     @Override
+//                                     public void onPageStarted(WebView view, String url, Bitmap favicon) {
+//                                         super.onPageStarted(view, url, favicon);
+//                                         Log.e("onPagestarted","*****************");
+//                                     }
+//                                 }
+//
+//
+//                                 );
 
 
 

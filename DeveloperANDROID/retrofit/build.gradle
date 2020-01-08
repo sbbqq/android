@@ -12,7 +12,7 @@ android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "com.example.retrofit"
-        minSdkVersion 15
+        minSdkVersion 19
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
@@ -40,4 +40,5 @@ dependencies {
     compile 'com.squareup.okhttp3:okhttp:3.1.2'
     // Okhttp库
     compile 'com.squareup.retrofit2:converter-gson:2.0.2'
+    implementation files('libs/fastjson-1.2.12.jar')
 }

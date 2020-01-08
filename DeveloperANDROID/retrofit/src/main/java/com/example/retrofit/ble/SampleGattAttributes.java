@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.haier.tool;
+package com.example.retrofit.ble;
 
 import java.util.HashMap;
 

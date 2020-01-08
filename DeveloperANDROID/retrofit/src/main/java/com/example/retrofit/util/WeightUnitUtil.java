@@ -1,4 +1,6 @@
-package com.haiyisoft.haieryl.util;
+package com.example.retrofit.util;
+
+import android.util.Log;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
@@ -113,6 +115,7 @@ public class WeightUnitUtil {
 
         int iDigit = 1;
         float scaleTmpWeight = BytesUtil.bytesToInt(bWeight1) / 10f;
+        Log.e("bytetoInt/10f",scaleTmpWeight+"");
 
         DecimalFormatSymbols symbols = new DecimalFormatSymbols();
         symbols.setDecimalSeparator('.');

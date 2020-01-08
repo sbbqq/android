@@ -1,4 +1,4 @@
-package com.haier.tool;
+package com.example.retrofit.ble;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothClass;
@@ -20,11 +20,12 @@ import android.app.Activity;
 import android.os.Build;
 import android.content.pm.PackageManager;
 import android.util.Log;
-import org.apache.cordova.PluginResult;
-import org.apache.cordova.CallbackContext;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
+
+import com.example.retrofit.util.BluetoothUtil;
 import com.google.gson.Gson;
 import static android.bluetooth.BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT;
 import static android.bluetooth.BluetoothGattCharacteristic.WRITE_TYPE_NO_RESPONSE;
@@ -47,7 +48,7 @@ public class Ble {
     BluetoothDevice device=null;
     List <BluetoothGattService> bluetoothGattServices;
     List <BluetoothGattCharacteristic> bluetoothGattCharacteristics;
-CallbackContext callbackContext;
+
    Activity activity;
 
     private static final int STATE_DISCONNECTED = 0;
@@ -102,6 +103,7 @@ CallbackContext callbackContext;
 
      public Ble(Context context,Activity activity) {
         this.context = context;
+
         setActivity(activity);
         init();
     }
@@ -111,8 +113,10 @@ CallbackContext callbackContext;
 
         bluetoothGattCharacteristics=new ArrayList<BluetoothGattCharacteristic>();
         mBluetoothManager=(BluetoothManager) context.getSystemService(Context.BLUETOOTH_SERVICE);
-        mBluetoothAdapter =mBluetoothManager.getAdapter();
-      mGattCallback =
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
+            mBluetoothAdapter =mBluetoothManager.getAdapter();
+        }
+        mGattCallback =
               new BluetoothGattCallback() {
                   @Override
                   public void onConnectionStateChange(BluetoothGatt gatt, int status, int newState) {
@@ -127,9 +131,6 @@ CallbackContext callbackContext;
                               CallbackMess callbackMess=new CallbackMess("1","suc","conected");
                               Gson gson=new Gson();
                               String mess=gson.toJson(callbackMess);
-                              PluginResult pluginResult=new PluginResult(PluginResult.Status.OK,mess);
-                              pluginResult.setKeepCallback(true);
-                              callbackContext.sendPluginResult(pluginResult);
                               //Toast.makeText(context, "binggoconnect", //Toast.LENGTH_SHORT).show();
                               // Log.e(TAG, "Attempting to start service discovery:" +
                               //  mBluetoothGatt.discoverServices());
@@ -144,10 +145,7 @@ CallbackContext callbackContext;
                              // pluginResult = new PluginResult(PluginResult.Status.OK, "-2");// 断开或者未连接
                               CallbackMess callbackMess=new CallbackMess("1","suc","disconnected");
                               Gson gson=new Gson();
-                              String mess=gson.toJson(callbackMess);
-                              PluginResult pluginResult=new PluginResult(PluginResult.Status.OK,mess);
 
-                              callbackContext.sendPluginResult(pluginResult);
                               realeaseReasourse();
                               Log.e(TAG, "Disconnected from GATT server.");
                               isConecnted=false;
@@ -160,9 +158,7 @@ CallbackContext callbackContext;
                           CallbackMess callbackMess=new CallbackMess("-1","fail",status+"");
                           Gson gson=new Gson();
                           String mess=gson.toJson(callbackMess);
-                          PluginResult pluginResult=new PluginResult(PluginResult.Status.ERROR,mess);
 
-                          callbackContext.sendPluginResult(pluginResult);
                           LogMess(callbackMess);
                       }
                   }
@@ -176,9 +172,9 @@ CallbackContext callbackContext;
                           CallbackMess callbackMess=new CallbackMess("1","suc","findservice!");
                           Gson gson=new Gson();
                           String mess=gson.toJson(callbackMess);
-                          PluginResult pluginResult=new PluginResult(PluginResult.Status.OK,mess);
+
                            isFindservice=true;
-                          callbackContext.sendPluginResult(pluginResult);
+
                          // setNotifacion("00002a1c-0000-1000-8000-00805f9b34fb");
                           Log.e("serviceSize","serviceSize"+ gatt.getServices().size());
                           LogMess(callbackMess);
@@ -186,9 +182,9 @@ CallbackContext callbackContext;
                           CallbackMess callbackMess=new CallbackMess("-1","fail",status+"");
                           Gson gson=new Gson();
                           String mess=gson.toJson(callbackMess);
-                          PluginResult pluginResult=new PluginResult(PluginResult.Status.ERROR,mess);
+
                           LogMess(callbackMess);
-                          callbackContext.sendPluginResult(pluginResult);
+
 
                       }
                   }
@@ -198,51 +194,92 @@ CallbackContext callbackContext;
                   public void onCharacteristicRead(BluetoothGatt gatt,
                                                    BluetoothGattCharacteristic characteristic,
                                                    int status) {
-                      Log.e("oncharacterreistictRead","UIID:"+characteristic.getUuid()+"value");
+                      Log.e("oncharacterreistictRead","UIID:"+characteristic.getUuid()+"value="+bytesToHexString2(characteristic.getValue()));
                       if (status == BluetoothGatt.GATT_SUCCESS) {
                           Log.e("oncharacterreistictRead","UIID:"+characteristic.getUuid()+"value");
                           //broadcastUpdate(ACTION_DATA_AVAILABLE, characteristic);
                       }
                       else{
-                          PluginResult pluginResult;
-                          pluginResult = new PluginResult(PluginResult.Status.ERROR, status);
-                          callbackContext.sendPluginResult(pluginResult);
+
                       }
                   }
 
                   @Override
                   public void onCharacteristicChanged(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic) {
-                      Log.e("onCharacterChanged","UIID:"+characteristic.getUuid()+"value:"+characteristic.getValue().toString());
+                      Log.e("onCharacterChanged","UIID:"+characteristic.getUuid()+"value:"+bytesToHexString2(characteristic.getValue()));//characteristic.getValue().toString()
+
+                      byte[] bytes=characteristic.getValue();
+                       Log.e("length",bytes.length+""+bytes[0]);
+//                      try {
+//                          Thread.sleep(2000);
+//
+//
+//                      } catch (InterruptedException e) {
+//                          e.printStackTrace();
+//                      }
+//                      if((bytes[1] & 0xff)==0x92){
+//                          Log.e("0x92","*************");
+//                          if(bytes[3]==2){
+//                              Log.e("0x92测量模式","*************");
+//                              writeValue("0000ff10-0000-1000-8000-00805f9b34fb","0000ff11-0000-1000-8000-00805f9b34fb","55c19206a6aa");
+//                          }else if(bytes[3]==1){
+//                              if(bytes[6]<=2){
+//                                  Log.e("0x92测量模式结束","********发送度结果*****");
+//                                  writeValue("0000ff10-0000-1000-8000-00805f9b34fb","0000ff11-0000-1000-8000-00805f9b34fb","55c17f09b6aa");
+//                              }
+//                              else{
+//                                  Log.e("err","出现错误代码："+bytes[6]);
+//                              }
+//                          }
+//                      }else if((bytes[1]&0xff)==0x7f){
+//                          Log.e("0x7f结束返回数据",bytesToHexString2(characteristic.getValue()));
+//                      }
+//                      else{
+//                          Log.e("byte[1]==",bytes[1]+"");
+//                      }
+
+
+                     /* Log.e("totring", Arrays.toString(bytes));
+                      for(int i=0;i<bytes.length;i++){
+                          Log.e("byte",bytes[i]+"");
+                      }*/
+
+                     /* try {
+                          BluetoothUtil.analysisWeightAndResistance(bytes);
+                      } catch (Exception e) {
+                          e.printStackTrace();
+                      }*/ //Q1 体质城
+
+
                       super.onCharacteristicChanged(gatt, characteristic);
-                      CallbackMess callbackMess=new CallbackMess("1","suc",characteristic.getValue().toString());
+                      CallbackMess callbackMess=new CallbackMess("1","suc",bytesToHexString(characteristic.getValue()));
                       Gson gson=new Gson();
                       String mess=gson.toJson(callbackMess);
-                      PluginResult pluginResult=new PluginResult(PluginResult.Status.OK,mess);
 
-                      pluginResult.setKeepCallback(true);
-                      callbackContext.sendPluginResult(pluginResult);
-                      LogMess(callbackMess);
+
+                     // LogMess(callbackMess);
+
                   }
 
                   @Override
                   public void onCharacteristicWrite(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic, int status) {
                       if(status==BluetoothGatt.GATT_SUCCESS) {
-                          Log.e("onCharacterWrite", "UIID:" + characteristic.getUuid() + "value:" + characteristic.getValue() + "status:" + status);
+                          Log.e("onCharacterWrite", "UIID:" + characteristic.getUuid() + "value:" + bytesToHexString(characteristic.getValue()) + "status:" + status);
                           // mBluetoothGatt.readCharacteristic(getCharacterByUIID("00002a1c-0000-1000-8000-00805f9b34fb"));
                           CallbackMess callbackMess=new CallbackMess("1","suc","writecharacter-ok");
                           Gson gson=new Gson();
                           String mess=gson.toJson(callbackMess);
-                          PluginResult pluginResult=new PluginResult(PluginResult.Status.OK,mess);
+
                           LogMess(callbackMess);
-                          callbackContext.sendPluginResult(pluginResult);
+
                       }
                       else{
                           CallbackMess callbackMess=new CallbackMess("-1","fail",status+"");
                           Gson gson=new Gson();
                           String mess=gson.toJson(callbackMess);
-                          PluginResult pluginResult=new PluginResult(PluginResult.Status.ERROR,mess);
+
                           LogMess(callbackMess);
-                          callbackContext.sendPluginResult(pluginResult);
+
                       }
                   }
 
@@ -254,19 +291,19 @@ CallbackContext callbackContext;
                           CallbackMess callbackMess=new CallbackMess("1","suc","write-descriptor-ok");
                           Gson gson=new Gson();
                           String mess=gson.toJson(callbackMess);
-                          PluginResult pluginResult=new PluginResult(PluginResult.Status.OK,mess);
 
-                          pluginResult.setKeepCallback(true);
+
+                        ;
                           LogMess(callbackMess);
-                          callbackContext.sendPluginResult(pluginResult);
+
                       }
                       else{
                           CallbackMess callbackMess=new CallbackMess("-1","fail",status+"");
                           Gson gson=new Gson();
                           String mess=gson.toJson(callbackMess);
-                          PluginResult pluginResult=new PluginResult(PluginResult.Status.ERROR,mess);
+
                           LogMess(callbackMess);
-                          callbackContext.sendPluginResult(pluginResult);
+
                       }
                   }
               };
@@ -278,16 +315,17 @@ CallbackContext callbackContext;
 
           @Override
           public void onLeScan(final BluetoothDevice device, int rssi, final byte[] scanRecord) {
+                      if(device.getName()!=null)
+              Log.e("bledev","rssi:"+rssi+"device:"+device.getAddress()+"name:"+device.getName()+"record:"+bytesToHexString(scanRecord));
 
-              Log.e("bledev","rssi:"+rssi+"device:"+device.getAddress()+"name:"+device.getName());
 ////Toast.makeText(context,device.getAddress(),//Toast.LENGTH_SHORT).show();
 CallbackMess callbackMess=new CallbackMess("1","suc",device.getAddress());
               Gson gson=new Gson();
               String mess=gson.toJson(callbackMess);
- PluginResult pluginResult=new PluginResult(PluginResult.Status.OK,mess);
- pluginResult.setKeepCallback(true);
-              LogMess(callbackMess);
-              callbackContext.sendPluginResult(pluginResult);
+
+
+             // LogMess(callbackMess);
+
           }
       };
   }
@@ -299,22 +337,22 @@ CallbackMess callbackMess=new CallbackMess("1","suc",device.getAddress());
                         {  
                             if(IsBluOpent) {
                                 mBluetoothAdapter.startLeScan(mLeScanCallback);
-                                ////Toast.makeText(context, "*****scaninging****", //Toast.LENGTH_SHORT).show();
+                                Log.e("scaning","***************");
                             }
                             else{
-                                PluginResult pluginResult;
+
                                 CallbackMess callbackMess=new CallbackMess("-2","fail","blutooth not open");
-                                pluginResult=new PluginResult(PluginResult.Status.ERROR,new Gson().toJson(callbackMess));
+
                                 LogMess(callbackMess);
-                                callbackContext.sendPluginResult(pluginResult);
+
                             }
                         }
                  else{
-                     PluginResult pluginResult;
+
                      CallbackMess callbackMess=new CallbackMess("-3","fail","dev not support ble");
-                     pluginResult=new PluginResult(PluginResult.Status.ERROR,new Gson().toJson(callbackMess));
+
                      LogMess(callbackMess);
-                     callbackContext.sendPluginResult(pluginResult);
+
                  }
 
 }
@@ -329,26 +367,24 @@ public void checkAllCondition(){
 
 public void stopScan(){
     CallbackMess callbackMess;
-    PluginResult pluginResult;
+
     try {
         mBluetoothAdapter.stopLeScan(mLeScanCallback);
          callbackMess=new CallbackMess("1","suc","excute stopScan");
-         pluginResult=new PluginResult(PluginResult.Status.OK,new Gson().toJson(callbackMess));
-         callbackContext.sendPluginResult(pluginResult);
+
          
     }
     catch (Exception e){
         callbackMess=new CallbackMess("-2","excep","excute stopScan fail");
-        pluginResult=new PluginResult(PluginResult.Status.OK,new Gson().toJson(callbackMess));
+
         LogMess(callbackMess);
-        callbackContext.sendPluginResult(pluginResult);
+
     }
 }
 
 public void  conectDev(String mac){
    String mess="null-null";
 //Toast.makeText(context,"try connecting",//Toast.LENGTH_SHORT).show();
-PluginResult pluginResult;
  checkAllCondition();
 if(mBluetoothGatt!=null){
      mBluetoothGatt.close();
@@ -371,26 +407,26 @@ if(mBluetoothGatt!=null){
          // //Toast.makeText(context,"connectingbefore4",//Toast.LENGTH_SHORT).show();
      }
      catch (Exception e){
-Log.e("excep",e.toString());
+Log.e("excep",e.toString()+e.getMessage());
          CallbackMess callbackMess=new CallbackMess("-1","fail",e.toString());
-         pluginResult=new PluginResult(PluginResult.Status.ERROR,mess);
+
          LogMess(callbackMess);
-         callbackContext.sendPluginResult(pluginResult);
+
      }
      else{
          // -1 means blutooth not open
          CallbackMess callbackMess=new CallbackMess("-2","fail","blutooth not open");
-         pluginResult=new PluginResult(PluginResult.Status.ERROR,new Gson().toJson(callbackMess));
+
          LogMess(callbackMess);
-         callbackContext.sendPluginResult(pluginResult);
+
      }
  }
  else{
       //-3 means dev not support ble
       CallbackMess callbackMess=new CallbackMess("-3","fail","dev not support ble");
-      pluginResult=new PluginResult(PluginResult.Status.ERROR,new Gson().toJson(callbackMess));
+
       LogMess(callbackMess);
-      callbackContext.sendPluginResult(pluginResult);
+
   }
 
 }
@@ -401,15 +437,19 @@ public void disconnectDev(){
 
 
 }
+
+public void readValue(String chara){
+    mBluetoothGatt.readCharacteristic(getCharacterByUIID(chara));
+};
 public void realeaseReasourse(){
     if(mBluetoothGatt!=null){
         Log.e("realeaseresouse","*****************");
         if(!isConecnted)
         {
             CallbackMess callbackMess=new CallbackMess("1","suc","already disconnected");
-            PluginResult pluginResult=new PluginResult(PluginResult.Status.OK,new Gson().toJson(callbackMess));
+
             LogMess(callbackMess);
-            callbackContext.sendPluginResult(pluginResult);
+
         }
         else {
             mBluetoothGatt.disconnect();
@@ -419,9 +459,9 @@ public void realeaseReasourse(){
     }
     else{
         CallbackMess callbackMess=new CallbackMess("1","suc","already disconnected");
-        PluginResult pluginResult=new PluginResult(PluginResult.Status.OK,new Gson().toJson(callbackMess));
+
         LogMess(callbackMess);
-        callbackContext.sendPluginResult(pluginResult);
+
     }
     isFindservice=false;
 }
@@ -433,9 +473,9 @@ public void findService(){
         if(!isConecnted)
         {
             CallbackMess callbackMess=new CallbackMess("-1","fail","not connected");
-            PluginResult pluginResult=new PluginResult(PluginResult.Status.OK,new Gson().toJson(callbackMess));
+            //PluginResult pluginResult=new PluginResult(PluginResult.Status.OK,new Gson().toJson(callbackMess));
             LogMess(callbackMess);
-            callbackContext.sendPluginResult(pluginResult);
+            //callbackContext.sendPluginResult(pluginResult);
         }
         else {
             mBluetoothGatt.discoverServices();
@@ -445,9 +485,9 @@ public void findService(){
     }
     else{
         CallbackMess callbackMess=new CallbackMess("-1","fail","not connected");
-        PluginResult pluginResult=new PluginResult(PluginResult.Status.OK,new Gson().toJson(callbackMess));
+        //PluginResult pluginResult=new PluginResult(PluginResult.Status.OK,new Gson().toJson(callbackMess));
         LogMess(callbackMess);
-        callbackContext.sendPluginResult(pluginResult);
+       // callbackContext.sendPluginResult(pluginResult);
     }
     
 }
@@ -458,12 +498,29 @@ public void showcharacter(BluetoothGattService bluetoothGattService){
 
    for(int i=0;i< bluetoothGattCharacteristicstemp.size();i++){
        Log.e("character","UIID:"+bluetoothGattCharacteristicstemp.get(i).getUuid());
+       Log.e("value","hehe"+bytesToHexString(bluetoothGattCharacteristicstemp.get(i).getValue()));
        bluetoothGattCharacteristics.add(bluetoothGattCharacteristicstemp.get(i));
    }
 
 }
 
-public void showShowservice(List<BluetoothGattService>gattServices){
+    public static String bytesToHexString(byte[] src){
+           StringBuilder stringBuilder = new StringBuilder("");
+        if (src == null || src.length <= 0) {
+                    return null;
+                }
+            for (int i = 0; i < src.length; i++) {
+                     int v = src[i] & 0xFF;
+                     String hv = Integer.toHexString(v);
+                     if (hv.length() < 2) {
+                           stringBuilder.append(0);
+                        }
+                     stringBuilder.append(hv);
+                 }
+             return stringBuilder.toString();
+        }
+
+    public void showShowservice(List<BluetoothGattService>gattServices){
      for(int i=0;i<gattServices.size();i++){
          Log.e("service","UIID-->"+gattServices.get(i).getUuid());
          showcharacter(gattServices.get(i));
@@ -477,9 +534,9 @@ public void writeValue(String SerUIID,String CharUIID,String value){
         if(!isConecnted)
         {
             CallbackMess callbackMess=new CallbackMess("-1","fail","not connected");
-            PluginResult pluginResult=new PluginResult(PluginResult.Status.OK,new Gson().toJson(callbackMess));
+            //PluginResult pluginResult=new PluginResult(PluginResult.Status.OK,new Gson().toJson(callbackMess));
             LogMess(callbackMess);
-            callbackContext.sendPluginResult(pluginResult);
+           // callbackContext.sendPluginResult(pluginResult);
         }
         else {
             BluetoothGattCharacteristic bluetoothGattCharacteristic=null;
@@ -488,9 +545,9 @@ public void writeValue(String SerUIID,String CharUIID,String value){
               writeCharacter(bluetoothGattCharacteristic,value);
             else{
                 CallbackMess callbackMess=new CallbackMess("-1","fail","not got the character");
-                PluginResult pluginResult=new PluginResult(PluginResult.Status.OK,new Gson().toJson(callbackMess));
+                //PluginResult pluginResult=new PluginResult(PluginResult.Status.OK,new Gson().toJson(callbackMess));
                 LogMess(callbackMess);
-                callbackContext.sendPluginResult(pluginResult);
+                //callbackContext.sendPluginResult(pluginResult);
             }
         }
         bluetoothGattCharacteristics.clear();
@@ -498,17 +555,31 @@ public void writeValue(String SerUIID,String CharUIID,String value){
     }
     else{
         CallbackMess callbackMess=new CallbackMess("-1","fail","not connected");
-        PluginResult pluginResult=new PluginResult(PluginResult.Status.OK,new Gson().toJson(callbackMess));
+        //PluginResult pluginResult=new PluginResult(PluginResult.Status.OK,new Gson().toJson(callbackMess));
         LogMess(callbackMess);
-        callbackContext.sendPluginResult(pluginResult);
+        //callbackContext.sendPluginResult(pluginResult);
     }
     
      
 }
+
+
+    //根据填写数据生成指令数组
+    public static byte[] hexString2Bytes(String src) {
+        int l = src.length() / 2;
+        byte[] ret = new byte[l];
+        for (int i = 0; i < l; i++) {
+            ret[i] = (byte) Integer
+                    .parseInt(src.substring(i * 2, i * 2 + 2), 16);
+        }
+        return ret;
+    }
+
  private void writeCharacter(BluetoothGattCharacteristic bluetoothGattCharacteristic,String value){
 //    Log.e("writeCharacter","UIID:"+bluetoothGattCharacteristic.getUuid()+"value:"+value+"beforevalue:"+bluetoothGattCharacteristic.getValue().toString());
      bluetoothGattCharacteristic.setWriteType(WRITE_TYPE_DEFAULT);
-   bluetoothGattCharacteristic.setValue(value);
+   bluetoothGattCharacteristic.setValue(hexString2Bytes(value));
+    //bluetoothGattCharacteristic.setValue(hexStringToString(value));
   // UUID.fromString("")
 
    //setNotifacion("00002a1c-0000-1000-8000-00805f9b34fb");
@@ -516,9 +587,9 @@ public void writeValue(String SerUIID,String CharUIID,String value){
      //descriptor.setValue(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
      Log.e("writeCharacter","UIID:"+bluetoothGattCharacteristic.getUuid()+"value:"+value+"Aftervalue:"+bluetoothGattCharacteristic.getValue().toString());
      byte temp[]=bluetoothGattCharacteristic.getValue();
-     for(int i=0;i<temp.length;i++){
-         Log.e("bytevalue:","i:"+i+"value:"+temp[i]);
-     }
+//     for(int i=0;i<temp.length;i++){
+//         Log.e("bytevalue:","i:"+i+"value:"+temp[i]);
+//     }
    mBluetoothGatt.writeCharacteristic(bluetoothGattCharacteristic);
 
  }
@@ -552,9 +623,9 @@ public void setNotifacion(String serUIId,String charUiid){
         if(!isConecnted)
         {
             CallbackMess callbackMess=new CallbackMess("-1","fail","not connected");
-            PluginResult pluginResult=new PluginResult(PluginResult.Status.OK,new Gson().toJson(callbackMess));
+           // PluginResult pluginResult=new PluginResult(PluginResult.Status.OK,new Gson().toJson(callbackMess));
             LogMess(callbackMess);
-            callbackContext.sendPluginResult(pluginResult);
+            //callbackContext.sendPluginResult(pluginResult);
         }
         else {
             BluetoothGattCharacteristic bluetoothGattCharacteristic=null;
@@ -572,8 +643,8 @@ public void setNotifacion(String serUIId,String charUiid){
             else{
                 CallbackMess callbackMess=new CallbackMess("-1","fail","not got the character");
                 LogMess(callbackMess);
-                PluginResult pluginResult=new PluginResult(PluginResult.Status.OK,new Gson().toJson(callbackMess));
-                callbackContext.sendPluginResult(pluginResult);
+               // PluginResult pluginResult=new PluginResult(PluginResult.Status.OK,new Gson().toJson(callbackMess));
+                //callbackContext.sendPluginResult(pluginResult);
             }
         }
         //bluetoothGattCharacteristics.clear();
@@ -582,12 +653,31 @@ public void setNotifacion(String serUIId,String charUiid){
     else{
         CallbackMess callbackMess=new CallbackMess("-1","fail","not connected");
         LogMess(callbackMess);
-        PluginResult pluginResult=new PluginResult(PluginResult.Status.OK,new Gson().toJson(callbackMess));
-        callbackContext.sendPluginResult(pluginResult);
+       // PluginResult pluginResult=new PluginResult(PluginResult.Status.OK,new Gson().toJson(callbackMess));
+        //callbackContext.sendPluginResult(pluginResult);
     }
      
 
 }
+
+
+
+
+    /**
+     * 数组转换成十六进制字符串
+     * @return HexString
+     */
+    public static final String bytesToHexString2(byte[] bArray) {
+        StringBuffer sb = new StringBuffer(bArray.length);
+        String sTemp;
+        for (int i = 0; i < bArray.length; i++) {
+            sTemp = Integer.toHexString(0xFF & bArray[i]);
+            if (sTemp.length() < 2)
+                sb.append(0);
+            sb.append(sTemp.toUpperCase());
+        }
+        return sb.toString();
+    }
 public static final int REQUEST_CODE_ACCESS_COARSE_LOCATION = 1;
         public static final String ACCESS_COARSE_LOCATION = "android.permission.ACCESS_COARSE_LOCATION";
 
@@ -609,8 +699,8 @@ public void checkpermission() {
            else{
                 CallbackMess callbackMess=new CallbackMess("1","suc","got the permission");
                 LogMess(callbackMess);
-                PluginResult pluginResult=new PluginResult(PluginResult.Status.OK,new Gson().toJson(callbackMess));
-                callbackContext.sendPluginResult(pluginResult);
+               // PluginResult pluginResult=new PluginResult(PluginResult.Status.OK,new Gson().toJson(callbackMess));
+               // callbackContext.sendPluginResult(pluginResult);
             }
         }
 
@@ -627,9 +717,9 @@ public void checkpermission() {
              bluetoothGattCharacteristic=bluetoothGattService.getCharacteristic(UUID.fromString(charUID));
              if(bluetoothGattCharacteristic==null){
                  CallbackMess callbackMess=new CallbackMess("-1","fail","character not exist");
-                 PluginResult pluginResult=new PluginResult(PluginResult.Status.ERROR,new Gson().toJson(callbackMess));
+                 //PluginResult pluginResult=new PluginResult(PluginResult.Status.ERROR,new Gson().toJson(callbackMess));
                  LogMess(callbackMess);
-                 callbackContext.sendPluginResult(pluginResult);
+                // callbackContext.sendPluginResult(pluginResult);
              }
              else{
                  bluetoothGattCharacteristic=bluetoothGattService.getCharacteristic(UUID.fromString(charUID));
@@ -640,8 +730,8 @@ public void checkpermission() {
          else{
              CallbackMess callbackMess=new CallbackMess("-1","fail","service not exist");
              LogMess(callbackMess);
-             PluginResult pluginResult=new PluginResult(PluginResult.Status.ERROR,new Gson().toJson(callbackMess));
-             callbackContext.sendPluginResult(pluginResult);
+             //PluginResult pluginResult=new PluginResult(PluginResult.Status.ERROR,new Gson().toJson(callbackMess));
+             //callbackContext.sendPluginResult(pluginResult);
          }
      }
      else{
@@ -668,18 +758,79 @@ private static String hexString = "0123456789abcdef";
         Log.e("convert",sb.toString());
         return sb.toString();
     }
-public void setActivity(Activity activity) {
+
+//    public static String bytesToHexString(byte[] src){
+//             StringBuilder stringBuilder = new StringBuilder("");
+//            if (src == null || src.length <= 0) {
+//                    return null;
+//                }
+//             for (int i = 0; i < src.length; i++) {
+//                     int v = src[i] & 0xFF;
+//                     String hv = Integer.toHexString(v);
+//                     if (hv.length() < 2) {
+//                            stringBuilder.append(0);
+//                         }
+//                     stringBuilder.append(hv);
+//                 }
+//             return stringBuilder.toString();
+//         }
+    public void setActivity(Activity activity) {
         this.activity = activity;
     }
 
-public void setCallbackContext(CallbackContext callbackContext) {
-        this.callbackContext = callbackContext;
-    }
-public CallbackContext getCallbackContext() {
-        return callbackContext;
-    }
+//public void setCallbackContext(CallbackContext callbackContext) {
+//        this.callbackContext = callbackContext;
+//    }
+//public CallbackContext getCallbackContext() {
+//        return callbackContext;
+//    }
     private void LogMess(CallbackMess callbackMess){
         Log.e("LogMess",new Gson().toJson(callbackMess));
+    }
+
+    public static String HexStr2Str(String hexStr)
+    {
+        String str = "0123456789ABCDEF";
+        char[] hexs = hexStr.toCharArray();
+        byte[] bytes = new byte[hexStr.length() / 2];
+        int n;
+
+        for (int i = 0; i < bytes.length; i++)
+        {
+            n = str.indexOf(hexs[2 * i]) * 16;
+            n += str.indexOf(hexs[2 * i + 1]);
+            bytes[i] = (byte) (n & 0xff);
+        }
+
+        return new String(bytes);
+    }
+
+
+    /**
+     * 16进制转换成为string类型字符串
+     * @param s
+     * @return
+     */
+    public static String hexStringToString(String s) {
+        if (s == null || s.equals("")) {
+            return null;
+        }
+        s = s.replace(" ", "");
+        byte[] baKeyword = new byte[s.length() / 2];
+        for (int i = 0; i < baKeyword.length; i++) {
+            try {
+                baKeyword[i] = (byte) (0xff & Integer.parseInt(s.substring(i * 2, i * 2 + 2), 16));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        try {
+            s = new String(baKeyword, "UTF-8");
+            new String();
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
+        return s;
     }
 }
 

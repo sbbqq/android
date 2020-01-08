@@ -165,8 +165,9 @@
                     android:layout_height="50dp"
                     />
                 <TextView
-                    android:text="wqq,少生孩子多种书"
+                    android:text="huixingsaoyue"
                     android:gravity="center"
+                    android:id="@+id/txhuixing"
                     android:layout_width="wrap_content"
                     android:background="#3F92F0"
                     android:layout_height="50dp"
