@@ -4,9 +4,7 @@ import android.app.Application;
 import android.content.ComponentCallbacks;
 import android.util.Log;
 
-import com.tencent.bugly.Bugly;
-import com.tencent.bugly.beta.Beta;
-import com.tencent.bugly.crashreport.CrashReport;
+
 
 import static android.provider.UserDictionary.Words.APP_ID;
 
@@ -28,8 +26,8 @@ public class AppMyself extends Application {
 
 
 //  调用init方法
-        Bugly.init(getApplicationContext(),"75869cccb5", false);
-        CrashReport.initCrashReport(getApplicationContext(), "75869cccb5", true);
+        //Bugly.init(getApplicationContext(),"75869cccb5", false);
+       // CrashReport.initCrashReport(getApplicationContext(), "75869cccb5", true);
 
 
     }

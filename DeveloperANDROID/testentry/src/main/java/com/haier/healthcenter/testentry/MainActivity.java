@@ -13,9 +13,7 @@ import android.widget.Toast;
 
 import com.haier.smartspeaker.uhomeloginlib.AccountTokenCallBack;
 import com.haier.smartspeaker.uhomeloginlib.UhomeAccountManager;
-import com.tencent.bugly.Bugly;
-import com.tencent.bugly.beta.Beta;
-import com.tencent.bugly.crashreport.CrashReport;
+
 
 public class MainActivity extends AppCompatActivity {
    Button button,buttonNetSet;
@@ -46,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         Log.e("hehe","*********************");
-        Beta.checkUpgrade();
+        //Beta.checkUpgrade();
 
     }
     /**
