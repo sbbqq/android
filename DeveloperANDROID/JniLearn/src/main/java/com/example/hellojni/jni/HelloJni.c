@@ -7,5 +7,6 @@
 
 JNIEXPORT jstring JNICALL Java_com_example_hellojni_Ndk_NdkTools_getStringFromNDK
   (JNIEnv *env, jobject obj){
+
      return (*env)->NewStringUTF(env,"Hellow World，this content is from c");
   }
