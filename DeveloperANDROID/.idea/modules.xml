@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/cameraView/cameraView.iml" filepath="$PROJECT_DIR$/cameraView/cameraView.iml" />
       <module fileurl="file://$PROJECT_DIR$/canveselement/canveselement.iml" filepath="$PROJECT_DIR$/canveselement/canveselement.iml" />
+      <module fileurl="file://$PROJECT_DIR$/handaddcmake/handaddcmake.iml" filepath="$PROJECT_DIR$/handaddcmake/handaddcmake.iml" />
       <module fileurl="file://$PROJECT_DIR$/moduleview/moduleview.iml" filepath="$PROJECT_DIR$/moduleview/moduleview.iml" />
       <module fileurl="file://$PROJECT_DIR$/momeryleak/momeryleak.iml" filepath="$PROJECT_DIR$/momeryleak/momeryleak.iml" />
       <module fileurl="file://$PROJECT_DIR$/opengl/opengl.iml" filepath="$PROJECT_DIR$/opengl/opengl.iml" />
