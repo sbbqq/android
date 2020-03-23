@@ -5,6 +5,8 @@
       <module fileurl="file://$PROJECT_DIR$/4.2test/4.2test.iml" filepath="$PROJECT_DIR$/4.2test/4.2test.iml" />
       <module fileurl="file://$PROJECT_DIR$/DeveloperANDROID.iml" filepath="$PROJECT_DIR$/DeveloperANDROID.iml" />
       <module fileurl="file://$PROJECT_DIR$/JniLearn/JniLearn.iml" filepath="$PROJECT_DIR$/JniLearn/JniLearn.iml" />
+      <module fileurl="file://$PROJECT_DIR$/aidlclient/aidlclient.iml" filepath="$PROJECT_DIR$/aidlclient/aidlclient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/aidlserver/aidlserver.iml" filepath="$PROJECT_DIR$/aidlserver/aidlserver.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/cameraView/cameraView.iml" filepath="$PROJECT_DIR$/cameraView/cameraView.iml" />
       <module fileurl="file://$PROJECT_DIR$/canveselement/canveselement.iml" filepath="$PROJECT_DIR$/canveselement/canveselement.iml" />

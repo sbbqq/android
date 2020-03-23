@@ -1,1 +1,1 @@
-include ':app', ':moduleview', ':canveselement', ':tvtest', ':retrofit', ':tvshow', ':tvces&awe', ':4.2test', ':testentry', ':opengl', ':cameraView', ':momeryleak', ':JniLearn', ':handaddcmake'
+include ':app', ':moduleview', ':canveselement', ':tvtest', ':retrofit', ':tvshow', ':tvces&awe', ':4.2test', ':testentry', ':opengl', ':cameraView', ':momeryleak', ':JniLearn', ':handaddcmake', ':aidlclient', ':aidlserver'
