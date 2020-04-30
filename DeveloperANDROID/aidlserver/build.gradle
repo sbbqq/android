@@ -15,6 +15,11 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     }
+    sourceSets {//目录指向配置
+        main {
+            java.srcDirs = ['src/main/java', 'src/main/aidl']
+        }
+    }
 
     buildTypes {
         release {
@@ -26,7 +31,9 @@ android {
                 proguardFile 'proguard-rules.pro'
             }
         }
+
     }
+
 
 }
 

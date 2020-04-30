@@ -4,6 +4,7 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.IBinder;
+import android.os.Parcel;
 import android.os.RemoteException;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.aidlserver.City;
 import com.example.aidlserver.HelloaidlInterface;
 
 public class MainActivity extends AppCompatActivity {
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent=new Intent();
         intent.setAction("com.example.aidlserver");
         intent.setPackage("com.example.aidlserver");
+
         bindService(intent, new ServiceConnection() {
             @Override
             public void onServiceConnected(ComponentName name, IBinder service) {
@@ -41,8 +44,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    if(helloaidlInterface!=null)
-                   Log.e("binggo",helloaidlInterface.getName()) ;
+                    if(helloaidlInterface!=null) {
+                        Log.e("binggo", helloaidlInterface.getName() + "PId:" + android.os.Process.myPid());
+                     Parcel parcel=Parcel.obtain();
+                        parcel.writeInt(100);
+                     parcel.writeString("Qingdao");
+
+
+                         Log.e("add", "4+6=" + helloaidlInterface.Add(4, 6));
+                        Log.e("addCity",helloaidlInterface.addCity(new City("Qingdao",100))+"");
+                        Log.e("city-number",helloaidlInterface.getNumberOfCity()+"");
+                    }
                     else{
                         Log.e("no-biggo","service is null");
                     }

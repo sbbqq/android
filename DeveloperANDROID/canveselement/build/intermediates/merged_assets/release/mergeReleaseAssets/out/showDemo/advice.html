@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html style="background-color:rgba(FF,FF,FF,0)">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Page Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <link href="./cs/bootcs/bootstrap-theme.css" type="text/css" rel="stylesheet">
+  <link href="./cs/bootcs/bootstrap-theme.min.css" type="text/css" rel="stylesheet">
+  <link href="./cs/bootcs/bootstrap.css" type="text/css" rel="stylesheet">
+  <link href="./cs/bootcs/bootstrap.min.css" type="text/css" rel="stylesheet">
+  <script>
+  </script>  
+  
+  <style>
+    html,
+    body {
+      margin: 0;
+      height: 100%;
+      /* color: white; */
+      font-family: SourceHanSansCN-Bold;
+      background-color: rgba(FF,FF,FF,0);
+    }
+    
+    nav {
+
+      background-color: #252020;
+      height: 100%;
+      width: 20%;
+      position: relative;
+      float: left;
+      padding: 0px;
+      margin: 0px;
+      background-image: linear-gradient(269deg, #232323 0%, #111111 38%);
+    }
+
+    section {
+      position: relative;
+      width: 80%;
+      float: left;
+      background: #111111;
+      height: 100%;
+
+
+    }
+
+    .guider {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0px;
+      padding: 0px;
+
+    }
+    #advicetiparent{
+      
+      
+      
+      position: absolute;
+      color: #FFFFFF;
+      width: 100%;
+      height: 10%;
+  
+      letter-spacing: 0;
+      
+    }
+    #advicetitle {
+
+      font-family: SourceHanSansCN-Normal;
+      
+      font-size:20px;
+      position: absolute;
+      color: #FFFFFF;
+      letter-spacing: 0;
+      padding-left: 1%;
+      padding-top: 1%;
+      max-height: 4%;
+
+
+    }
+    @media screen and (max-height:719px) {
+      #advicetitle{
+        font-size:15px;
+      }
+    }
+    @media screen and (max-width:1279px) {
+      #advicetitle{
+        font-size:15px;
+      }
+    }
+    #advicecontent {
+      top: 10%;
+      position: absolute;
+      width: 100%;
+      height: 15%;
+      padding-right: 30px;
+      opacity: 0.7;
+      font-family: SourceHanSansCN-Normal;
+      font-size: 18px;
+      color: #FFFFFF;
+      letter-spacing: 0;
+      padding-left: 20px;
+      overflow: auto;
+    }
+    @media screen and (max-height:719px) {
+      #advicecontent{
+        font-size:15px;
+      }
+    }
+    @media screen and (max-width:1279px) {
+      #advicecontent{
+        font-size:15px;
+      }
+    }
+
+    #linediv {
+      position: relative;
+      top: 25%;
+      height: 5%;
+
+    }
+
+    #shiputitle {
+      top: 30%;
+      font-family: SourceHanSansCN-Normal;
+      font-size: 20px;
+      position: absolute;
+      color: #FFFFFF;
+      width: 100%;
+      height: 5%;
+     max-height: 4%;
+      letter-spacing: 0;
+      padding-left: 1%;
+      
+    }
+    @media screen and (max-height:719px) {
+      #shiputitle{
+        font-size:15px;
+        top:28%;
+      }
+    }
+
+    @media screen and (max-width:1279px) {
+      #shiputitle{
+        font-size:15px;
+        top:28%;
+      }
+    }
+
+    #foodall {
+      position: relative;
+      top: 30%;
+      width: 100%;
+      height: 45%;
+    }
+
+    #breakfast {
+      position: absolute;
+      left: 1%;
+      top: 0px;
+      width: 32%;
+      height: 100%;
+      background-image: linear-gradient(-90deg, #47BB65 0%, #2A9442 100%);
+      border-radius: 8px;
+    }
+
+    #lunch {
+      position: absolute;
+      left: 34%;
+      top: 0px;
+      width: 33%;
+      height: 100%;
+      background-image: linear-gradient(-90deg, #E2845B 0%, #F36844 100%);
+      border-radius: 8px;
+    }
+
+    #dinner {
+      position: absolute;
+      left: 68%;
+      top: 0px;
+      width: 31%;
+      height: 100%;
+      background-image: linear-gradient(-270deg, #0277BD 0%, #00B0FF 100%);
+      border-radius: 8px;
+    }
+
+    .foodnamestyle {
+      font-family: SourceHanSansCN-Medium;
+      font-size: 25px;
+      color: #FFFFFF;
+      letter-spacing: 0;
+      position: absolute;
+      left: 4%;
+      top: 4%;
+      max-height: 30%;
+      
+    }
+    @media screen and (max-height:719px) {
+      .foodnamestyle{
+        font-size:15px;
+      }
+    }
+    @media screen and (max-width:1279px) {
+      .foodnamestyle{
+        font-size:15px;
+      }
+    }
+
+    .foodpicstyle {
+      position: absolute;
+      right: 2%;
+      top: 2%;
+      max-height: 30%;
+      
+    }
+
+    .food1 {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      border-radius: 8px;
+      margin: calc((100% - 100px) / 2);
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    .food2 {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      border-radius: 8px;
+      margin: calc((100% - 100px) / 2);
+      max-width: 100%;
+      max-height: 100%;
+    }
+    .food3 {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      border-radius: 8px;
+      margin: calc((100% - 100px) / 2);
+      max-width: 100%;
+      max-height: 100%;
+    }
+    @media screen and (max-width: 1279px){
+      .food1 {
+        margin: 0;
+        border-radius: 4px;
+        
+      }
+      .food2 {
+        margin: 0;
+        border-radius: 4px;
+      } 
+      .food3 {
+        margin: 0;
+        border-radius: 4px;
+      }
+    }
+    /* @media screen and (max-height: 719px){
+      .food1 {
+        margin: 0;
+        border-radius: 4px;
+        
+      }
+      .food2 {
+        margin: 0;
+        border-radius: 4px;
+      } 
+      .food3 {
+        margin: 0;
+        border-radius: 4px;
+      }
+    } */
+
+    .food11 {
+      position: relative;
+      left: 1%;
+      top: 40%;
+      width: 32%;
+      height: 40%;
+      border-radius: 8px;
+      margin: auto 0;
+    }
+
+    .food22 {
+      position: absolute;
+      left: 34%;
+      top: 40%;
+      width: 33%;
+      height: 40%;
+      border-radius: 8px;
+    }
+
+    .food33 {
+      position: absolute;
+      left: 68%;
+      top: 40%;
+      width: 32%;
+      height: 40%;
+      border-radius: 8px;
+    }
+
+    .foodnameall {
+      position: absolute;
+      width: 100%;
+      left: 0px;
+      top: 78%;
+      height: 22%;
+      /* height: 18; */
+     
+    }
+    @media screen  and (max-height:719px){
+      .foodnameall{
+        top: 85%;
+        
+      }
+    }
+    @media screen  and (max-width:1279px){
+      .foodnameall{
+        top: 85%;
+        
+      }
+    }
+
+    .foodname1 {
+      font-family: SourceHanSansCN-Medium;
+      font-size: 16px;
+      color: #FFFFFF;
+      letter-spacing: 0;
+
+    }
+    @media screen  and (max-height:719px){
+      .foodname1{
+        font-size: 10px;
+      }
+    }
+    @media screen  and (max-width:1279px){
+      .foodname1{
+        font-size: 10px;
+      }
+    }
+
+    .foodname2 {
+      position: absolute;
+      left: 0;
+      top:0%;
+
+    }
+
+    .foodname3 {
+      position: absolute;
+      left: 230px;
+      top: 214px;
+
+    }
+
+    .foodname {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 10%;
+    }
+
+    .foodpic {
+      width: 100%;
+      height: 80%;
+      
+    }
+
+    .foodchange {
+
+      position: absolute;
+      top: 288px;
+      width: 100%;
+      text-align: center;
+      opacity: 0.8;
+      font-family: SourceHanSansCN-Normal;
+      font-size: 18px;
+      color: #FFFFFF;
+      letter-spacing: 0;
+
+    }
+
+    .buttonuntouch {
+      font-family: SourceHanSansCN-Normal;
+      font-size: 30px;
+      color: #FFFFFF;
+      letter-spacing: 0;
+
+      background-color: #111111;
+      border: #111111;
+      position: absolute;
+      /* height: 45px; */
+      left: 50%;
+      transform: translate(-50%, 0%);
+      outline-width: 0px;
+      padding: 5%;
+      top: 30%;
+      transform: translateY(-50%);
+      transform: translateX(-50%);
+    }
+
+    .buttontouch {
+      font-family: SourceHanSansCN-Normal;
+      font-size: 30px;
+      color: #FFFFFF;
+      letter-spacing: 0;
+     padding: 5%;
+      background-color: #2685E3;
+      border: #2685E3;
+      position: absolute;
+      /* height: 45px; */
+      left: 50%;
+      transform: translate(-50%, 0%);
+      outline-width: 0px;
+      border-radius: 15px;
+      top: 30%;
+      transform: translateY(-50%);
+      transform: translateX(-50%);
+    }
+    @media screen and (max-height:719px) {
+      .buttontouch{
+        border-radius: 8px;
+        font-size: 20px;
+        
+      }
+      .buttonuntouch{
+        border-radius: 8px;
+        font-size:20px;
+      
+      }
+    }
+    @media screen and (max-width:1279px) {
+      .buttontouch{
+        border-radius: 8px;
+        font-size: 20px;
+        
+      }
+      .buttonuntouch{
+        font-size:20px;
+        border-radius: 8px;
+       
+      }
+    }
+
+    .imghead {
+      position: absolute;
+      right: 28px;
+      top: 9px;
+      width: 42px;
+      height: 42px;
+    }
+
+    .buttonparent {
+      width: 100%;
+      height: 20%;
+      position: relative;
+      cursor: pointer;
+    }
+  </style>
+
+</head>
+
+<body style="height:100%;width:100% ;background-color: #C7EDCC;position:relative">
+
+
+  <nav id="chooseWhom">
+    <div class="buttonparent" @click="chooseWhom(0)">
+      <button type="button" @click="chooseWhom(0)" class="buttontouch" id="btnfa">爸爸</button>
+    </div>
+    <div class="buttonparent" @click="chooseWhom(1)">
+      <button type="button" @click="chooseWhom(1)" class="buttonuntouch" id="btnmo">妈妈</button>
+    </div>
+    <div class="buttonparent" @click="chooseWhom(2)">
+      <button type="button" @click="chooseWhom(2)" class="buttonuntouch" id="btngpa">爷爷</button>
+    </div>
+    <div class="buttonparent" @click="chooseWhom(3)">
+      <button type="button" @click="chooseWhom(3)" class="buttonuntouch" id="btngma">奶奶</button>
+    </div>
+    <div class="buttonparent"></div>
+
+
+
+  </nav>
+
+
+  <section>
+
+  <div id="advicetiparent">
+    <p id="advicetitle" >健康建议</p>
+  </div>
+   
+
+
+    <P id="advicecontent">
+      健康得分65分，您属于中度肥胖，脂肪含量已经严重超标。过度肥胖易导致三高、脂肪肝、糖尿病等代谢类疾病。请减少高热量、高油脂食物摄入，并保持定期运动的习惯，努力恢复健康身体。
+    </P>
+
+    <div id="linediv">
+      <div style="opacity: 0.12;
+  background: #FFFFFF;;position:absolute;height:1px;width:100%"> </div>
+    </div>
+
+
+
+    <p id="shiputitle">食谱建议</p>
+
+    <div id="foodall">
+      <div id="breakfast">
+        <p class="foodnamestyle">早餐</p>
+        <img class="foodpicstyle" src="./pic/nomal/breakfast.png">
+        <div class="food11">
+          <img class="food1" id="breakfone" />
+        </div>
+        <div class="food22">
+          <img class="food2" id="breakftwo" />
+        </div>
+        <div class="food33">
+          <img class="food3" id="breakfthree" />
+        </div>
+
+
+
+        <div class="foodnameall">
+          <div style="width:33%;left:0%;position:absolute">
+            <p align="center" class="foodname1" id="breakfname1">fgdfgg</p>
+          </div>
+          <div style="width:34%;left:33%;position:absolute">
+            <p align="center" class="foodname1" id="breakfname2">fgdfg</p>
+          </div>
+          <div style="width:33%;left:67%;position:absolute">
+            <p align="center" class="foodname1" id="breakfname3">fgddg</p>
+          </div>
+        </div>
+
+        <!--  <p id="OnMouse" class="foodchange" cursor:pointer @mouseover="OnOver" @mouseout="OnOut" @click="OnClick"    style="text-decoration:underline"  >不感兴趣换一批</p>-->
+
+      </div>
+      <div id="lunch">
+
+        <p class="foodnamestyle">午餐</p>
+        <img class="foodpicstyle" src="./pic/nomal/lunch.png">
+        <div class="food11">
+          <img class="food1" id="lunchone" />
+        </div>
+        <div class="food22">
+          <img class="food2" id="lunchtwo" />
+        </div>
+        <div class="food33">
+          <img class="food3" id="lunchthree" />
+        </div>
+
+
+
+        <div class="foodnameall">
+          <div style="width:33%;left:0%;position:absolute">
+            <p align="center" class="foodname1" id="lunchname1">fgdfgg</p>
+          </div>
+          <div style="width:34%;left:33%;position:absolute">
+            <p align="center" class="foodname1" id="lunchname2">fgdfg</p>
+          </div>
+          <div style="width:33%;left:67%;position:absolute">
+            <p align="center" class="foodname1" id="lunchname3">fgddg</p>
+          </div>
+        </div>
+
+        <!-- <p  id="OnMouselunch" class="foodchange" cursor:pointer @mouseover="OnOver" @mouseout="OnOut" @click="OnClick"    style="text-decoration:underline"  >不感兴趣换一批</p>-->
+      </div>
+      <div id="dinner">
+
+        <p class="foodnamestyle">晚餐</p>
+        <img class="foodpicstyle" src="./pic/nomal/dinner.png">
+        <div class="food11">
+          <img class="food1" id="dinnerone" />
+        </div>
+        <div class="food22">
+          <img class="food2" id="dinnertwo" />
+        </div>
+        <div class="food33">
+          <img class="food3" id="dinnerthree" />
+        </div>
+
+
+
+        <div class="foodnameall">
+          <div style="width:33%;left:0%;position:absolute">
+            <p align="center" class="foodname1" id="dinnername1">fgdfgg</p>
+          </div>
+          <div style="width:34%;left:33%;position:absolute">
+            <p align="center" class="foodname1" id="dinnername2">fgdfg</p>
+          </div>
+          <div style="width:33%;left:67%;position:absolute">
+            <p align="center" class="foodname1" id="dinnername3">fgddg</p>
+          </div>
+        </div>
+
+        <!-- <p id="OnMousedinner"  class="foodchange" cursor:pointer @mouseover="OnOver" @mouseout="OnOut" @click="OnClick"    style="text-decoration:underline"  >不感兴趣换一批</p>-->
+      </div>
+    </div>
+    </div>
+
+
+
+  </section>
+
+
+
+
+
+
+</body>
+<script src="./js/jqary/jquery-3.3.1.min.js"></script>
+<script src="./js/bootjs/bootstrap.js"></script>
+<script src="./js/vuejs/vue.min.js"></script>
+<script>
+  var chosen;
+  var app = new Vue({
+    el: '#OnMouse',
+    data: {
+      state: 0
+    },
+    // 在 `methods` 对象中定义方法
+    methods: {
+      OnOver: function (event) {
+        // alert("over");
+      },
+      OnOut: function (event) {
+        //alert("out");
+      },
+      OnClick: function (event) {
+
+        //取一随机数以及后面两个后续的index（取余）作为变更策略
+        var witch = Math.floor(Math.random() * 9);
+        document.getElementById('breakfname1').innerHTML = chosen.breakfastname[witch].name;
+        document.getElementById('breakfname2').innerHTML = chosen.breakfastname[(witch + 1) % 9].name;
+        document.getElementById('breakfname3').innerHTML = chosen.breakfastname[(witch + 2) % 9].name;
+        document.getElementById('breakfone').src = chosen.breakfasturl[witch].url;
+        document.getElementById('breakftwo').src = chosen.breakfasturl[(witch + 1) % 9].url;
+        document.getElementById('breakfthree').src = chosen.breakfasturl[(witch + 2) % 9].url;
+        alert("click" + chosen.breakfastname[witch].name + chosen.breakfasturl[0].url + "witch：" + witch);
+      }
+    }
+  })
+  // 也可以用 JavaScript 直接调用方法
+  var app = new Vue({
+    el: '#OnMouselunch',
+    data: {
+      state: 0
+    },
+    // 在 `methods` 对象中定义方法
+    methods: {
+      OnOver: function (event) {
+        // alert("over");
+      },
+      OnOut: function (event) {
+        //alert("out");
+      },
+      OnClick: function (event) {
+        var witch = Math.floor(Math.random() * 3);
+        document.getElementById('lunchname1').innerHTML = chosen.lunchname[witch].name;
+        document.getElementById('lunchname2').innerHTML = chosen.lunchname[(witch + 1) % 9].name;
+        document.getElementById('lunchname3').innerHTML = chosen.lunchname[(witch + 2) % 9].name;
+        document.getElementById('lunchone').src = chosen.lunchurl[witch].url;
+        document.getElementById('lunchtwo').src = chosen.lunchurl[(witch + 1) % 9].url;
+        document.getElementById('lunchthree').src = chosen.lunchurl[(witch + 2) % 9].url;
+
+        alert("click" + chosen.lunchname[witch].name + chosen.lunchurl[witch].url);
+      }
+    }
+  })
+  // 也可以用 JavaScript 直接调用方法
+  var app = new Vue({
+    el: '#OnMousedinner',
+    data: {
+      state: 0
+    },
+    // 在 `methods` 对象中定义方法
+    methods: {
+      OnOver: function (event) {
+        // alert("over");
+      },
+      OnOut: function (event) {
+        //alert("out");
+      },
+      OnClick: function (event) {
+        var witch = Math.floor(Math.random() * 3);
+        document.getElementById('dinnername1').innerHTML = chosen.dinnername[witch].name;
+        document.getElementById('dinnername2').innerHTML = chosen.dinnername[(witch + 1) % 9].name;
+        document.getElementById('dinnername3').innerHTML = chosen.dinnername[(witch + 2) % 9].name;
+        document.getElementById('dinnerone').src = chosen.dinnerurl[witch].url;
+        document.getElementById('dinnertwo').src = chosen.dinnerurl[(witch + 1) % 9].url;
+        document.getElementById('dinnerthree').src = chosen.dinnerurl[(witch + 1) % 9].url;
+
+        alert("click" + chosen.breakfastname[witch].name + chosen.breakfasturl[witch].url + "length:" + chosen.dinnername.length);
+
+      }
+    }
+  })
+  // 也可以用 JavaScript 直接调用方法
+  var father = new Vue({
+    el: "#father",
+    data: {
+      breakfastname: [{ name: "菜煎饼" }, { name: "生磨黄豆原味豆浆" }, { name: "水果沙拉" }, { name: "银耳链子粥" }, { name: "武大郎骚饼" }, { name: "鲍鱼炖红薯" }, { name: "银耳链子粥" }, { name: "武大郎骚饼" }, { name: "鲍鱼炖红薯" }],
+      lunchname: [{ name: "黑米饭" }, { name: "苦瓜炒蛋" }, { name: "海带豆腐汤" }, { name: "银耳链子粥" }, { name: "武大郎骚饼" }, { name: "鲍鱼炖红薯" }, { name: "银耳链子粥" }, { name: "武大郎骚饼" }, { name: "鲍鱼炖红薯" }],
+      dinnername: [{ name: "微波炉烤红薯" }, { name: "白灼菜心" }, { name: "肥牛泡菜汤" }, { name: "皮蛋瘦肉粥" }, { name: "满汉全席" }, { name: "皮蛋瘦肉粥" }, { name: "满汉全席" }, { name: "皮蛋瘦肉粥" }, { name: "满汉全席" }],
+      breakfasturl: [{ url: "pic/fatherfood/break01.jpeg" }, { url: "pic/fatherfood/break02.jpeg" }, { url: "pic/fatherfood/break03.jpeg" }, { url: "./pic/foodbreak/father/jbgz.jpg" }, { url: "./pic/foodbreak/father/hh.jpg" }, { url: "./pic/foodbreak/father/haha.jpg" }, { url: "./pic/foodbreak/father/jbgz.jpg" }, { url: "./pic/foodbreak/father/hh.jpg" }, { url: "./pic/foodbreak/father/haha.jpg" }],
+      lunchurl: [{ url: "pic/fatherfood/lunch01.jpeg" }, { url: "pic/fatherfood/lunch02.jpeg" }, { url: "pic/fatherfood/lunch03.jpeg" }, { url: "./pic/foodbreak/father/jbgz.jpg" }, { url: "./pic/foodbreak/father/hh.jpg" }, { url: "./pic/foodbreak/father/haha.jpg" }, { url: "./pic/foodbreak/father/jbgz.jpg" }, { url: "./pic/foodbreak/father/hh.jpg" }, { url: "./pic/foodbreak/father/haha.jpg" }],
+      dinnerurl: [{ url: "pic/fatherfood/dinner01.jpeg" }, { url: "pic/fatherfood/dinner02.jpeg" }, { url: "pic/fatherfood/dinner03.jpeg" }, { url: "./pic/foodbreak/father/jbgz.jpg" }, { url: "./pic/foodbreak/father/hh.jpg" }, { url: "./pic/foodbreak/father/haha.jpg" }, { url: "./pic/foodbreak/father/jbgz.jpg" }, { url: "./pic/foodbreak/father/hh.jpg" }, { url: "./pic/foodbreak/father/haha.jpg" }],
+      chosendinner: '',
+
+      chosenlunch: '',
+      chosenbreakfast: '',
+      advice: '健康得分65分，您属于中度肥胖，脂肪含量已经严重超标。过度肥胖易导致三高、脂肪肝、糖尿病等代谢类疾病。请减少高热量、高油脂食物摄入，并保持定期运动的习惯，努力恢复健康身体。',
+
+    }
+  });
+  chosen = father;
+  var mother = new Vue({
+    el: "#mother",
+    data: {
+      breakfastname: [{ name: "彩色小馄饨" }, { name: "黑芝麻糊" }, { name: "谷物酸奶水果杯" }, { name: "银耳链子粥" }, { name: "武大郎骚饼" }, { name: "鲍鱼炖红薯" }, { name: "银耳链子粥" }, { name: "武大郎骚饼" }, { name: "鲍鱼炖红薯" }],
+      lunchname: [{ name: "紫薯饭团" }, { name: "芦笋炒百合" }, { name: "冬瓜黑鱼汤" }, { name: "银耳链子粥" }, { name: "武大郎骚饼" }, { name: "鲍鱼炖红薯" }, { name: "银耳链子粥" }, { name: "武大郎骚饼" }, { name: "鲍鱼炖红薯" }],
+      dinnername: [{ name: "全麦馒头" }, { name: "胡萝卜玉米排骨汤" }, { name: "莴笋炒山药" }, { name: "皮蛋瘦肉粥" }, { name: "满汉全席" }, { name: "皮蛋瘦肉粥" }, { name: "满汉全席" }, { name: "皮蛋瘦肉粥" }, { name: "满汉全席" }],
+      breakfasturl: [{ url: "pic/motherfood/break01.jpeg" }, { url: "./pic/motherfood/break02.jpeg" }, { url: "pic/motherfood/break03.jpeg" }, { url: "./pic/foodbreak/father/jbgz.jpg" }, { url: "./pic/foodbreak/father/hh.jpg" }, { url: "./pic/foodbreak/father/haha.jpg" }, { url: "./pic/foodbreak/father/jbgz.jpg" }, { url: "./pic/foodbreak/father/hh.jpg" }, { url: "./pic/foodbreak/father/haha.jpg" }],
+      lunchurl: [{ url: "pic/motherfood/lunch01.jpeg" }, { url: "pic/motherfood/lunch02.jpeg" }, { url: "pic/motherfood/lunch03.jpeg" }, { url: "./pic/foodbreak/father/jbgz.jpg" }, { url: "./pic/foodbreak/father/hh.jpg" }, { url: "./pic/foodbreak/father/haha.jpg" }, { url: "./pic/foodbreak/father/jbgz.jpg" }, { url: "./pic/foodbreak/father/hh.jpg" }, { url: "./pic/foodbreak/father/haha.jpg" }],
+      dinnerurl: [{ url: "pic/motherfood/dinner01.jpeg" }, { url: "pic/motherfood/dinner02.jpeg" }, { url: "pic/motherfood/dinner03.jpeg" }, { url: "./pic/foodbreak/father/jbgz.jpg" }, { url: "./pic/foodbreak/father/hh.jpg" }, { url: "./pic/foodbreak/father/haha.jpg" }, { url: "./pic/foodbreak/father/jbgz.jpg" }, { url: "./pic/foodbreak/father/hh.jpg" }, { url: "./pic/foodbreak/father/haha.jpg" }],
+      chosendinner: '',
+      chosenlunch: '',
+      chosenbreakfast: '',
+      advice: '健康得分92分，您的肌肤偏油，比较敏感，虽然存在轻度的痘痘问题，但也不用太过担心！饮食方面减少日常刺激性食物的摄入，保持清淡和营养全面；另外，适量日常运动也有助于减少痘痘产生。',
+
+    }
+  });
+  var granpa = new Vue({
+    el: "#granpa",
+    data: {
+      breakfastname: [{ name: "全麦面包" }, { name: "冰糖雪梨银耳羹" }, { name: "五香鹌鹑蛋" }, { name: "银耳链子粥" }, { name: "武大郎骚饼" }, { name: "鲍鱼炖红薯" }, { name: "银耳链子粥" }, { name: "武大郎骚饼" }, { name: "鲍鱼炖红薯" }],
+      lunchname: [{ name: "鸡汁土豆泥" }, { name: "芹菜炒香干" }, { name: "肉末香菇豆腐" }, { name: "银耳链子粥" }, { name: "武大郎骚饼" }, { name: "鲍鱼炖红薯" }, { name: "银耳链子粥" }, { name: "武大郎骚饼" }, { name: "鲍鱼炖红薯" }],
+      dinnername: [{ name: "红薯玉米窝窝头" }, { name: "鱼香茄子" }, { name: "清炒山药西蓝花" }, { name: "皮蛋瘦肉粥" }, { name: "满汉全席" }, { name: "皮蛋瘦肉粥" }, { name: "满汉全席" }, { name: "皮蛋瘦肉粥" }, { name: "满汉全席" }],
+      breakfasturl: [{ url: "pic/granpafood/break01.jpeg" }, { url: "pic/granpafood/break02.jpeg" }, { url: "pic/granpafood/break03.jpeg" }, { url: "./pic/foodbreak/father/jbgz.jpg" }, { url: "./pic/foodbreak/father/hh.jpg" }, { url: "./pic/foodbreak/father/haha.jpg" }, { url: "./pic/foodbreak/father/jbgz.jpg" }, { url: "./pic/foodbreak/father/hh.jpg" }, { url: "./pic/foodbreak/father/haha.jpg" }],
+      lunchurl: [{ url: "pic/granpafood/lunch01.jpeg" }, { url: "pic/granpafood/lunch02.jpeg" }, { url: "pic/granpafood/lunch03.jpeg" }, { url: "./pic/foodbreak/father/jbgz.jpg" }, { url: "./pic/foodbreak/father/hh.jpg" }, { url: "./pic/foodbreak/father/haha.jpg" }, { url: "./pic/foodbreak/father/jbgz.jpg" }, { url: "./pic/foodbreak/father/hh.jpg" }, { url: "./pic/foodbreak/father/haha.jpg" }],
+      dinnerurl: [{ url: "pic/granpafood/dinner01.jpeg" }, { url: "pic/granpafood/dinner02.jpeg" }, { url: "pic/granpafood/dinner03.jpeg" }, { url: "./pic/foodbreak/father/jbgz.jpg" }, { url: "./pic/foodbreak/father/hh.jpg" }, { url: "./pic/foodbreak/father/haha.jpg" }, { url: "./pic/foodbreak/father/jbgz.jpg" }, { url: "./pic/foodbreak/father/hh.jpg" }, { url: "./pic/foodbreak/father/haha.jpg" }],
+      chosendinner: '',
+      chosenlunch: '',
+      chosenbreakfast: '',
+      advice: '健康得分87分，最近的血压趋于稳定，一定要继续保持哟！另外，饮食方面仍要保证均衡膳食和充分营养。注意日常锻炼，保持正常体型，避免肥胖导致的高血压、冠心病、糖尿病等。',
+
+    }
+  });
+  var granma = new Vue({
+    el: "#granma",
+    data: {
+      breakfastname: [{ name: "西红柿萝卜汤" }, { name: "凉拌秋葵" }, { name: "五彩时蔬荞麦面" }, { name: "银耳链子粥" }, { name: "武大郎骚饼" }, { name: "鲍鱼炖红薯" }, { name: "银耳链子粥" }, { name: "武大郎骚饼" }, { name: "鲍鱼炖红薯" }],
+      lunchname: [{ name: "香葱花卷" }, { name: "木耳炒鸡蛋" }, { name: "鲫鱼豆腐汤" }, { name: "银耳链子粥" }, { name: "武大郎骚饼" }, { name: "鲍鱼炖红薯" }, { name: "银耳链子粥" }, { name: "武大郎骚饼" }, { name: "鲍鱼炖红薯" }],
+      dinnername: [{ name: "黄瓜鸡蛋饼" }, { name: "凉拌金针菇" }, { name: "清淡丝瓜汤" }, { name: "皮蛋瘦肉粥" }, { name: "满汉全席" }, { name: "皮蛋瘦肉粥" }, { name: "满汉全席" }, { name: "皮蛋瘦肉粥" }, { name: "满汉全席" }],
+      breakfasturl: [{ url: "pic/granmofood/break01.jpeg" }, { url: "pic/granmofood/break02.jpeg" }, { url: "pic/granmofood/break03.jpeg" }, { url: "./pic/foodbreak/father/jbgz.jpg" }, { url: "./pic/foodbreak/father/hh.jpg" }, { url: "./pic/foodbreak/father/haha.jpg" }, { url: "./pic/foodbreak/father/jbgz.jpg" }, { url: "./pic/foodbreak/father/hh.jpg" }, { url: "./pic/foodbreak/father/haha.jpg" }],
+      lunchurl: [{ url: "pic/granmofood/lunch01.jpeg" }, { url: "pic/foodbreak/father/hh.jpg" }, { url: "pic/granmofood/lunch02.jpeg" }, { url: "./pic/granmofood/lunch03.jpeg" }, { url: "./pic/foodbreak/father/hh.jpg" }, { url: "./pic/foodbreak/father/haha.jpg" }, { url: "./pic/foodbreak/father/jbgz.jpg" }, { url: "./pic/foodbreak/father/hh.jpg" }, { url: "./pic/foodbreak/father/haha.jpg" }],
+      dinnerurl: [{ url: "pic/granmofood/dinner01.jpeg" }, { url: "pic/granmofood/dinner02.jpeg" }, { url: "pic/granmofood/dinner03.jpeg" }, { url: "./pic/foodbreak/father/jbgz.jpg" }, { url: "./pic/foodbreak/father/hh.jpg" }, { url: "./pic/foodbreak/father/haha.jpg" }, { url: "./pic/foodbreak/father/jbgz.jpg" }, { url: "./pic/foodbreak/father/hh.jpg" }, { url: "./pic/foodbreak/father/haha.jpg" }],
+      chosendinner: '',
+      chosenlunch: '',
+      chosenbreakfast: '',
+      advice: '健康得分82分，身体健朗，血糖略有偏高。若无太大不适，日常建议你尽量少吃油腻食物，注意休息；建议注意饮食控制调理，少吃含糖分的食物，多吃粗粮一类的，适当运动锻炼，必要时可以胰岛素控制血糖。',
+
+    }
+  });
+  //初始化元素哦
+  var init = new Vue({
+    el: "#init",
+    methods: {
+      init: function () {
+        document.getElementById('breakfname1').innerHTML = chosen.breakfastname[0].name;
+        document.getElementById('breakfname2').innerHTML = chosen.breakfastname[1].name;
+        document.getElementById('breakfname3').innerHTML = chosen.breakfastname[2].name;
+        document.getElementById('breakfone').src= chosen.breakfasturl[0].url;
+        document.getElementById('breakftwo').src = chosen.breakfasturl[1].url;
+        document.getElementById('breakfthree').src = chosen.breakfasturl[2].url;
+        document.getElementById('lunchname1').innerHTML = chosen.lunchname[0].name;
+        document.getElementById('lunchname2').innerHTML = chosen.lunchname[1].name;
+        document.getElementById('lunchname3').innerHTML = chosen.lunchname[2].name;
+        document.getElementById('lunchone').src = chosen.lunchurl[0].url;
+        document.getElementById('lunchtwo').src = chosen.lunchurl[1].url;
+        document.getElementById('lunchthree').src = chosen.lunchurl[2].url;
+        document.getElementById('dinnername1').innerHTML = chosen.dinnername[0].name;
+        document.getElementById('dinnername2').innerHTML = chosen.dinnername[1].name;
+        document.getElementById('dinnername3').innerHTML = chosen.dinnername[2].name;
+        document.getElementById('dinnerone').src = chosen.dinnerurl[0].url;
+        document.getElementById('dinnertwo').src = chosen.dinnerurl[1].url;
+        document.getElementById('dinnerthree').src = chosen.dinnerurl[2].url;
+
+        $("#advicecontent").text(chosen.advice);
+
+      }
+    }
+
+  })
+  init.init();
+
+  var ChooseWhom = new Vue({
+    el: '#chooseWhom',
+    methods: {
+      chooseWhom: function (index) {
+
+        switch (index) {
+          case 0:
+            chosen = father;
+            $("#btnfa").removeClass().addClass("buttontouch");
+            $("#btnmo").removeClass().addClass("buttonuntouch");
+            $("#btngpa").removeClass().addClass("buttonuntouch");
+            $("#btngma").removeClass().addClass("buttonuntouch");
+            // document.getElementById("btnmo").style=divbuttonuntouch;
+            // document.getElementById("btngpa").style=divbuttonuntouch;
+            //  document.getElementById("btngma").style=divbuttonuntouch;
+            break;
+          case 1:
+            chosen = mother;
+            $("#btnfa").removeClass().addClass("buttonuntouch");
+            $("#btnmo").removeClass().addClass("buttontouch");
+            $("#btngpa").removeClass().addClass("buttonuntouch");
+            $("#btngma").removeClass().addClass("buttonuntouch");
+            // document.getElementById("btnfa").style=divbuttonuntouch;
+            //document.getElementById("btnmo").style=divbuttontouch;
+            //document.getElementById("btngpa").style=divbuttonuntouch;
+            //document.getElementById("btngma").style=divbuttonuntouch;
+            break;
+          case 2:
+            chosen = granpa;
+            $("#btnfa").removeClass().addClass("buttonuntouch");
+            $("#btnmo").removeClass().addClass("buttonuntouch");
+            $("#btngpa").removeClass().addClass("buttontouch");
+            $("#btngma").removeClass().addClass("buttonuntouch");
+            break;
+          case 3:
+            chosen = granma;
+            $("#btnfa").removeClass().addClass("buttonuntouch");
+            $("#btnmo").removeClass().addClass("buttonuntouch");
+            $("#btngpa").removeClass().addClass("buttonuntouch");
+            $("#btngma").removeClass().addClass("buttontouch");
+            // document.getElementById("btnfa").style=divbuttonuntouch;
+            //  document.getElementById("btnmo").style=divbuttonuntouch;
+            // document.getElementById("btngpa").style=divbuttonuntouch;
+            //document.getElementById("btngma").style=divbuttontouch;
+            break;
+        }
+        init.init();
+      }
+    }
+
+
+  });
+</script>
+
+</html>

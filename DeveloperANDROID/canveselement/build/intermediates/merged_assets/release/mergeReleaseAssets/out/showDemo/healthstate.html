@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+    <link href="cs/bootcs/bootstrap-theme.css" type="text/css" rel="stylesheet">
+    <link href="cs/bootcs/bootstrap-theme.min.css" type="text/css" rel="stylesheet">
+    <link href="cs/bootcs/bootstrap.css" type="text/css" rel="stylesheet">
+    <link href="cs/bootcs/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <style>
+        html,
+        body {
+            margin: 0;
+            height: 100%;
+            color: white;
+            font-family: SourceHanSansCN-Bold
+        }
+
+        nav {
+
+            background-color: #252020;
+            height: 100%;
+            width: 20%;
+            position: relative;
+            float: left;
+            padding: 0px;
+            margin: 0px;
+            background-image: linear-gradient(269deg, #232323 0%, #111111 38%);
+
+        }
+
+        section {
+            position: relative;
+            width: 80%;
+            float: left;
+            background: #111111;
+            height: 100%;
+
+
+        }
+
+
+        /* .buttonuntouch {
+            font-family: SourceHanSansCN-Normal;
+            font-size: 30px;
+            color: #FFFFFF;
+            letter-spacing: 0;
+            position: absolute;
+
+            height: 45px;
+            left: 63px;
+        } */
+
+        #weight {
+            position: relative;
+            left: 1%;
+            top: 4%;
+            width: 32%;
+            height: 76%;
+            background-image: linear-gradient(-270deg, #0277BD 0%, #00B0FF 100%);
+            border-radius: 8px;
+        }
+
+        #blood {
+            position: absolute;
+            left: 34%;
+            top: 4%;
+            width: 32%;
+            height: 76%;
+            background-image: linear-gradient(-90deg, #E2845B 0%, #F36844 100%);
+            border-radius: 8px;
+        }
+
+        #step {
+            position: absolute;
+            left: 67%;
+            top: 4%;
+            width: 32%;
+            height: 76%;
+            background-image: linear-gradient(-90deg, #47BB65 0%, #2A9442 100%);
+            border-radius: 8px;
+        }
+
+        .imgstyle {
+            position: absolute;
+
+            right: 4%;
+            top: 4%;
+            max-height: 10%;
+            max-width: 20%;
+
+        }
+
+        .textstyle {
+            font-family: Noto Sans CJK TC Black-Medium;
+
+            font-size: 28px;
+            color: #FFFFFF;
+            letter-spacing: 0;
+            position: absolute;
+            left: 4%;
+            top: 4%;
+            max-height: 10%;
+        }
+
+        @media screen and (max-height:719px) {
+            .textstyle {
+                font-size: 14px;
+            }
+
+        }
+
+        @media screen and (max-width:1279px) {
+            .textstyle {
+                font-size: 14px;
+            }
+
+        }
+
+        .showvaluestylep {
+            position: absolute;
+            top: 10%;
+            width: 100%;
+            height: 10%;
+
+        }
+
+        .showvalueunitstylep {
+            position: absolute;
+            top: 20%;
+            height: 10%;
+            width: 100%;
+
+        }
+
+        .statestylep {
+            position: absolute;
+            width: 100%;
+            height: 10%;
+            top: 30%;
+
+        }
+
+        .datestylep {
+            position: absolute;
+            width: 100%;
+            top: 40%;
+            height: 10%;
+
+        }
+
+        .chartp {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            height: 50%;
+
+
+
+        }
+
+        .showvaluestyle {
+            position: absolute;
+
+            top: 35%;
+
+            font-family: SourceHanSansCN-Heavy;
+            font-size: 40px;
+            color: #FFFFFF;
+            width: 100%;
+            max-height: 10%;
+            letter-spacing: 0;
+        }
+
+        @media screen and (max-height:719px) {
+            .showvaluestyle {
+                font-size: 20px;
+                top: 20%;
+            }
+
+        }
+
+        @media screen and (max-width:1279px) {
+            .showvaluestyle {
+                font-size: 20px;
+                top: 20%;
+            }
+
+        }
+
+        .showvalueunitstyle {
+            position: absolute;
+
+            top: 8%;
+
+            font-family: SourceHanSansCN-Normal;
+            font-size: 22px;
+            color: #ffffff;
+            /* max-height: 10%; */
+            letter-spacing: 0;
+
+            width: 100%;
+
+        }
+
+        @media screen and (max-height:719px) {
+            .showvalueunitstyle {
+                font-size: 11px;
+                top: 20%;
+            }
+
+        }
+
+        @media screen and (max-width:1279px) {
+            .showvalueunitstyle {
+                font-size: 11px;
+                top: 20%;
+            }
+
+        }
+
+        .statestyle {
+            position: absolute;
+            width: 100%;
+            top: 35%;
+            font-family: SourceHanSansCN-Bold;
+            font-size: 20px;
+            max-height: 10%;
+            color: #FFFFFF;
+            letter-spacing: 0;
+        }
+
+        @media screen and (max-height:719px) {
+            .statestyle {
+                font-size: 10px;
+            }
+
+        }
+
+        @media screen and (max-width:1279px) {
+            .statestyle {
+                font-size: 10px;
+            }
+
+        }
+
+        .datestyle {
+            position: absolute;
+            width: 100%;
+            top: 0%;
+            opacity: 0.8;
+            font-family: Sourcweight eHanSansCN-Normal;
+            font-size: 18px;
+            color: #FFFFFF;
+            max-height: 10%;
+            letter-spacing: 0; 
+            transform: translateY(-50%);
+        }
+
+        @media screen and (max-height:719px) {
+            .datestyle {
+                font-size: 9px;
+            }
+
+        }
+
+        @media screen and (max-width:1279px) {
+            .datestyle {
+                font-size: 9px;
+            }
+
+        }
+
+        .chart {
+            position: absolute;
+            top: 10%;
+            width: 100%;
+            bottom: 2%;
+            max-height: 80%;
+            margin: 0 auto;
+            background-color: #ffffff;
+
+
+        }
+
+        .buttonuntouch {
+            font-family: SourceHanSansCN-Normal;
+            font-size: 30px;
+            color: #FFFFFF;
+            letter-spacing: 0;
+
+            background-color: #111111;
+            border: #111111;
+            position: absolute;
+            padding: 5%;
+            left: 50%;
+            /* transform: translate(-50%, 0%); */
+            outline-width: 0px;
+            top: 30%;
+            transform: translateY(-50%);
+            transform: translateX(-50%);
+        }
+
+        .buttontouch {
+          
+            font-family: SourceHanSansCN-Normal;
+            font-size: 30px;
+            color: #FFFFFF;
+            letter-spacing: 0;
+
+            background-color: #2685E3;
+            border: #2685E3;
+            position: absolute;
+            /* height: 45px; */
+            left: 50%;
+            /* transform: translate(-50%, 0%); */
+            outline-width: 0px;
+            border-radius: 15px;
+            padding: 5%;
+            top: 30%;
+            transform: translateY(-50%); 
+            transform: translateX(-50%);
+        }
+
+        @media screen and (max-height:719px) {
+            .buttontouch {
+                border-radius: 8px;
+                font-size: 20px;
+                padding: 5%;
+                
+              
+            }
+            .buttonuntouch {
+                padding: 5%;
+                font-size: 20px;
+                border-radius: 8px;
+            }
+        }
+        @media screen and (max-width:1279px) {
+            .buttontouch {
+                border-radius: 8px;
+                font-size: 20px;
+                padding: 5%;
+                
+            }
+            .buttonuntouch {
+                font-size: 20px;
+               border: 8px;
+               padding: 5%;
+            }
+        }
+
+
+        .buttonparent {
+            width: 100%;
+            height: 20%;
+            position: relative;
+            cursor:pointer;
+        }
+    </style>
+
+</head>
+
+<body style="height:100%;width:100% ;background-color:rgb(209, 178, 178);position:relative">
+
+
+    <nav id="chooseWhom">
+
+        <div class="buttonparent"  @click="chooseWhom(0)" >
+            <button type="button" @click="chooseWhom(0)" class="buttontouch" id="btnfa">爸爸</button>
+        </div>
+        <div class="buttonparent" @click="chooseWhom(1)">
+            <button type="button" @click="chooseWhom(1)" class="buttonuntouch" id="btnmo">妈妈</button>
+        </div>
+        <div class="buttonparent" @click="chooseWhom(2)">
+            <button type="button" @click="chooseWhom(2)" class="buttonuntouch" id="btngpa">爷爷</button>
+        </div>
+        <div class="buttonparent" @click="chooseWhom(3)">
+            <button type="button" @click="chooseWhom(3)" class="buttonuntouch" id="btngma">奶奶</button>
+        </div>
+        <div class="buttonparent"></div>
+
+
+    </nav>
+
+
+
+    <section id="init">
+        <div id="weight">
+
+            <img src="pic/nomal/weight.png" class="imgstyle">
+            <div class="textstylep">
+                <p class="textstyle">体重</p>
+            </div>
+            <div class="showvaluestylep">
+                <p align="center" class="showvaluestyle" id="weightvalue">97</p>
+            </div>
+            <div class="showvalueunitstylep">
+                <p align="center" class="showvalueunitstyle">kg</p>
+            </div>
+            <div class="statestylep">
+                <p align="center" class="statestyle" id="weightstate">-正常-</p>
+            </div>
+            <div class="datestylep">
+                <p align="center" class="datestyle">2018/01/01</p>
+            </div>
+            <div class="chartp">
+                <div class="chart" id="weightchart"></div>
+
+
+
+
+
+
+            </div>
+        </div>
+        <div id="blood">
+            <img src="pic/nomal/blood.png" class="imgstyle">
+            <p class="textstyle">血压</p>
+            <div class="showvaluestylep">
+                <p align="center" class="showvaluestyle" id="bloodvalue">135/97</p>
+            </div>
+            <div class="showvalueunitstylep">
+                <p align="center" class="showvalueunitstyle">mmHg</p>
+            </div>
+            <div class="statestylep">
+                <p align="center" class="statestyle" id="bloodstate">-正常-</p>
+            </div>
+            <div class="datestylep">
+                <p align="center" class="datestyle">2018/01/01</p>
+            </div>
+            <div class="chartp">
+                <div class="chart" id="bloodchart"> </div>
+            </div>
+
+
+
+
+
+
+        </div>
+        <div id="step">
+            <img src="pic/nomal/step.png" class="imgstyle">
+            <p class="textstyle">步数</p>
+            <div class="showvaluestylep">
+                <p align="center" class="showvaluestyle" id="stepvalue">1234</p>
+            </div>
+            <div class="showvalueunitstylep">
+                <p align="center" class="showvalueunitstyle">步</p>
+            </div>
+            <div class="statestylep">
+                <p align="center" class="statestyle" id="stepstate">-达标-</p>
+            </div>
+            <div class="datestylep">
+                <p align="center" class="datestyle">2018/01/01</p>
+            </div>
+            <div class="chartp">
+                <div class="chart" id="stepchart"> </div>
+            </div>
+
+
+
+
+
+        </div>
+    </section>
+
+
+
+
+</body>
+<script src="js/jqary/jquery-3.3.1.min.js"></script>
+<script src="js/bootjs/bootstrap.js"></script>
+<script src="js/vuejs/vue.min.js"></script>
+<script src="js/otherjs/echarts.min.js"></script>
+
+<script>
+    var chosen;
+    // $(window).on(resize, function() {
+
+    // })
+
+    // 也可以用 JavaScript 直接调用方法
+
+    // 也可以用 JavaScript 直接调用方法
+
+    // 也可以用 JavaScript 直接调用方法
+    var father = new Vue({
+        el: "#father",
+        data: {
+
+            weightstate: '-偏胖-',
+            bloodstate: '-正常-',
+            stepstate: '-达标-',
+            advice: '少生孩子多种数0',
+            steps: [11248, 9830, 7937, 9318, 10284, 13732, 9284],
+            blood: [{ up: 108, down: 82 }, { up: 112, down: 74 }, { up: 103, down: 93 }, { up: 117, down: 83 }, { up: 121, down: 67 }, { up: 115, down: 69 }, { up: 123, down: 95 }],
+            weight: [97.0, 98.8, 99, 96.9, 98.3, 98.2, 97.0]
+        }
+    });
+
+    chosen = father;
+    var mother = new Vue({
+        el: "#mother",
+        data: {
+
+            weightstate: '-正常-',
+            bloodstate: '-正常-',
+            stepstate: '-达标-',
+            steps: [6735, 5734, 8964, 7442, 6731, 5868, 7852],
+            blood: [{ up: 111, down: 82 }, { up: 106, down: 74 }, { up: 108, down: 93 }, { up: 103, down: 83 }, { up: 107, down: 87 }, { up: 109, down: 89 }, { up: 108, down: 75 }],
+            weight: [47.7, 47.2, 47.1, 46.7, 46.0, 47.5, 47.0]
+
+
+        }
+    });
+    var granpa = new Vue({
+        el: "#granpa",
+        data: {
+
+            weightstate: '-正常-',
+            bloodstate: '-偏高-',
+            stepstate: '-达标-',
+            steps: [15783, 9368, 8379, 14784, 10284, 13732, 10452],
+            blood: [{ up: 138, down: 82 }, { up: 142, down: 74 }, { up: 120, down: 93 }, { up: 129, down: 83 }, { up: 131, down: 87 }, { up: 122, down: 86 }, { up: 115, down: 89 }],
+            weight: [78.9, 79.3, 80.2, 79.9, 78.5, 79.8, 83.0]
+
+
+        }
+    });
+    var granma = new Vue({
+        el: "#granma",
+        data: {
+
+            weightstate: '-正常-',
+            bloodstate: '-正常-',
+            stepstate: '-未达标-',
+            steps: [3523, 3415, 2135, 2462, 3622, 3723, 2356],
+            blood: [{ up: 108, down: 78 }, { up: 122, down: 68 }, { up: 126, down: 69 }, { up: 119, down: 73 }, { up: 111, down: 87 }, { up: 123, down: 79 }, { up: 109, down: 82 }],
+            weight: [64.9, 64.2, 65.0, 65.4, 64.1, 65.6, 66.0]
+
+
+        }
+    });
+    //初始化元素哦
+
+
+    var init = new Vue({
+        el: "#init",
+        methods: {
+            init: function () {
+                $("#stepvalue").text(chosen.steps[6]);
+                $("#bloodvalue").text(chosen.blood[6].up + '/' + chosen.blood[6].down);
+                $("#weightvalue").text(chosen.weight[6]);
+                // alert(chosen.weight[6]);
+                $("#weightstate").text(chosen.weightstate);
+                $("#bloodstate").text(chosen.bloodstate);
+                $("#stepstate").text(chosen.stepstate);
+                //
+                var oDate = new Date(); //实例一个时间对象；
+                //获取系统的年；
+                oDate.getMonth() + 1;   //获取系统月份，由于月份是从0开始计算，所以要加1
+                oDate.getDate(); // 获取系统日，
+                $(".datestyle").text(oDate.getFullYear() + "/" + (oDate.getMonth() + 1) + "/" + oDate.getDate());
+
+                var weightchart = echarts.init(document.getElementById("weightchart"));
+                var bloodchart = echarts.init(document.getElementById("bloodchart"));
+                var stepchart = echarts.init(document.getElementById("stepchart"));
+
+                optionweight = {
+                    xAxis: {
+                        type: 'category',
+                        data: ['', '', '', '', '', '', ''],
+                        axisLine: {
+                            show: false,
+
+                        },
+                        axisTick: {
+                            show: false
+                        },
+
+
+
+                    },
+                    grid: {
+                        show: false,
+                    }
+                    ,
+                    yAxis: {
+                        axisLine: {
+                            show: false
+                        },
+
+                        axisTick: {
+                            show: false
+                        },
+
+
+                        axisLabel: {
+                            formatter: function () {
+                                return "";
+                            }
+                        },
+                        splitLine: {
+                            show: true,
+                            lineStyle: {
+                                color: new echarts.graphic.LinearGradient(
+                                    0, 0, 1, 0,
+                                    [
+                                        { offset: 0, color: 'rgba(255,255,255,0.0)' },
+                                        { offset: 0.5, color: 'rgba(255,255,255,0.24)' },
+                                        { offset: 1, color: 'rgba(255,255,255,0.0)' }
+                                    ]
+                                ),
+                                width: 1,
+
+                            }
+                        }
+                    }
+
+
+                    ,
+
+                    series: [
+
+                        {
+                            type: 'bar',
+                            itemStyle: {
+                                normal: {
+                                    color: new echarts.graphic.LinearGradient(
+                                        0, 0, 0, 1,
+                                        [
+                                            { offset: 0, color: 'rgba(255,255,255,1)' },
+
+                                            { offset: 1, color: 'rgba(255,255,255,0)' }
+                                        ]
+                                    )
+                                    ,
+                                    barBorderRadius: [4, 4, 0, 0]
+
+                                }
+
+
+
+                            },
+
+                            label: {
+                                normal: {
+                                    show: true,
+                                    position: 'top',
+                                    distance: 15,
+                                    rotate: window.innerWidth < 1279 ? 90 : 0,
+                                    verticalAlign: innerWidth < 1279 ? 'middle' : 'top',
+                                    textStyle: {
+                                        color: 'white',
+                                        // fontsize: window.innerWidthb < 1024 ?  8: 9
+                                    }
+                                }
+                            },
+                            barWidth: window.innerWidth > 1279 ? '20px' : '10px',
+
+                            // data: [1,2,3,4,5,6,7],
+                            data: [chosen.weight[0], chosen.weight[1], chosen.weight[2], chosen.weight[3], chosen.weight[4], chosen.weight[5], chosen.weight[6]],
+                            //animationDuration:10000,
+                            animationDelay: function (idx) {
+                                // 越往后的数据延迟越大
+                                return idx * 100;
+                            }
+                        }
+
+                    ]
+
+                };
+                optionblood = {
+                    xAxis: {
+                        type: 'category',
+                        data: [chosen.blood[0].down, chosen.blood[1].down, chosen.blood[2].down, chosen.blood[3].down, chosen.blood[4].down, chosen.blood[5].down, chosen.blood[6].down],
+
+                        axisLine: {
+                            show: false,
+
+                        },
+                        axisTick: {
+                            show: false
+                        },
+                        axisLabel: {
+                            show: true,    //这行代码控制着坐标轴x轴的文字是否显示
+
+                            color: '#ffffff',   //x轴上的字体颜色
+                            // x轴字体大小
+                        }
+
+                    },
+                    yAxis: {
+                        axisLine: {
+                            show: false
+                        },
+                        axisTick: {
+                            show: false
+                        },
+
+
+                        axisLabel: {
+                            formatter: function () {
+                                return "";
+                            }
+                        },
+                        splitLine: {
+                            show: true,
+                            lineStyle: {
+                                color: new echarts.graphic.LinearGradient(
+                                    0, 0, 1, 0,
+                                    [
+                                        { offset: 0, color: 'rgba(255,255,255,0.0)' },
+                                        { offset: 0.5, color: 'rgba(255,255,255,0.24)' },
+                                        { offset: 1, color: 'rgba(255,255,255,0.0)' }
+                                    ]
+                                ),
+                                width: 1,
+
+                            }
+                        }
+                    },
+                    series: [
+
+                        {
+                            type: 'bar',
+                            barGap: '-100%',
+
+                            yAxisIndex: 0,
+                            itemStyle: {
+                                normal: {
+                                    color: new echarts.graphic.LinearGradient(
+                                        0, 0, 0, 1,
+                                        [
+                                            { offset: 0, color: 'rgba(255,255,255,0.5)' },
+
+                                            { offset: 1, color: 'rgba(255,255,255,0)' }
+                                        ]
+                                    )
+                                    ,
+                                    barBorderRadius: [4, 4, 0, 0]
+                                },
+
+
+
+
+                            },
+                            label: {
+                                normal: {
+                                    show: true,
+                                    distance: 15,
+                                    rotate: window.innerWidth < 1279 ? 90 : 0,
+                                    verticalAlign: innerWidth < 1279 ? 'middle' : 'top',
+                                    position: 'top',
+                                    textStyle: {
+                                        color: 'white'
+                                    }
+                                    ,
+                                    barBorderRadius: [4, 4, 0, 0]
+                                }
+                            },
+                            barWidth: window.innerWidth > 1279 ? '20px' : '10px',
+                            data: [chosen.blood[0].up, chosen.blood[1].up, chosen.blood[2].up, chosen.blood[3].up, chosen.blood[4].up, chosen.blood[5].up, chosen.blood[6].up],
+                            animationDelay: function (idx) {
+                                // 越往后的数据延迟越大
+                                return idx * 100;
+                            }
+                        }
+                        ,
+                        {
+                            type: 'bar',
+                            barGap: '-100%',
+                            yAxisIndex: 0,
+                            itemStyle: {
+                                normal: {
+                                    color: new echarts.graphic.LinearGradient(
+                                        0, 0, 0, 1,
+                                        [
+                                            { offset: 0, color: 'rgba(255,255,255,1)' },
+
+                                            { offset: 1, color: 'rgba(255,255,255,0)' }
+                                        ]
+                                    )
+                                    ,
+                                    barBorderRadius: [4, 4, 0, 0]
+                                },
+                            },
+
+                            barWidth: window.innerWidth > 1279 ? '20px' : '10px',
+                            data: [chosen.blood[0].down, chosen.blood[1].down, chosen.blood[2].down, chosen.blood[3].down, chosen.blood[4].down, chosen.blood[5].down, chosen.blood[6].down],
+                            animationDelay: function (idx) {
+                                // 越往后的数据延迟越大
+                                return idx * 100;
+                            }
+                        }
+                    ]
+
+                };
+
+
+
+                optionstep = {
+                    xAxis: {
+                        type: 'category',
+                        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+                        axisLine: {
+                            show: false,
+
+                        },
+                        axisTick: {
+                            show: false
+                        },
+
+                        axisLabel: {
+                            show: true,    //这行代码控制着坐标轴x轴的文字是否显示
+
+                            color: '#ffffff',   //x轴上的字体颜色
+                            // x轴字体大小
+                        }
+
+                    },
+                    grid: {
+                        show: false,
+                    }
+                    ,
+                    yAxis: {
+                        axisLine: {
+                            show: false
+                        },
+
+                        axisTick: {
+                            show: false
+                        },
+
+
+                        axisLabel: {
+                            show: false,
+                            color: 'ffffff',
+                        }
+                        ,
+                        splitLine: {
+                            show: true,
+                            lineStyle: {
+                                color: new echarts.graphic.LinearGradient(
+                                    0, 0, 1, 0,
+                                    [
+                                        { offset: 0, color: 'rgba(255,255,255,0.0)' },
+                                        { offset: 0.5, color: 'rgba(255,255,255,0.24)' },
+                                        { offset: 1, color: 'rgba(255,255,255,0.0)' }
+                                    ]
+                                ),
+                                width: 1,
+
+                            }
+                        }
+                    }
+
+
+                    ,
+
+                    series: [
+
+                        {
+                            type: 'bar',
+                            itemStyle: {
+                                normal: {
+                                    color: new echarts.graphic.LinearGradient(
+                                        0, 0, 0, 1,
+                                        [
+                                            { offset: 0, color: 'rgba(255,255,255,1)' },
+
+                                            { offset: 1, color: 'rgba(255,255,255,0)' }
+                                        ]
+                                    )
+                                    ,
+                                    barBorderRadius: [4, 4, 0, 0]
+
+                                }
+
+
+
+                            },
+
+                            label: {
+                                normal: {
+                                    show: true,
+                                    distance: 15,
+                                    rotate: window.innerWidth < 1279 ? 90 : 0,
+                                    verticalAlign: innerWidth < 1279 ? 'middle' : 'top',
+                                    position: 'top',
+                                    textStyle: {
+                                        color: 'white'
+                                    }
+                                }
+                            },
+                            barWidth: window.innerWidth > 1279 ? '20px' : '10px',
+                            data: [chosen.steps[0], chosen.steps[1], chosen.steps[2], chosen.steps[3], chosen.steps[4], chosen.steps[5], chosen.steps[6]],
+                            //animationDuration:10000,
+                            animationDelay: function (idx) {
+                                // 越往后的数据延迟越大
+                                return idx * 100;
+                            }
+                        }
+
+                    ]
+
+                };
+
+                weightchart.setOption(optionweight);
+                bloodchart.setOption(optionblood);
+                stepchart.setOption(optionstep);
+            }
+        }
+
+    });
+    init.init();
+
+    var ChooseWhom = new Vue({
+        el: '#chooseWhom',
+        methods: {
+            chooseWhom: function (index) {
+
+                switch (index) {
+
+                    case 0:
+                        chosen = father;
+                        $("#btnfa").removeClass().addClass("buttontouch");
+                        $("#btnmo").removeClass().addClass("buttonuntouch");
+                        $("#btngpa").removeClass().addClass("buttonuntouch");
+                        $("#btngma").removeClass().addClass("buttonuntouch");
+                        // document.getElementById("btnmo").style=divbuttonuntouch;
+                        // document.getElementById("btngpa").style=divbuttonuntouch;
+                        //  document.getElementById("btngma").style=divbuttonuntouch;
+                        break;
+                    case 1:
+                        chosen = mother;
+                        $("#btnfa").removeClass().addClass("buttonuntouch");
+                        $("#btnmo").removeClass().addClass("buttontouch");
+                        $("#btngpa").removeClass().addClass("buttonuntouch");
+                        $("#btngma").removeClass().addClass("buttonuntouch");
+                        // document.getElementById("btnfa").style=divbuttonuntouch;
+                        //document.getElementById("btnmo").style=divbuttontouch;
+                        //document.getElementById("btngpa").style=divbuttonuntouch;
+                        //document.getElementById("btngma").style=divbuttonuntouch;
+                        break;
+                    case 2:
+                        chosen = granpa;
+                        $("#btnfa").removeClass().addClass("buttonuntouch");
+                        $("#btnmo").removeClass().addClass("buttonuntouch");
+                        $("#btngpa").removeClass().addClass("buttontouch");
+                        $("#btngma").removeClass().addClass("buttonuntouch");
+                        break;
+                    case 3:
+                        chosen = granma;
+                        $("#btnfa").removeClass().addClass("buttonuntouch");
+                        $("#btnmo").removeClass().addClass("buttonuntouch");
+                        $("#btngpa").removeClass().addClass("buttonuntouch");
+                        $("#btngma").removeClass().addClass("buttontouch");
+                        // document.getElementById("btnfa").style=divbuttonuntouch;
+                        //  document.getElementById("btnmo").style=divbuttonuntouch;
+                        // document.getElementById("btngpa").style=divbuttonuntouch;
+                        //document.getElementById("btngma").style=divbuttontouch;
+                        break;
+                }
+                init.init();
+            }
+        }
+
+
+    });
+</script>
+
+</html>
