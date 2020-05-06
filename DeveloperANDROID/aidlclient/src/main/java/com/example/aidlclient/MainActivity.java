@@ -52,7 +52,9 @@ public class MainActivity extends AppCompatActivity {
 
 
                          Log.e("add", "4+6=" + helloaidlInterface.Add(4, 6));
-                        Log.e("addCity",helloaidlInterface.addCity(new City("Qingdao",100))+"");
+
+                        Log.e("addCity",helloaidlInterface.addCity(new City("Qingdao",helloaidlInterface.getNumberOfCity()))+"");
+
                         Log.e("city-number",helloaidlInterface.getNumberOfCity()+"");
                     }
                     else{

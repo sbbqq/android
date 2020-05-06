@@ -14,4 +14,5 @@ interface HelloaidlInterface {
             int Add(int one,int two);
             int addCity(inout City c );
             int getNumberOfCity();
+
 }

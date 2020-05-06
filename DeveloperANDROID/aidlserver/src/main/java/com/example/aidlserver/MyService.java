@@ -45,8 +45,16 @@ public class MyService extends Service {
             Log.e("server-addCity","***"+c.getName()+"code:"+c.getCode());
 
             if(c!=null){
-                list.add(c);
-                return 1;
+                if(!checkService(c)) {
+                    list.add(c);
+                    Log.e("add-ser","*****已添加*****");
+
+                    return 1;
+                }
+                else {
+                    Log.e("add-ser","*****已有*****");
+                    return 3;//表示已经存在
+                }
 
             }
 
@@ -57,5 +65,9 @@ public class MyService extends Service {
         public int getNumberOfCity() throws RemoteException {
             return list.size();
         }
+    }
+
+    private boolean checkService(City city){
+        return false;
     }
 }
